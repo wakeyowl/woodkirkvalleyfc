@@ -26,7 +26,13 @@
             data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="{% url 'index' %}">Woodkirk Valley FC</a>
+
+    <li class="nav-item">
+        <a class="navbar-brand" href="{% url 'index' %}">Woodkirk Valley FC</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'add_member' %}">Register Here</a>
+    </li>
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
@@ -38,7 +44,11 @@
     </div>
 </nav>
 
+<div class="col-sm-9 offset-sm-3 col-md-10 offset-md-2 main">
+    {% block body_block %}{% endblock %}
 
+
+</div>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->

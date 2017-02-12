@@ -1,12 +1,11 @@
 from datetime import datetime
 
-from django.contrib.auth import logout, authenticate, login
-from django.http import HttpResponseRedirect
+
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.core.urlresolvers import reverse
-from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+
+from member.forms import MemberForm
 
 
 def get_server_side_cookie(request, cookie, default_val=None):
@@ -43,3 +42,19 @@ def visitor_cookie_handler(request):
 def index(request):
     response = render(request, 'member/index.html', {})
     return response
+
+
+def add_member(request):
+    form = MemberForm()
+
+    if request.method == 'POST':
+        form = MemberForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print(form.errors)
+
+    return render(request, 'member/add_member.html', {'form': form})
