@@ -1,0 +1,22 @@
+{% extends 'member/base_bootstrap.html' %}
+{% load staticfiles %}
+{% block title_block %}
+    Index
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        <h1 class="display-3">Woodkirk Valley Football Club</h1>
+        {% if user.is_authenticated %}
+            <p class="lead">hey there {{ user.username }}</p>
+        {% else %}
+            <p class="lead">hey there partner! </p>
+        {% endif %}
+
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+
+{% endblock %}
