@@ -94,3 +94,4 @@ ENV/
 
 .idea/
 /db.sqlite3
+/member/migrations/
