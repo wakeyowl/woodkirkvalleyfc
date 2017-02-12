@@ -92,11 +92,5 @@ ENV/
 # Rope project settings
 .ropeproject
 
-.gitignore
 .idea/
-db.sqlite3
-manage.py
-member/
-templates/
-woodkirkvalleydata/
 /db.sqlite3
