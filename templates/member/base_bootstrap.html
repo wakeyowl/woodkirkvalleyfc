@@ -26,19 +26,14 @@
             data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <li class="nav-item">
-        <a class="navbar-brand" href="{% url 'index' %}">Woodkirk Valley FC</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="{% url 'add_member' %}">Register Here</a>
-    </li>
+    <a class="navbar-brand" href="{% url 'index' %}">Woodkirk Valley FC</a>
 
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="{% url 'index' %}">Home</a>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_member' %}">Parent Registration</a>
             </li>
+
 
         </ul>
     </div>
