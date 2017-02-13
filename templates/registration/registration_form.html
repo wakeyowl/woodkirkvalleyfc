@@ -1,6 +1,6 @@
 {% extends 'member/base_bootstrap.html' %}
 {% load staticfiles %}
-{% load bootstrap_toolkit %}
+{% load bootstrap3 %}
 {% block title_block %}
     Register
 {% endblock %}
@@ -11,20 +11,20 @@
 
     <div class="jumbotron">
         <h2 class="display-4">Parent Registration</h2>
-    </div>
 
     <div class="container">
         As a parent you will need to input a registration details,
         this allows us to safeguard the children's data.
     </div>
-
-    <br/>
+    </div>
 
     <form role="form" method="post" action=".">
         {% csrf_token %}
-        {{ form | as_bootstrap }}
+        {% bootstrap_form form %}
         </br>
+
         <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+
     </form>
 
 {% endblock %}

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'member',
     'registration',
     'bootstrap_toolkit',
+    'bootstrap3',
 ]
 
 MIDDLEWARE_CLASSES = [
