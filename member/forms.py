@@ -1,10 +1,10 @@
 from django import forms
 from django.contrib.auth.models import User
 
-from member.models import Member
+from member.models import UserMember
 
 
-class MemberForm(forms.ModelForm):
+class UserMemberForm(forms.ModelForm):
     name = forms.CharField(max_length=128, required=True, help_text="Please enter your full name.")
     address = forms.CharField(max_length=128, required=False)
     postcode = forms.CharField(max_length=12, required=False)
@@ -14,5 +14,5 @@ class MemberForm(forms.ModelForm):
     consent = forms.BooleanField()
 
     class Meta:
-        model = Member
+        model = UserMember
         fields = ('name', 'address', 'postcode', 'email', 'phone', 'consent' )

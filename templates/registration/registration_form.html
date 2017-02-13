@@ -1,4 +1,4 @@
-{% extends 'rango/base_bootstrap.html' %}
+{% extends 'member/base_bootstrap.html' %}
 {% load staticfiles %}
 {% load bootstrap_toolkit %}
 {% block title_block %}
@@ -7,7 +7,12 @@
 
 {% block body_block %}
 
-    <h2 class="form-signin-heading">Sign Up Here</h2>
+    <link href="http://v4-alpha.getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+
+    <div class="jumbotron">
+        <h2 class="display-3">Parent Registration</h2>
+    </div>
+
     <form role="form" method="post" action=".">
         {% csrf_token %}
         {{ form | as_bootstrap }}

@@ -1,11 +1,19 @@
 from datetime import datetime
 
-
+from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from registration.backends.simple.views import RegistrationView
 
-from member.forms import MemberForm
+from member.forms import UserMemberForm
+from member.models import UserMember
+
+
+class WoodkirkRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return reverse('register_profile')
 
 
 def get_server_side_cookie(request, cookie, default_val=None):
@@ -39,16 +47,72 @@ def visitor_cookie_handler(request):
     request.session['visits'] = visits
 
 
+def register(request):
+    registered = False
+    if request.method == 'POST':
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            if 'picture' in request.FILES:
+                profile.picture = request.FILES['picture']
+                profile.save()
+                registered = True
+            else:
+                print(user_form.errors, profile_form.errors)
+    else:
+        ## ON the PDF of tangowithdjango19,the e.g is like that:
+        #          else:
+        #              print(user_form.errors, profile_form.errors)
+        #  	else:
+        # user_form = UserForm()
+        #      	profile_form = UserProfileForm()
+
+        user_form = UserMemberForm()
+        profile_form = UserMemberForm()
+
+    return render(request,
+                  'rango/register.html',
+                  {'user_form': user_form,
+                   'registered': registered
+                   })
+
+
+@login_required
+def register_profile(request):
+    form = UserMemberForm()
+    if request.method == 'POST':
+        form = UserMemberForm(request.POST, request.FILES)
+        if form.is_valid():
+            user_profile = form.save(commit=False)
+            user_profile.user = request.user
+            user_profile.save()
+
+            return redirect('index')
+        else:
+            print(form.errors)
+
+    context_dict = {'form': form}
+
+    return render(request, 'member/profile_registration.html', context_dict)
+
+
 def index(request):
     response = render(request, 'member/index.html', {})
     return response
 
 
 def add_member(request):
-    form = MemberForm()
+    form = UserMemberForm()
 
     if request.method == 'POST':
-        form = MemberForm(request.POST)
+        form = UserMemberForm(request.POST)
 
         if form.is_valid():
             form.save(commit=True)
@@ -58,3 +122,24 @@ def add_member(request):
             print(form.errors)
 
     return render(request, 'member/add_member.html', {'form': form})
+
+
+@login_required
+def profile(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return redirect('index')
+
+    userprofile = Member.objects.get_or_create(user=user)[0]
+    form = Member({'website': userprofile.website, 'picture': userprofile.picture})
+
+    if request.method == 'POST':
+        form = MemberForm(request.POST, request.FILES, instance=userprofile)
+        if form.is_valid():
+            form.save(commit=True)
+            return redirect('profile', user.username)
+        else:
+            print(form.errors)
+
+    return render(request, 'member/profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form})
