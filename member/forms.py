@@ -15,7 +15,7 @@ class UserMemberForm(forms.ModelForm):
     postcode = forms.CharField(max_length=12, required=True, widget=forms.TextInput(attrs={'placeholder': 'WF3 1UA'}))
     phone = forms.IntegerField(required=True)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-    consent = forms.BooleanField(help_text=mark_safe("By consenting you are agreeing to the following: "
+    consent = forms.BooleanField(required=True, help_text=mark_safe("By consenting you are agreeing to the following: "
                                                      "<ul> "
                                                      "<li>I agree to my child receiving medication as "
                                                      "instructed on their record </li>"
@@ -33,3 +33,11 @@ class UserMemberForm(forms.ModelForm):
     class Meta:
         model = UserMember
         fields = ('name', 'address_street', 'address_town_city', 'postcode', 'phone', 'consent')
+
+
+class UserMemberForm(forms.ModelForm):
+
+
+    class Meta:
+        model = UserMember
+        fields = ()

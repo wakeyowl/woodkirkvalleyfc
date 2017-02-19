@@ -5,20 +5,24 @@ from django.template.defaultfilters import slugify
 
 class UserMember(models.Model):
     user = models.OneToOneField(User)
-    name = models.CharField(max_length=128, unique=True)
-    address_street = models.CharField(max_length=128)
-    address_town_city = models.CharField(max_length=128)
-    postcode = models.CharField(max_length=12)
-    phone = models.IntegerField()
+    name = models.CharField(max_length=128, unique=True, null=True)
+    address_street = models.CharField(max_length=128, null=True)
+    address_town_city = models.CharField(max_length=128, null=True)
+    postcode = models.CharField(max_length=12, null=True)
+    phone = models.IntegerField(null=True, blank=True)
     slug = models.SlugField(unique=True)
-    consent = models.BooleanField()
+    # consent = models.BooleanField()
+    LOCATOR_YES_NO_CHOICES = ((None, ''), (True, 'Yes'), (False, 'No'))
+    consent = models.NullBooleanField(choices=LOCATOR_YES_NO_CHOICES,
+                                      max_length=3,
+                                      blank=True, null=True, default=None, )
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(UserMember, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.name
+        return self.user
 
 
 class Player(models.Model):

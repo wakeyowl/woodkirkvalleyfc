@@ -131,11 +131,11 @@ def profile(request, username):
     except User.DoesNotExist:
         return redirect('index')
 
-    userprofile = Member.objects.get_or_create(user=user)[0]
-    form = Member({'website': userprofile.website, 'picture': userprofile.picture})
+    userprofile = UserMember.objects.get_or_create(user=user)[0]
+    form = UserMemberForm({})
 
     if request.method == 'POST':
-        form = MemberForm(request.POST, request.FILES, instance=userprofile)
+        form = UserMemberForm(request.POST, request.FILES, instance=userprofile)
         if form.is_valid():
             form.save(commit=True)
             return redirect('profile', user.username)
