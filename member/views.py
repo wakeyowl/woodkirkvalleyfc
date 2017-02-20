@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
 
-from member.forms import UserMemberForm
+from member.forms import UserMemberForm, UserMemberAddChildForm
 from member.models import UserMember
 
 
@@ -132,10 +132,10 @@ def profile(request, username):
         return redirect('index')
 
     userprofile = UserMember.objects.get_or_create(user=user)[0]
-    form = UserMemberForm({})
+    form = UserMemberAddChildForm({})
 
     if request.method == 'POST':
-        form = UserMemberForm(request.POST, request.FILES, instance=userprofile)
+        form = UserMemberAddChildForm(request.POST, request.FILES, instance=userprofile)
         if form.is_valid():
             form.save(commit=True)
             return redirect('profile', user.username)
