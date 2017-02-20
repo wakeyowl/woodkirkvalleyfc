@@ -7,9 +7,9 @@
 
 {% block body_block %}
 
-<h1>Register as a Member</h1>
+<h1>Register a player</h1>
 <div>
-    <form role="form" id="category_form" method="post" action="{% url 'add_member' %}">
+    <form role="form" id="player_form" method="post" action=".">
         {% csrf_token %}
         {{ form | as_bootstrap }}
         </br>

@@ -27,13 +27,13 @@ class UserMember(models.Model):
 
 class Player(models.Model):
     name = models.CharField(max_length=128)
-    birth_date = models.DateField()
+    birthdate = models.DateField()
     sex = models.CharField(max_length=1)
     member_parent = models.ForeignKey(UserMember)
     medical_details = models.TextField()
 
     class Meta:
-        unique_together = ('birth_date', 'name',)
+        unique_together = ('birthdate', 'name',)
 
     def __str__(self):
         return self.name

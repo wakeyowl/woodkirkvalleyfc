@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm
-from member.models import UserMember
+from member.models import UserMember, Player
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -45,43 +45,6 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     # update/set the visits cookie
     request.session['visits'] = visits
-
-
-def register(request):
-    registered = False
-    if request.method == 'POST':
-        user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
-
-        if user_form.is_valid() and profile_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            if 'picture' in request.FILES:
-                profile.picture = request.FILES['picture']
-                profile.save()
-                registered = True
-            else:
-                print(user_form.errors, profile_form.errors)
-    else:
-        ## ON the PDF of tangowithdjango19,the e.g is like that:
-        #          else:
-        #              print(user_form.errors, profile_form.errors)
-        #  	else:
-        # user_form = UserForm()
-        #      	profile_form = UserProfileForm()
-
-        user_form = UserMemberForm()
-        profile_form = UserMemberForm()
-
-    return render(request,
-                  'rango/register.html',
-                  {'user_form': user_form,
-                   'registered': registered
-                   })
 
 
 @login_required
@@ -131,7 +94,10 @@ def profile(request, username):
     except User.DoesNotExist:
         return redirect('index')
 
-    userprofile = UserMember.objects.get_or_create(user=user)[0]
+    player_list = Player.objects.all()
+    context_dict = {'player': player_list}
+
+    userprofile = User.objects.get(username=username)
     form = UserMemberAddChildForm({})
 
     if request.method == 'POST':
@@ -142,4 +108,17 @@ def profile(request, username):
         else:
             print(form.errors)
 
-    return render(request, 'member/profile.html', {'userprofile': userprofile, 'selecteduser': user, 'form': form})
+    return render(request, 'member/profile.html', context=context_dict)
+
+    #return render(request, 'member/profile.html', {'players': player_list, 'userprofile': userprofile, 'selecteduser': user, 'form': form})
+
+
+@login_required
+def add_player(request, username):
+    form = UserMemberAddChildForm()
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return redirect('index')
+
+    return render(request, 'member/add_player.html', {'form': form})

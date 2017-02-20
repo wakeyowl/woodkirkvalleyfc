@@ -7,18 +7,26 @@
 
 {% block body_block %}
     <div class="page-header">
-        <h1>{{ selecteduser.username }} Profile</h1>
+        <h1>{{ user.username }} Profile</h1>
     </div>
     <!-- Add in a loop of registered players by parent -->
     <br/><br/>
     <div id="profile_data">
-        {% if selecteduser.username == user.username %}
-            <form method="post" action="." enctype="multipart/form-data">
-                {% csrf_token %}
-                {% bootstrap_form form %}
-                <input type="submit" value="Update"/>
-            </form>
+
+        {% if player %}
+            <ul class="list-group">
+                {% for child in player %}
+                    <strong>Registered Players!! </strong>
+                    <br/>
+                    <strong>{{ child.name }}</strong>
+                    <strong>{{ child.birthdate }}</strong>
+                    <strong>{{ child.sex }}</strong>
+                    <strong>{{ child.medical_details }}</strong>
+                {% endfor %}
+            </ul>
         {% else %}
+            <strong>There are no Players currently registered to you. Register below!! </strong>
         {% endif %}
+
     </div>
 {% endblock %}

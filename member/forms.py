@@ -36,6 +36,11 @@ class UserMemberForm(forms.ModelForm):
 
 
 class UserMemberAddChildForm(forms.ModelForm):
+    name = forms.CharField(max_length=128, required=True, widget=forms.TextInput(attrs={'placeholder': 'John Smith'}))
+    birthdate = forms.DateField()
+    sex =  forms.CharField(max_length=1)
+    medical_details = forms.CharField(max_length=128, required=False)
+
     class Meta:
         model = Player
-        fields = ('name', 'birth_date', 'sex', 'medical_details')
+        fields = ('name', 'birthdate', 'sex', 'medical_details')
