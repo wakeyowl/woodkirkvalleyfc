@@ -16,17 +16,20 @@
         {% if player %}
             <ul class="list-group">
                 {% for child in player %}
-                    <strong>Registered Players!! </strong>
+                    <strong>Current Registered Players!!</strong>
                     <br/>
-                    <strong>{{ child.name }}</strong>
-                    <strong>{{ child.birthdate }}</strong>
-                    <strong>{{ child.sex }}</strong>
-                    <strong>{{ child.medical_details }}</strong>
+                    <ul>
+                    <li>{{ child.name }}</li>
+                    <li>{{ child.birthdate }}</li>
+                    <li>{{ child.sex }}</li>
+                    <li>{{ child.medical_details }}</li>
+                    </ul>
+
                 {% endfor %}
             </ul>
         {% else %}
             <strong>There are no Players currently registered to you. Register below!! </strong>
         {% endif %}
-
+        <a href="/member/profile/{{ user.username }}/add_player/">Register a Player</a>
     </div>
 {% endblock %}
