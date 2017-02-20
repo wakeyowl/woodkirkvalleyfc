@@ -38,4 +38,4 @@ class UserMemberForm(forms.ModelForm):
 class UserMemberAddChildForm(forms.ModelForm):
     class Meta:
         model = Player
-        fields = ()
+        fields = ('name', 'birth_date', 'sex', 'medical_details')
