@@ -29,7 +29,7 @@ class Player(models.Model):
     name = models.CharField(max_length=128)
     birthdate = models.DateField()
     sex = models.CharField(max_length=1)
-    member_parent = models.ForeignKey(UserMember)
+    member_parent = models.ForeignKey(User)
     medical_details = models.TextField()
 
     class Meta:

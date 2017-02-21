@@ -43,4 +43,4 @@ class UserMemberAddChildForm(forms.ModelForm):
 
     class Meta:
         model = Player
-        fields = ('name', 'birthdate', 'sex', 'medical_details')
+        exclude = ('member_parent_id',)

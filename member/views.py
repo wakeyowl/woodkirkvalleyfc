@@ -100,13 +100,13 @@ def profile(request, username):
     userprofile = User.objects.get(username=username)
     form = UserMemberAddChildForm({})
 
-    if request.method == 'POST':
-        form = UserMemberAddChildForm(request.POST, request.FILES, instance=userprofile)
-        if form.is_valid():
-            form.save(commit=True)
-            return redirect('profile', user.username)
-        else:
-            print(form.errors)
+ #   if request.method == 'POST':
+ #       form = UserMemberAddChildForm(request.POST, request.FILES, instance=userprofile)
+ #       if form.is_valid():
+  #          form.save(commit=True)
+  #          return redirect('profile', user.username)
+ #       else:
+  #          print(form.errors)
 
     return render(request, 'member/profile.html', context=context_dict)
 
@@ -115,22 +115,25 @@ def profile(request, username):
 
 @login_required
 def add_player(request, username):
-    form = UserMemberAddChildForm()
 
     try:
         user = User.objects.get(username=username)
     except User.DoesNotExist:
         return redirect('index')
 
-    userprofile = User.objects.get(username=username)
+    form = UserMemberAddChildForm()
 
     if request.method == 'POST':
-        form = UserMemberAddChildForm(request.POST, request.FILES, instance=userprofile)
+        form = UserMemberAddChildForm(request.POST)
         if form.is_valid():
-            form.save(commit=True)
-            return index(request)
-            #return redirect('profile', user.username)
+            if user:
+                page = form.save(commit=False)
+                page.member_parent = user
+                page.save()
+
+                return index(request)
+
         else:
             print(form.errors)
 
-    return render(request, 'member/add_player.html', {'form': form})
+    return render(request, 'member/add_player.html', {'form': form, 'user': user})

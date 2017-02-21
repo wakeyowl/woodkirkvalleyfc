@@ -9,7 +9,7 @@
 
 <h1>Register a Player</h1>
 <div>
-    <form role="form" id="player_form" method="post" action=".">
+    <form role="form" id="player_form" method="post" action="/member/profile/{{ user.username }}/add_player/">
         {% csrf_token %}
         {{ form | as_bootstrap }}
         </br>
