@@ -1,8 +1,5 @@
 from django import forms
-from django.contrib.auth.models import User
-
 from django.utils.safestring import mark_safe
-
 from member.models import UserMember, Player
 
 
@@ -36,11 +33,11 @@ class UserMemberForm(forms.ModelForm):
 
 
 class UserMemberAddChildForm(forms.ModelForm):
-    name = forms.CharField(max_length=128, required=True, widget=forms.TextInput(attrs={'placeholder': 'John Smith'}))
-    birthdate = forms.DateField()
-    sex =  forms.CharField(max_length=1)
-    medical_details = forms.CharField(max_length=128, required=False)
+    #name = forms.CharField(max_length=128, required=True, widget=forms.TextInput(attrs={'placeholder': 'John Smith'}))
+    #birthdate = forms.DateField()
+    #sex =  forms.CharField(max_length=1)
+    #medical_details = forms.CharField(max_length=128, required=False)
 
     class Meta:
         model = Player
-        exclude = ('member_parent_id',)
+        exclude = ('member_parent',)

@@ -136,4 +136,6 @@ def add_player(request, username):
         else:
             print(form.errors)
 
-    return render(request, 'member/add_player.html', {'form': form})
+    context_dict = {'form': form, 'member_parent_id': user}
+
+    return render(request, 'member/add_player.html', context_dict)
