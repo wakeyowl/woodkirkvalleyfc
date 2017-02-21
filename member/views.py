@@ -131,9 +131,9 @@ def add_player(request, username):
                 page.member_parent = user
                 page.save()
 
-                return index(request)
+                return profile(request, username)
 
         else:
             print(form.errors)
 
-    return render(request, 'member/add_player.html', {'form': form, 'user': user})
+    return render(request, 'member/add_player.html', {'form': form})
