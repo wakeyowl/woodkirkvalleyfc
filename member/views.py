@@ -110,15 +110,27 @@ def profile(request, username):
 
     return render(request, 'member/profile.html', context=context_dict)
 
-    #return render(request, 'member/profile.html', {'players': player_list, 'userprofile': userprofile, 'selecteduser': user, 'form': form})
+    # return render(request, 'member/profile.html', {'players': player_list, 'userprofile': userprofile, 'selecteduser': user, 'form': form})
 
 
 @login_required
 def add_player(request, username):
     form = UserMemberAddChildForm()
+
     try:
         user = User.objects.get(username=username)
     except User.DoesNotExist:
         return redirect('index')
+
+    userprofile = User.objects.get(username=username)
+
+    if request.method == 'POST':
+        form = UserMemberAddChildForm(request.POST, request.FILES, instance=userprofile)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+            #return redirect('profile', user.username)
+        else:
+            print(form.errors)
 
     return render(request, 'member/add_player.html', {'form': form})
