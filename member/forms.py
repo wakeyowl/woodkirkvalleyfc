@@ -4,13 +4,6 @@ from member.models import UserMember, Player
 
 
 class UserMemberForm(forms.ModelForm):
-    name = forms.CharField(max_length=128, required=True, widget=forms.TextInput(attrs={'placeholder': 'John Smith'}))
-    address_street = forms.CharField(max_length=128, required=True, widget=forms.TextInput(attrs={'placeholder': '1 '
-                                                                                                                 'Smith Street'}))
-    address_town_city = forms.CharField(max_length=128, required=True,
-                                        widget=forms.TextInput(attrs={'placeholder': 'Leeds '}))
-    postcode = forms.CharField(max_length=12, required=True, widget=forms.TextInput(attrs={'placeholder': 'WF3 1UA'}))
-    phone = forms.IntegerField(required=True)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     consent = forms.NullBooleanField(help_text=mark_safe("By consenting you are agreeing to the following: "
                                                          "<ul> "
@@ -29,14 +22,10 @@ class UserMemberForm(forms.ModelForm):
 
     class Meta:
         model = UserMember
-        fields = ('name', 'address_street', 'address_town_city', 'postcode', 'phone', 'consent')
+        fields = ('full_name', 'address1', 'address2', 'city', 'postcode', 'mobile_phone', 'consent')
 
 
 class UserMemberAddChildForm(forms.ModelForm):
-    #name = forms.CharField(max_length=128, required=True, widget=forms.TextInput(attrs={'placeholder': 'John Smith'}))
-    #birthdate = forms.DateField()
-    #sex =  forms.CharField(max_length=1)
-    #medical_details = forms.CharField(max_length=128, required=False)
 
     class Meta:
         model = Player

@@ -13,17 +13,31 @@
     <br/>
     <a href="/member/profile/{{ user.username }}/add_player/">Register a Player</a>
     <br/>
+
+    {% if user.is_authenticated %}
+        {% for member in usermember %}
+
+        <ul>
+            <li>{{ member.fullname }}</li>
+            <li>{{ member.address1 }}</li>
+            <li>{{ member.address2 }}</li>
+            <li>{{ member.city }}</li>
+            <li>{{ member.postcode }}</li>
+        </ul>
+        {% endfor %}
+    {% endif %}
+
     <div id="profile_data">
 
         {% if player %}
             <ul class="list-group">
-                <strong>Current Registered Players!!</strong>
+                <strong>Current Registered Players</strong>
                 {% for child in player %}
                     <br/>
                     <ul>
                         <li>{{ child.name }}</li>
                         <li>{{ child.birthdate }}</li>
-                        <li>{{ child.sex }}</li>
+                        <li>{{ child.gender }}</li>
                         <li>{{ child.medical_details }}</li>
                     </ul>
 

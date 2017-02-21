@@ -94,28 +94,18 @@ def profile(request, username):
     except User.DoesNotExist:
         return redirect('index')
 
-    player_list = Player.objects.all()
-    context_dict = {'player': player_list}
+    player_list = Player.objects.filter(member_parent__username=user)
+    address_list = UserMember.objects.filter()
+    context_dict = {'player': player_list, 'address': address_list}
 
     userprofile = User.objects.get(username=username)
     form = UserMemberAddChildForm({})
 
- #   if request.method == 'POST':
- #       form = UserMemberAddChildForm(request.POST, request.FILES, instance=userprofile)
- #       if form.is_valid():
-  #          form.save(commit=True)
-  #          return redirect('profile', user.username)
- #       else:
-  #          print(form.errors)
-
     return render(request, 'member/profile.html', context=context_dict)
-
-    # return render(request, 'member/profile.html', {'players': player_list, 'userprofile': userprofile, 'selecteduser': user, 'form': form})
 
 
 @login_required
 def add_player(request, username):
-
     try:
         user = User.objects.get(username=username)
     except User.DoesNotExist:
