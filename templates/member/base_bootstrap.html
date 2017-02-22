@@ -32,11 +32,10 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <a class="navbar-brand" href="{% url 'index' %}">Woodkirk Valley FC</a>
-    <img src="{% static "images/wvfc-shield.png" %}" alt="WVFC" width="50px"/>
+
     <div class="collapse navbar-collapse" id="navbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
           </li>
         {% if user.is_authenticated %}
             <li class="nav-item">

@@ -6,32 +6,34 @@
 {% block title %}{{ user.username }} Profile{% endblock %}
 
 {% block body_block %}
+    <div class="jumbotron">
     <div class="page-header">
         <h1>{{ user.username }}'s Profile Page</h1>
     </div>
     <!-- Add in a loop of registered players by parent -->
     <br/>
-    <a href="/member/profile/{{ user.username }}/add_player/">Register a Player</a>
+
+    <a class="btn btn-primary" href="/member/profile/{{ user.username }}/add_player/">Register a Player</a>
     <br/>
 
     {% if user.is_authenticated %}
         {% for member in usermember %}
 
-        <ul>
-            <li>{{ member.fullname }}</li>
-            <li>{{ member.address1 }}</li>
-            <li>{{ member.address2 }}</li>
-            <li>{{ member.city }}</li>
-            <li>{{ member.postcode }}</li>
-        </ul>
+            <ul>
+                <li>{{ member.fullname }}</li>
+                <li>{{ member.address1 }}</li>
+                <li>{{ member.address2 }}</li>
+                <li>{{ member.city }}</li>
+                <li>{{ member.postcode }}</li>
+            </ul>
         {% endfor %}
     {% endif %}
 
-    <div id="profile_data">
+    <div id="profile_data" class="page-header">
 
         {% if player %}
             <ul class="list-group">
-                <strong>Current Registered Players</strong>
+                <h3>Current Registered Players</h3>
                 {% for child in player %}
                     <br/>
                     <ul>
