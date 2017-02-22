@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body_block %}
-    <div class="jumbotron">
+    <div class="jumbotron" xmlns="http://www.w3.org/1999/html">
         <h2 class="display-5">Parent Registration - Step 2</h2>
 
         <div class="container">
@@ -18,7 +18,8 @@
         <form method="post" action="." enctype="multipart/form-data">
             {% csrf_token %}
             {% bootstrap_form form %}
-            <input type="submit" value="Submit"/>
+
+            <button class="btn btn-primary" input type="submit" name="submit">Register</button>
         </form>
     </div>
 {% endblock %}

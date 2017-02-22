@@ -1,6 +1,7 @@
 {% extends 'member/base_bootstrap.html' %}
 {% load staticfiles %}
-{% load bootstrap_toolkit %}
+{% load bootstrap3 %}
+
 {% block title_block %}
     Register a New Player
 {% endblock %}
@@ -17,7 +18,7 @@
     <div class="form-group">
         <form role="form" id="player_form" method="post" action="/member/profile/{{ user.username }}/add_player/">
             {% csrf_token %}
-            {{ form | as_bootstrap }}
+            {% bootstrap_form form %}
             </br>
 
             <button class="btn btn-primary" type="submit" name="submit">Register Player!</button>
