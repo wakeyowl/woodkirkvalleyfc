@@ -3,6 +3,7 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+
 class UserMember(models.Model):
     user = models.OneToOneField(User)
     full_name = models.CharField(max_length=128, unique=True, null=True)

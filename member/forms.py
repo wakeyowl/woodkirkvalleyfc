@@ -1,9 +1,11 @@
 from django import forms
 from django.utils.safestring import mark_safe
+
 from member.models import UserMember, Player
 
 
 class UserMemberForm(forms.ModelForm):
+    username = forms.CharField(help_text=None)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     consent = forms.NullBooleanField(help_text=mark_safe("By consenting you are agreeing to the following: "
                                                          "<ul> "
@@ -26,7 +28,6 @@ class UserMemberForm(forms.ModelForm):
 
 
 class UserMemberAddChildForm(forms.ModelForm):
-
     class Meta:
         model = Player
         exclude = ('member_parent',)
