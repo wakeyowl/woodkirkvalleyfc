@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'member',
     'registration',
-    'bootstrap_toolkit',
     'bootstrap3',
 ]
 
