@@ -1,6 +1,8 @@
 from django import forms
+from django.forms import DateField
 from django.utils.safestring import mark_safe
 
+import settings
 from member.models import UserMember, Player
 
 
@@ -27,6 +29,8 @@ class UserMemberForm(forms.ModelForm):
 
 
 class UserMemberAddChildForm(forms.ModelForm):
+    birthdate = forms.DateField(help_text='DD/MM/YYYY', widget=forms.DateInput(format='%d/%m/%Y'),
+                                 input_formats=('%d/%m/%Y',))
     class Meta:
         model = Player
         exclude = ('member_parent',)
