@@ -5,7 +5,6 @@ from member.models import UserMember, Player
 
 
 class UserMemberForm(forms.ModelForm):
-    username = forms.CharField(help_text=None)
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     consent = forms.NullBooleanField(help_text=mark_safe("By consenting you are agreeing to the following: "
                                                          "<ul> "
