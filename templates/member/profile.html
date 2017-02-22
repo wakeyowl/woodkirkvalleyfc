@@ -36,11 +36,11 @@
                 <h3>Current Registered Players</h3>
                 {% for child in player %}
                     <br/>
-                    <ul>
-                        <li>{{ child.name }}</li>
-                        <li>{{ child.birthdate }}</li>
-                        <li>{{ child.gender }}</li>
-                        <li>{{ child.medical_details }}</li>
+                    <ul class="list-group">
+                        <li class="list-group-item">{{ child.name }}</li>
+                        <li class="list-group-item">{{ child.birthdate }}</li>
+                        <li class="list-group-item">{{ child.gender }}</li>
+                        <li class="list-group-item">{{ child.medical_details }}</li>
                     </ul>
 
                 {% endfor %}
