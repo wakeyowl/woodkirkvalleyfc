@@ -19,7 +19,6 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'templates/member/../member/static')
 MEDIA_DIR = os.path.join(BASE_DIR, 'member/media')
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -30,7 +29,6 @@ SECRET_KEY = '6sj+pwb&x-*sqntyhjt18#90@dwa3tket$8m6hpgq6u-1%c1&5'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -78,17 +76,28 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'woodkirkvalleydata.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        # The following settings are not used with sqlite3:
+        'NAME': 'woodkirkdata',
+        'USER': 'root',
+        'PASSWORD': 'v0n-neumann',
+        'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+        'PORT': '',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -108,7 +117,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -123,7 +131,6 @@ USE_L10N = True
 USE_TZ = True
 
 DATE_INPUT_FORMATS = ('%dd-%mm-%YYYY')
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/

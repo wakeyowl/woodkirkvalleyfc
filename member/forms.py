@@ -1,8 +1,5 @@
 from django import forms
-from django.forms import DateField
 from django.utils.safestring import mark_safe
-
-import settings
 from member.models import UserMember, Player
 
 
