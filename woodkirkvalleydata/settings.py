@@ -151,6 +151,7 @@ DATE_INPUT_FORMATS = ('%dd-%mm-%YYYY')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
+STATIC_ROOT = "/home/wakeyowl/woodkirkvalleydata/static"
 STATIC_URL = '/static/'
 
 REGISTRATION_OPEN = True
