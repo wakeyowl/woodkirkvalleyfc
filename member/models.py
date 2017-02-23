@@ -10,7 +10,7 @@ class UserMember(models.Model):
     address2 = models.CharField(max_length=128, null=True)
     city = models.CharField(max_length=128, null=True)
     postcode = models.CharField(max_length=12, null=True)
-    mobile_phone = models.IntegerField(null=True, blank=True)
+    mobile_phone = models.CharField(max_length=12, null=True, blank=True)
     slug = models.SlugField(unique=True)
     CONSENT_CHOICES = ((True, 'Yes'), (False, 'No'))
     consent = models.NullBooleanField(choices=CONSENT_CHOICES,
