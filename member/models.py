@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 
 class UserMember(models.Model):
     user = models.OneToOneField(User)
-    full_name = models.CharField(max_length=128, unique=True, null=True)
+    full_name = models.CharField(max_length=128, unique=False, null=True)
     address1 = models.CharField(max_length=128, null=True)
     address2 = models.CharField(max_length=128, null=True)
     city = models.CharField(max_length=128, null=True)

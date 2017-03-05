@@ -88,6 +88,28 @@ def add_member(request):
 
 
 @login_required
+def update_member(request, username):
+    try:
+        user = User.objects.get(username=username)
+    except User.DoesNotExist:
+        return redirect('index')
+
+    form = UserMemberForm()
+
+    if request.method == 'POST':
+        form = UserMemberForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print(form.errors)
+
+    return render(request, 'member/update_member.html', {'form': form})
+
+
+@login_required
 def profile(request, username):
     try:
         user = User.objects.get(username=username)

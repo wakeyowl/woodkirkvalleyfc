@@ -2,14 +2,14 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% block title_block %}
-    Add a Page
+    Update User Details
 {% endblock %}
 
 {% block body_block %}
 
-<h1>Register as a Member</h1>
+<h1>Update your details</h1>
 <div>
-    <form role="form" id="category_form" method="post" action="{% url 'add_member' %}">
+    <form role="form" id="member_form" method="post" action="/member/profile/{{ user.username }}/update_member/">
         {% csrf_token %}
         {% bootstrap_form form %}
         </br>
