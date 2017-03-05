@@ -98,7 +98,7 @@ def update_member(request, username):
 
     if request.method == 'POST':
         form = UserMemberForm(request.POST)
-
+        form.user = User.objects.get(username=username)
         if form.is_valid():
             form.save(commit=True)
 
