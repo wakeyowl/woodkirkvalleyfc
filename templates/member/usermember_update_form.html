@@ -1,0 +1,18 @@
+{% extends 'member/base_bootstrap.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block title_block %}
+    Update User Details
+{% endblock %}
+
+{% block body_block %}
+
+<h1>Update your details</h1>
+<div>
+    <form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update" />
+</form>
+</div>
+
+{% endblock %}

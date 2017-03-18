@@ -2,13 +2,15 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.shortcuts import render
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 from registration.backends.simple.views import RegistrationView
+from django.views.generic.edit import UpdateView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm
-from member.models import UserMember, Player
+from member.models import UserMember, Player, Contact
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -71,6 +73,15 @@ def index(request):
     return response
 
 
+def skills_matrix(request):
+    response = render(request, 'member/skills_matrix.html', {})
+    return response
+
+def technical(request):
+    response = render(request, 'member/technical.html', {})
+    return response
+
+
 def add_member(request):
     form = UserMemberForm()
 
@@ -87,26 +98,39 @@ def add_member(request):
     return render(request, 'member/add_member.html', {'form': form})
 
 
-@login_required
-def update_member(request, username):
-    try:
-        user = User.objects.get(username=username)
-    except User.DoesNotExist:
-        return redirect('index')
+class UserMemberUpdate(UpdateView):
+    model = UserMember
+    form_class = UserMemberForm
+    fields = ['address1', 'address2', 'city', 'postcode', 'mobile_phone']
+    template_name = 'member/usermember_update_form.html'
 
-    form = UserMemberForm()
+    def get_object(self, *args, **kwargs):
+        user = get_object_or_404(User, pk=self.kwargs['pk'])
 
-    if request.method == 'POST':
-        form = UserMemberForm(request.POST)
-        form.user = User.objects.get(username=username)
-        if form.is_valid():
-            form.save(commit=True)
+        return user.userprofile
 
-            return index(request)
-        else:
-            print(form.errors)
+    def get_success_url(self, *args, **kwargs):
+        return reverse("index.html")
 
-    return render(request, 'member/update_member.html', {'form': form})
+    # def __init__(self):
+        # try:
+        #     user = User.objects.get(username=username)
+        # except User.DoesNotExist:
+        #     return redirect('index')
+
+    # if request.method == 'POST':
+    #     form = UserMemberForm(request.POST)
+    #     form.user = User.objects.get(username=username)
+    #     if form.is_valid():
+    #         user_profile = form.save(commit=False)
+    #         user_profile.user = request.user
+    #         user_profile.save()
+    #
+    #         return index(request)
+    #     else:
+    #         print(form.errors)
+    #
+    # return render(request, 'member/usermember_update_form.html', {'form': form})
 
 
 @login_required
@@ -151,3 +175,9 @@ def add_player(request, username):
     context_dict = {'form': form, 'member_parent_id': user}
 
     return render(request, 'member/add_player.html', context_dict)
+
+
+class ListContactView(ListView):
+
+    model = Contact
+    template_name = 'contact_list.html'

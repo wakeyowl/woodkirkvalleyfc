@@ -7,47 +7,42 @@
 
 {% block body_block %}
     <div class="jumbotron">
-    <div class="page-header">
-        <h2>{{ user.username }}'s Profile</h2>
-    </div>
-    <!-- Add in a loop of registered players by parent -->
-    <br/>
-    <a class="btn btn-primary" href="/member/profile/{{ user.username }}/update_member/">Edit Details</a>
-    <a class="btn btn-primary" href="/member/profile/{{ user.username }}/add_player/">Register a Player</a>
-    <br/>
+        <div class="page-header">
+            <h2>{{ user.username }}'s Profile</h2>
+        </div>
+        <!-- Add in a loop of registered players by parent -->
+        <br/>
+        <a class="btn btn-primary" href="/member/profile/{{ user.username }}/update_member/">Edit Details</a>
+        <a class="btn btn-primary" href="/member/profile/{{ user.username }}/add_player/">Register a Player</a>
+        <br/>
 
-    {% if user.is_authenticated %}
-        {% for member in usermember %}
+        <div id="profile_data" class="page-header">
 
-            <ul>
-                <li>{{ member.fullname }}</li>
-                <li>{{ member.address1 }}</li>
-                <li>{{ member.address2 }}</li>
-                <li>{{ member.city }}</li>
-                <li>{{ member.postcode }}</li>
-            </ul>
-        {% endfor %}
-    {% endif %}
+            {% if player %}
+                <ul class="list-group">
+                    <h4>Current Registered Players</h4>
+                    {% for child in player %}
+                        <br/>
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ child.name }}</li>
+                            <li class="list-group-item">{{ child.birthdate }}</li>
+                            <li class="list-group-item">{{ child.gender }}</li>
+                            <li class="list-group-item">{{ child.medical_details }}</li>
+                        </ul>
 
-    <div id="profile_data" class="page-header">
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>There are no Players currently registered to you. </strong>
+            {% endif %}
 
-        {% if player %}
-            <ul class="list-group">
-                <h4>Current Registered Players</h4>
-                {% for child in player %}
-                    <br/>
-                    <ul class="list-group">
-                        <li class="list-group-item">{{ child.name }}</li>
-                        <li class="list-group-item">{{ child.birthdate }}</li>
-                        <li class="list-group-item">{{ child.gender }}</li>
-                        <li class="list-group-item">{{ child.medical_details }}</li>
-                    </ul>
+            {% if user.id == usermember.user_id %}
+                <ul>
+                    {% for usermember in object_list %}
+                        <li class="contact">{{ usermember }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no Players currently registered to you. </strong>
-        {% endif %}
-
-    </div>
+        </div>
 {% endblock %}

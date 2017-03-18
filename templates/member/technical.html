@@ -1,0 +1,58 @@
+{% extends 'member/base_bootstrap.html' %}
+{% load staticfiles %}
+{% block title_block %}
+    Index
+{% endblock %}
+{% block body_block %}
+
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Technical Section</h1>
+            <p class="lead text-muted">Technical</p>
+        </div>
+    </section>
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/firsttouch-bronze.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>First Touch Bronze</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/firsttouch-silver.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>First Touch Silver</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/firsttouch-gold.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>First Touch Gold</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/goalkeeping-bronze.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>Goalkeeper Bronze</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/goalkeeping-silver.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>Goalkeeper Silver</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/goalkeeping-gold.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>Goalkeeper Gold</p></div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

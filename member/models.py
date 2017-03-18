@@ -5,7 +5,7 @@ from django.template.defaultfilters import slugify
 
 class UserMember(models.Model):
     user = models.OneToOneField(User)
-    full_name = models.CharField(max_length=128, unique=False, null=True)
+    full_name = models.CharField(max_length=128, unique=True, null=True)
     address1 = models.CharField(max_length=128, null=True)
     address2 = models.CharField(max_length=128, null=True)
     city = models.CharField(max_length=128, null=True)
@@ -45,3 +45,17 @@ class Player(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Contact(models.Model):
+
+    first_name = models.CharField(max_length=255, )
+    last_name = models.CharField(max_length=255, )
+    email = models.EmailField()
+
+    def __str__(self):
+
+        return ' '.join([
+            self.first_name,
+            self.last_name,
+        ])
