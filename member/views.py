@@ -78,6 +78,11 @@ def skills_matrix(request):
     return response
 
 
+def attacking(request):
+    response = render(request, 'member/attacking.html', {})
+    return response
+
+
 def technical(request):
     response = render(request, 'member/technical.html', {})
     return response
