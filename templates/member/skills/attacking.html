@@ -1,0 +1,26 @@
+{% extends 'member/base_bootstrap.html' %}
+{% load staticfiles %}
+{% block title_block %}
+    Individual Skills
+{% endblock %}
+{% block body_block %}
+
+    <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/attacking-bronze.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>Attacking Bronze</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/attacking-silver.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>Attacking Silver</p></div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="threerowbody text-center"><img src="{% static "images/badges/attacking-gold.png" %}" alt=""
+                                               width="125"></div>
+                <div class="threerowfooter text-center"><p>Attacking Gold</p></div>
+            </div>
+
+{% endblock %}
