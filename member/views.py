@@ -77,8 +77,24 @@ def skills_matrix(request):
     response = render(request, 'member/skills_matrix.html', {})
     return response
 
+
 def technical(request):
     response = render(request, 'member/technical.html', {})
+    return response
+
+
+def social(request):
+    response = render(request, 'member/social.html', {})
+    return response
+
+
+def physical(request):
+    response = render(request, 'member/physical.html', {})
+    return response
+
+
+def psychological(request):
+    response = render(request, 'member/psychological.html', {})
     return response
 
 

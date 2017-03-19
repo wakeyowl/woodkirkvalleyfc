@@ -7,43 +7,46 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-      <div class="container">
-        <h1 class="display-3">Woodkirk Valley FC Skills Matrix</h1>
-        <p>Learn Some Skills...</p>
-          <p>Based on 4 corner model</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-      </div>
+        <div class="container">
+            <h1 class="display-3">Woodkirk Valley FC Skills Matrix</h1>
+            <p>The Woodkirk skills framework is about introducing a set of core skills the team feel will develop into
+                better footballers, and better teammates</p>
+            <p>The FA's four corner model - "Our aim is to develop future England players with outstanding
+                characteristics across The FA four corner player development model"</p>
+            <p><a class="btn btn-primary btn-lg" href="https://community.thefa.com/england_dna/p/future_england_player"
+                  role="button">Learn more &raquo;</a></p>
+        </div>
     </div>
 
     <div class="container">
-      <!-- Example row of columns -->
-      <div class="row">
-        <div class="col-md-3">
-          <h2>Technical</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-3">
+                <h2>Technical</h2>
+                <p>The technical corner </p>
+                <p><a class="btn btn-secondary" href="{% url 'technical' %}" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2>Psychological</h2>
+                <p>The Psychological corner</p>
+                <p><a class="btn btn-secondary" href="{% url 'psychological' %}" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2>Physical</h2>
+                <p>The Physical corner</p>
+                <p><a class="btn btn-secondary" href="{% url 'physical' %}" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-3">
+                <h2>Social</h2>
+                <p>The Social corner</p>
+                <p><a class="btn btn-secondary" href="{% url 'social' %}" role="button">View details &raquo;</a></p>
+            </div>
         </div>
-        <div class="col-md-3">
-          <h2>Psychological</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-       </div>
-        <div class="col-md-3">
-          <h2>Physical</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-3">
-          <h2>Social</h2>
-          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-      </div>
 
-      <hr>
+        <hr>
 
-      <footer>
-        <p>&copy; Woodkirk Valley FC 2017</p>
-      </footer>
+        <footer>
+            <p>&copy; Woodkirk Valley FC 2017</p>
+        </footer>
     </div> <!-- /container -->
 {% endblock %}
