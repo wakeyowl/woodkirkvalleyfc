@@ -79,7 +79,22 @@ def skills_matrix(request):
 
 
 def attacking(request):
-    response = render(request, 'member/attacking.html', {})
+    response = render(request, 'member/skills/attacking.html', {})
+    return response
+
+
+def defending(request):
+    response = render(request, 'member/skills/defending.html', {})
+    return response
+
+
+def teamwork(request):
+    response = render(request, 'member/skills/teamwork.html', {})
+    return response
+
+
+def leadership(request):
+    response = render(request, 'member/skills/leadership.html', {})
     return response
 
 
