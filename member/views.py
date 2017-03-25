@@ -83,6 +83,11 @@ def attacking(request):
     return response
 
 
+def kickups(request):
+    response = render(request, 'member/skills/kickups.html', {})
+    return response
+
+
 def defending(request):
     response = render(request, 'member/skills/defending.html', {})
     return response

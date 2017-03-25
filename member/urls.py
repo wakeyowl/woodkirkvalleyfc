@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^skills_matrix/social/teamwork/$', views.teamwork, name='teamwork'),
     url(r'^skills_matrix/social/defending/$', views.defending, name='defending'),
     url(r'^skills_matrix/psychological/$', views.psychological, name='psychological'),
+    url(r'^skills_matrix/psychological/kickups/$', views.kickups, name='kickups'),
     url(r'^skills_matrix/physical/$', views.physical, name='physical'),
     url(r'^add_member/$', views.add_member, name='add_member'),
     url(r'^register_profile/$', views.register_profile, name='register_profile'),
