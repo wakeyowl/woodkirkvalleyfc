@@ -59,3 +59,34 @@ class Contact(models.Model):
             self.first_name,
             self.last_name,
         ])
+
+
+class Badges(models.Model):
+
+    GOLD = 'G'
+    SILVER = 'S'
+    BRONZE = 'B'
+    MERIT = 'M'
+    BADGE_LEVELS = (
+        (GOLD, 'Gold'),
+        (SILVER, 'Silver'),
+        (BRONZE, 'Bronze'),
+        (MERIT, 'Merit'),
+    )
+    TECHNICAL = 'TECH'
+    PSYCHOLOGICAL = 'PSYCHOLOGICAL'
+    PHYSICAL = 'PHYSICAL'
+    SOCIAL = 'SOCIAL'
+    BADGE_CATEGORIES = (
+        (TECHNICAL, 'Technical'),
+        (PSYCHOLOGICAL, 'Psychological'),
+        (PHYSICAL, 'Physical'),
+        (SOCIAL, 'Social'),
+    )
+    name = models.CharField(max_length=128)
+    category = models.CharField(max_length=255, choices=BADGE_CATEGORIES)
+    levels = models.CharField(max_length=1, choices=BADGE_LEVELS)
+    url = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.name
