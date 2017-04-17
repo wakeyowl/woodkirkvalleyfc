@@ -1,0 +1,36 @@
+{% extends 'member/base_bootstrap.html' %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block title %}{{ user.username }} Profile{% endblock %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <div class="page-header">
+            <h2>Individual Merit Badges</h2>
+        </div>
+
+        <div id="profile_data" class="page-header">
+
+            {% if merit %}
+                <ul class="list-group">
+                    <h4>Merit Badges</h4>
+                    {% for badge in merit %}
+                        <br/>
+                        <ul class="list-group">
+                            <li class="list-group-item">{{ badge.name }}</li>
+                            <li class="list-group-item">{{ badge.category }}</li>
+                            <li class="list-group-item">{{ badge.levels }}</li>
+                            <li class="list-group-item"><a href={{ badge.url }}>Link</a></li>
+                        </ul>
+
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <strong>No Badges Found..</strong>
+            {% endif %}
+
+
+        </div>
+{% endblock %}
