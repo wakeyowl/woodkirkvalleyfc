@@ -391,7 +391,8 @@
       "name": "Teamwork",
       "category": "Social",
       "levels": "M",
-      "pageUrl": "/member/skills_matrix/social/teamwork/"
+      "pageUrl": "/member/skills_matrix/social/teamwork/",
+      "iconUrl": "/images/badges/teamwork-merit.png"
     }
   }
 ]
