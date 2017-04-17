@@ -10,7 +10,7 @@ from registration.backends.simple.views import RegistrationView
 from django.views.generic.edit import UpdateView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm
-from member.models import UserMember, Player, Contact, Badges
+from member.models import UserMember, Player, Contact, Badges, BadgeAssesments
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -75,7 +75,8 @@ def index(request):
 
 def merit_badges(request):
     meritbadge_list = Badges.objects.filter(levels='M')
-    context_dict = {'merit': meritbadge_list}
+    badgeassessment_list = BadgeAssesments.objects.all()
+    context_dict = {'merit': meritbadge_list, 'meritassessments': badgeassessment_list}
     response = render(request, 'member/merit_badges.html', context=context_dict)
     return response
 

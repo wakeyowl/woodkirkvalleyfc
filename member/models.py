@@ -91,3 +91,12 @@ class Badges(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BadgeAssesments(models.Model):
+
+    badgeId = models.ForeignKey(Badges, on_delete=models.CASCADE)
+    description = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.description

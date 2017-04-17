@@ -15,23 +15,30 @@
 
             {% if merit %}
                 <ul class="list-group">
-                    <h4>Merit Badges</h4>
-                    {% for badge in merit %}
-                        <br/>
-                        <ul class="list-group">
-                            <li class="list-group-item"><img src={% static badge.iconUrl %} height="150"% ></li>
-                            <li class="list-group-item">{{ badge.name }}</li>
-                            <li class="list-group-item">{{ badge.category }}</li>
-                            <li class="list-group-item">{{ badge.levels }}</li>
-                            <li class="list-group-item"><a href={{ badge.pageUrl }}>Link</a></li>
-                        </ul>
-
+                <h4>Merit Badges</h4>
+                {% for badge in merit %}
+                    <br/>
+                    <ul class="list-group">
+                    <li class="list-group-item"><img src={% static badge.iconUrl %} height="150"%></li>
+                    <li class="list-group-item bg-warning"><strong>{{ badge.name }}</strong></li>
+                    <li class="list-group-item">{{ badge.category }}</li>
+                    <li class="list-group-item"><a href={{ badge.pageUrl }}>Link</a></li>
+                    <li class="list-group-item bg-warning"><strong>Assessment Criteria</strong></li>
+                    {% for assesment in meritassessments %}
+                        {% if assesment.badgeId_id == badge.id %}
+                            <ul class="list-group-item">{{ assesment.description }}</ul>
+                        {% endif %}
                     {% endfor %}
-                </ul>
-            {% else %}
-                <strong>No Badges Found..</strong>
+
+                {% endfor %}
+
             {% endif %}
+            </ul>
+
+
+            </ul>
 
 
         </div>
+    </div>
 {% endblock %}
