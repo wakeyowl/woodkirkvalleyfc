@@ -3,361 +3,395 @@
     "model": "member.badges",
     "pk": 1,
     "fields": {
-      "name": "firsttouch",
+      "name": "First Touch",
       "category": "Technical",
       "levels": "B",
-      "url": "/member/skills_matrix/technical/firsttouch/"
+      "pageUrl": "/member/skills_matrix/technical/firsttouch/",
+      "iconUrl": "/images/badges/firsttouch-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 2,
     "fields": {
-      "name": "firsttouch",
+      "name": "First Touch",
       "category": "Technical",
       "levels": "S",
-      "url": "/member/skills_matrix/technical/firsttouch/"
+      "pageUrl": "/member/skills_matrix/technical/firsttouch/",
+      "iconUrl": "/images/badges/firsttouch-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 3,
     "fields": {
-      "name": "firsttouch",
+      "name": "First Touch",
       "category": "Technical",
       "levels": "G",
-      "url": "/member/skills_matrix/technical/firsttouch/"
+      "pageUrl": "/member/skills_matrix/technical/firsttouch/",
+      "iconUrl": "/images/badges/firsttouch-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 4,
     "fields": {
-      "name": "goalkeeper",
+      "name": "Goalkeeper",
       "category": "Technical",
       "levels": "B",
-      "url": "/member/skills_matrix/technical/goalkeeper/"
+      "pageUrl": "/member/skills_matrix/technical/goalkeeper/",
+      "iconUrl": "/images/badges/goalkeeping-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 5,
     "fields": {
-      "name": "goalkeeper",
+      "name": "Goalkeeper",
       "category": "Technical",
       "levels": "S",
-      "url": "/member/skills_matrix/technical/goalkeeper/"
+      "pageUrl": "/member/skills_matrix/technical/goalkeeper/",
+      "iconUrl": "/images/badges/goalkeeping-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 6,
     "fields": {
-      "name": "goalkeeper",
+      "name": "Goalkeeper",
       "category": "Technical",
       "levels": "G",
-      "url": "/member/skills_matrix/technical/goalkeeper/"
+      "pageUrl": "/member/skills_matrix/technical/goalkeeper/",
+      "iconUrl": "/images/badges/goalkeeping-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 7,
     "fields": {
-      "name": "passing",
+      "name": "Passing",
       "category": "Technical",
       "levels": "B",
-      "url": "/member/skills_matrix/technical/passing/"
+      "pageUrl": "/member/skills_matrix/technical/passing/",
+      "iconUrl": "/images/badges/passing-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 8,
     "fields": {
-      "name": "passing",
+      "name": "Passing",
       "category": "Technical",
       "levels": "S",
-      "url": "/member/skills_matrix/technical/passing/"
+      "pageUrl": "/member/skills_matrix/technical/passing/",
+      "iconUrl": "/images/badges/passing-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 9,
     "fields": {
-      "name": "passing",
+      "name": "Passing",
       "category": "Technical",
       "levels": "G",
-      "url": "/member/skills_matrix/technical/passing/"
+      "pageUrl": "/member/skills_matrix/technical/passing/",
+      "iconUrl": "/images/badges/passing-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 10,
     "fields": {
-      "name": "goalscorer",
+      "name": "Goalscorer",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/technical/goalscorer/"
+      "pageUrl": "/member/skills_matrix/technical/goalscorer/",
+      "iconUrl": "/images/badges/goalscorer-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 11,
     "fields": {
-      "name": "kickups",
+      "name": "Kickups",
       "category": "Technical",
       "levels": "B",
-      "url": "/member/skills_matrix/psychological/kickups/"
+      "pageUrl": "/member/skills_matrix/psychological/kickups/",
+      "iconUrl": "/images/badges/kickups-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 12,
     "fields": {
-      "name": "kickups",
+      "name": "Kickups",
       "category": "Technical",
       "levels": "S",
-      "url": "/member/skills_matrix/psychological/kickups/"
+      "pageUrl": "/member/skills_matrix/psychological/kickups/",
+      "iconUrl": "/images/badges/kickups-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 13,
     "fields": {
-      "name": "kickups",
+      "name": "Kickups",
       "category": "Technical",
       "levels": "G",
-      "url": "/member/skills_matrix/psychological/kickups/"
+      "pageUrl": "/member/skills_matrix/psychological/kickups/",
+      "iconUrl": "/images/badges/kickups-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 14,
     "fields": {
-      "name": "toetaps",
+      "name": "Toe Taps",
       "category": "Technical",
       "levels": "B",
-      "url": "/member/skills_matrix/psychological/toetaps/"
+      "pageUrl": "/member/skills_matrix/psychological/toetaps/",
+      "iconUrl": "/images/badges/toetaps-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 15,
     "fields": {
-      "name": "toetaps",
+      "name": "Toe Taps",
       "category": "Technical",
       "levels": "S",
-      "url": "/member/skills_matrix/psychological/toetaps/"
+      "pageUrl": "/member/skills_matrix/psychological/toetaps/",
+      "iconUrl": "/images/badges/toetaps-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 16,
     "fields": {
-      "name": "toetaps",
+      "name": "Toe Taps",
       "category": "Technical",
       "levels": "G",
-      "url": "/member/skills_matrix/psychological/toetaps/"
+      "pageUrl": "/member/skills_matrix/psychological/toetaps/",
+      "iconUrl": "/images/badges/toetaps-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 17,
     "fields": {
-      "name": "cryuffturns",
+      "name": "Cryuff Turns",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/psychological/cryuffturns/"
+      "pageUrl": "/member/skills_matrix/psychological/cryuffturns/",
+      "iconUrl": "/images/badges/cryuffturns-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 18,
     "fields": {
-      "name": "dragbackturns",
+      "name": "Dragback Turns",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/psychological/dragbackturns/"
+      "pageUrl": "/member/skills_matrix/psychological/dragbackturns/",
+      "iconUrl": "/images/badges/dragbackturns-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 19,
     "fields": {
-      "name": "hookturns",
+      "name": "Hook Turns",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/psychological/hookturns/"
+      "pageUrl": "/member/skills_matrix/psychological/hookturns/",
+      "iconUrl": "/images/badges/hookturns-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 20,
     "fields": {
-      "name": "ronaldochopturns",
+      "name": "Ronaldo-chop Turns",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/psychological/ronaldochopturns/"
+      "pageUrl": "/member/skills_matrix/psychological/ronaldochopturns/",
+      "iconUrl": "/images/badges/ronaldochop-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 21,
     "fields": {
-      "name": "stepoverturns",
+      "name": "Stepover Turns",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/psychological/stepoverturns/"
+      "pageUrl": "/member/skills_matrix/psychological/stepoverturns/",
+      "iconUrl": "/images/badges/stepoverturns-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 22,
     "fields": {
-      "name": "zidaneturns",
+      "name": "Zidane Turns",
       "category": "Technical",
       "levels": "M",
-      "url": "/member/skills_matrix/psychological/zidaneturns/"
+      "pageUrl": "/member/skills_matrix/psychological/zidaneturns/",
+      "iconUrl": "/images/badges/zidaneturns-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 22,
     "fields": {
-      "name": "dribbling",
+      "name": "Dribbling",
       "category": "Physical",
       "levels": "B",
-      "url": "/member/skills_matrix/physical/dribbling/"
+      "pageUrl": "/member/skills_matrix/physical/dribbling/",
+      "iconUrl": "/images/badges/heading-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 23,
     "fields": {
-      "name": "dribbling",
+      "name": "Dribbling",
       "category": "Physical",
       "levels": "S",
-      "url": "/member/skills_matrix/physical/dribbling/"
+      "pageUrl": "/member/skills_matrix/physical/dribbling/",
+      "iconUrl": "/images/badges/heading-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 24,
     "fields": {
-      "name": "dribbling",
+      "name": "Dribbling",
       "category": "Physical",
       "levels": "G",
-      "url": "/member/skills_matrix/physical/dribbling/"
+      "pageUrl": "/member/skills_matrix/physical/dribbling/",
+      "iconUrl": "/images/badges/heading-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 25,
     "fields": {
-      "name": "heading",
+      "name": "Heading",
       "category": "Physical",
       "levels": "B",
-      "url": "/member/skills_matrix/physical/heading/"
+      "pageUrl": "/member/skills_matrix/physical/heading/",
+      "iconUrl": "/images/badges/heading-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 26,
     "fields": {
-      "name": "heading",
+      "name": "Heading",
       "category": "Physical",
       "levels": "S",
-      "url": "/member/skills_matrix/physical/heading/"
+      "pageUrl": "/member/skills_matrix/physical/heading/",
+      "iconUrl": "/images/badges/heading-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 27,
     "fields": {
-      "name": "heading",
+      "name": "Heading",
       "category": "Physical",
       "levels": "G",
-      "url": "/member/skills_matrix/physical/heading/"
+      "pageUrl": "/member/skills_matrix/physical/heading/",
+      "iconUrl": "/images/badges/heading-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 28,
     "fields": {
-      "name": "attacking",
+      "name": "Attacking",
       "category": "Social",
       "levels": "B",
-      "url": "/member/skills_matrix/social/attacking/"
+      "pageUrl": "/member/skills_matrix/social/attacking/",
+      "iconUrl": "/images/badges/attacking-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 29,
     "fields": {
-      "name": "attacking",
+      "name": "Attacking",
       "category": "Social",
       "levels": "S",
-      "url": "/member/skills_matrix/social/attacking/"
+      "pageUrl": "/member/skills_matrix/social/attacking/",
+      "iconUrl": "/images/badges/attacking-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 30,
     "fields": {
-      "name": "attacking",
+      "name": "Attacking",
       "category": "Social",
       "levels": "G",
-      "url": "/member/skills_matrix/social/attacking/"
+      "pageUrl": "/member/skills_matrix/social/attacking/",
+      "iconUrl": "/images/badges/attacking-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 31,
     "fields": {
-      "name": "defending",
+      "name": "Defending",
       "category": "Social",
       "levels": "B",
-      "url": "/member/skills_matrix/social/defending/"
+      "pageUrl": "/member/skills_matrix/social/defending/",
+      "iconUrl": "/images/badges/defending-bronze.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 32,
     "fields": {
-      "name": "defending",
+      "name": "Defending",
       "category": "Social",
       "levels": "S",
-      "url": "/member/skills_matrix/social/defending/"
+      "pageUrl": "/member/skills_matrix/social/defending/",
+      "iconUrl": "/images/badges/defending-silver.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 33,
     "fields": {
-      "name": "defending",
+      "name": "Defending",
       "category": "Social",
       "levels": "G",
-      "url": "/member/skills_matrix/social/defending/"
+      "pageUrl": "/member/skills_matrix/social/defending/",
+      "iconUrl": "/images/badges/defending-gold.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 34,
     "fields": {
-      "name": "leadership",
+      "name": "Leadership",
       "category": "Social",
       "levels": "M",
-      "url": "/member/skills_matrix/social/leadership/"
+      "pageUrl": "/member/skills_matrix/social/leadership/",
+      "iconUrl": "/images/badges/leadership-merit.png"
     }
   },
   {
     "model": "member.badges",
     "pk": 35,
     "fields": {
-      "name": "teamwork",
+      "name": "Teamwork",
       "category": "Social",
       "levels": "M",
-      "url": "/member/skills_matrix/social/teamwork/"
+      "pageUrl": "/member/skills_matrix/social/teamwork/"
     }
   }
-
 ]

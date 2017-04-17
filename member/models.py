@@ -86,7 +86,8 @@ class Badges(models.Model):
     name = models.CharField(max_length=128)
     category = models.CharField(max_length=255, choices=BADGE_CATEGORIES)
     levels = models.CharField(max_length=1, choices=BADGE_LEVELS)
-    url = models.CharField(max_length=200)
+    pageUrl = models.CharField(max_length=200)
+    iconUrl = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name

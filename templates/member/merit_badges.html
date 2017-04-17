@@ -19,10 +19,11 @@
                     {% for badge in merit %}
                         <br/>
                         <ul class="list-group">
+                            <li class="list-group-item"><img src={% static badge.iconUrl %} height="150"% ></li>
                             <li class="list-group-item">{{ badge.name }}</li>
                             <li class="list-group-item">{{ badge.category }}</li>
                             <li class="list-group-item">{{ badge.levels }}</li>
-                            <li class="list-group-item"><a href={{ badge.url }}>Link</a></li>
+                            <li class="list-group-item"><a href={{ badge.pageUrl }}>Link</a></li>
                         </ul>
 
                     {% endfor %}
