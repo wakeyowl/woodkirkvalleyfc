@@ -10,7 +10,7 @@ from registration.backends.simple.views import RegistrationView
 from django.views.generic.edit import UpdateView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm
-from member.models import UserMember, Player, Contact, Badges, BadgeAssesments
+from member.models import UserMember, Player, Contact, Badges, BadgeAssesments, BadgeUser
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -78,6 +78,19 @@ def merit_badges(request):
     badgeassessment_list = BadgeAssesments.objects.all()
     context_dict = {'merit': meritbadge_list, 'meritassessments': badgeassessment_list}
     response = render(request, 'member/merit_badges.html', context=context_dict)
+    return response
+
+
+def mybadges(request, username):
+    try:
+        userid = User.objects.get(username=username).pk
+    except User.DoesNotExist:
+        return redirect('index')
+
+    mybadges_list = BadgeUser.objects.filter(userId_id=userid)
+    # query the badges table to get badges
+    context_dict = {'mybadges': mybadges_list}
+    response = render(request, 'member/my_badges.html', context=context_dict)
     return response
 
 

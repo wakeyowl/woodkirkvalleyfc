@@ -101,3 +101,9 @@ class BadgeAssesments(models.Model):
 
     def __str__(self):
         return self.description
+
+
+class BadgeUser(models.Model):
+
+    userId = models.ForeignKey(User, on_delete=models.CASCADE)
+    badgeId = models.ForeignKey(Badges, on_delete=models.CASCADE)
