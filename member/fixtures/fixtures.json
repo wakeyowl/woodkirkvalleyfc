@@ -1,5 +1,229 @@
 [
   {
+    "model": "member.badgeassesments",
+    "pk": 1,
+    "fields": {
+      "badgeId": 10,
+      "description": "Score a goal"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 2,
+    "fields": {
+      "badgeId": 10,
+      "description": "Score a goal with your weak foot"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 3,
+    "fields": {
+      "badgeId": 10,
+      "description": "Score a hattrick"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 4,
+    "fields": {
+      "badgeId": 17,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 5,
+    "fields": {
+      "badgeId": 17,
+      "description": "Complete the turn running"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 6,
+    "fields": {
+      "badgeId": 17,
+      "description": "Complete the turn with both feet"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 7,
+    "fields": {
+      "badgeId": 18,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 8,
+    "fields": {
+      "badgeId": 18,
+      "description": "Complete the turn running"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 9,
+    "fields": {
+      "badgeId": 18,
+      "description": "Complete the turn with both feet"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 10,
+    "fields": {
+      "badgeId": 19,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 11,
+    "fields": {
+      "badgeId": 19,
+      "description": "Complete the turn running"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 12,
+    "fields": {
+      "badgeId": 19,
+      "description": "Complete the turn with both feet"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 13,
+    "fields": {
+      "badgeId": 20,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 14,
+    "fields": {
+      "badgeId": 20,
+      "description": "Complete the turn running"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 15,
+    "fields": {
+      "badgeId": 20,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 16,
+    "fields": {
+      "badgeId": 21,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 17,
+    "fields": {
+      "badgeId": 21,
+      "description": "Complete the turn running"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 18,
+    "fields": {
+      "badgeId": 21,
+      "description": "Complete the turn with both feet"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 19,
+    "fields": {
+      "badgeId": 22,
+      "description": "Complete the turn at walking pace"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 20,
+    "fields": {
+      "badgeId": 22,
+      "description": "Complete the turn running"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 21,
+    "fields": {
+      "badgeId": 22,
+      "description": "Complete the turn with both feet"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 22,
+    "fields": {
+      "badgeId": 35,
+      "description": "Assist a goal"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 23,
+    "fields": {
+      "badgeId": 35,
+      "description": "Assist from a corner"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 24,
+    "fields": {
+      "badgeId": 35,
+      "description": "Assist with a 1-2"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 25,
+    "fields": {
+      "badgeId": 34,
+      "description": "Take a warm up"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 26,
+    "fields": {
+      "badgeId": 34,
+      "description": "Captain the Team (c)"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 27,
+    "fields": {
+      "badgeId": 34,
+      "description": "Show support and encourage your team"
+    }
+  },
+  {
+    "model": "member.badgeassesments",
+    "pk": 28,
+    "fields": {
+      "badgeId": 34,
+      "description": "Loud communication with team mates"
+    }
+  },
+  {
     "model": "member.badges",
     "pk": 1,
     "fields": {
@@ -106,7 +330,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/technical/goalscorer/",
-      "iconUrl": "/images/badges/goalscorer-merit.png"
+      "iconUrl": "/images/badges/goalscorer-merit.png",
+      "description": "Master the Art of goalscoring!"
     }
   },
   {
@@ -117,7 +342,8 @@
       "category": "Technical",
       "levels": "B",
       "pageUrl": "/member/skills_matrix/psychological/kickups/",
-      "iconUrl": "/images/badges/kickups-bronze.png"
+      "iconUrl": "/images/badges/kickups-bronze.png",
+      "description": "Kickups Bronze"
     }
   },
   {
@@ -128,7 +354,8 @@
       "category": "Technical",
       "levels": "S",
       "pageUrl": "/member/skills_matrix/psychological/kickups/",
-      "iconUrl": "/images/badges/kickups-silver.png"
+      "iconUrl": "/images/badges/kickups-silver.png",
+      "description": "Kickups Silver"
     }
   },
   {
@@ -139,7 +366,8 @@
       "category": "Technical",
       "levels": "G",
       "pageUrl": "/member/skills_matrix/psychological/kickups/",
-      "iconUrl": "/images/badges/kickups-gold.png"
+      "iconUrl": "/images/badges/kickups-gold.png",
+      "description": "Kickups Gold"
     }
   },
   {
@@ -150,7 +378,8 @@
       "category": "Technical",
       "levels": "B",
       "pageUrl": "/member/skills_matrix/psychological/toetaps/",
-      "iconUrl": "/images/badges/toetaps-bronze.png"
+      "iconUrl": "/images/badges/toetaps-bronze.png",
+      "description": "Toe Taps Bronze"
     }
   },
   {
@@ -161,7 +390,8 @@
       "category": "Technical",
       "levels": "S",
       "pageUrl": "/member/skills_matrix/psychological/toetaps/",
-      "iconUrl": "/images/badges/toetaps-silver.png"
+      "iconUrl": "/images/badges/toetaps-silver.png",
+      "description": "Toe Taps Silver"
     }
   },
   {
@@ -172,7 +402,8 @@
       "category": "Technical",
       "levels": "G",
       "pageUrl": "/member/skills_matrix/psychological/toetaps/",
-      "iconUrl": "/images/badges/toetaps-gold.png"
+      "iconUrl": "/images/badges/toetaps-gold.png",
+      "description": "Toe Taps Gold"
     }
   },
   {
@@ -183,7 +414,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/psychological/cryuffturns/",
-      "iconUrl": "/images/badges/cryuffturns-merit.png"
+      "iconUrl": "/images/badges/cryuffturns-merit.png",
+      "description": "Master the Cryuff Turn!"
     }
   },
   {
@@ -194,7 +426,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/psychological/dragbackturns/",
-      "iconUrl": "/images/badges/dragbackturns-merit.png"
+      "iconUrl": "/images/badges/dragbackturns-merit.png",
+      "description": "Master the Dragback Turn!"
     }
   },
   {
@@ -205,7 +438,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/psychological/hookturns/",
-      "iconUrl": "/images/badges/hookturns-merit.png"
+      "iconUrl": "/images/badges/hookturns-merit.png",
+      "description": "Master the Hook Turn!"
     }
   },
   {
@@ -216,7 +450,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/psychological/ronaldochopturns/",
-      "iconUrl": "/images/badges/ronaldochop-merit.png"
+      "iconUrl": "/images/badges/ronaldochop-merit.png",
+      "description": "Master the Ronaldo Chop Turn!"
     }
   },
   {
@@ -227,7 +462,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/psychological/stepoverturns/",
-      "iconUrl": "/images/badges/stepoverturns-merit.png"
+      "iconUrl": "/images/badges/stepoverturns-merit.png",
+      "description": "Master the Stepover Turn!"
     }
   },
   {
@@ -238,18 +474,8 @@
       "category": "Technical",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/psychological/zidaneturns/",
-      "iconUrl": "/images/badges/zidaneturns-merit.png"
-    }
-  },
-  {
-    "model": "member.badges",
-    "pk": 22,
-    "fields": {
-      "name": "Dribbling",
-      "category": "Physical",
-      "levels": "B",
-      "pageUrl": "/member/skills_matrix/physical/dribbling/",
-      "iconUrl": "/images/badges/heading-bronze.png"
+      "iconUrl": "/images/badges/zidaneturns-merit.png",
+      "description": "Master the Zidane Turn!"
     }
   },
   {
@@ -260,7 +486,8 @@
       "category": "Physical",
       "levels": "S",
       "pageUrl": "/member/skills_matrix/physical/dribbling/",
-      "iconUrl": "/images/badges/heading-silver.png"
+      "iconUrl": "/images/badges/heading-silver.png",
+      "description": "Dribbling Silver"
     }
   },
   {
@@ -271,7 +498,8 @@
       "category": "Physical",
       "levels": "G",
       "pageUrl": "/member/skills_matrix/physical/dribbling/",
-      "iconUrl": "/images/badges/heading-gold.png"
+      "iconUrl": "/images/badges/heading-gold.png",
+      "description": "Dribbling Gold"
     }
   },
   {
@@ -282,7 +510,8 @@
       "category": "Physical",
       "levels": "B",
       "pageUrl": "/member/skills_matrix/physical/heading/",
-      "iconUrl": "/images/badges/heading-bronze.png"
+      "iconUrl": "/images/badges/heading-bronze.png",
+      "description": "Heading Bronze"
     }
   },
   {
@@ -293,7 +522,8 @@
       "category": "Physical",
       "levels": "S",
       "pageUrl": "/member/skills_matrix/physical/heading/",
-      "iconUrl": "/images/badges/heading-silver.png"
+      "iconUrl": "/images/badges/heading-silver.png",
+      "description": "Heading Silver"
     }
   },
   {
@@ -304,7 +534,8 @@
       "category": "Physical",
       "levels": "G",
       "pageUrl": "/member/skills_matrix/physical/heading/",
-      "iconUrl": "/images/badges/heading-gold.png"
+      "iconUrl": "/images/badges/heading-gold.png",
+      "description": "Heading Gold"
     }
   },
   {
@@ -315,7 +546,8 @@
       "category": "Social",
       "levels": "B",
       "pageUrl": "/member/skills_matrix/social/attacking/",
-      "iconUrl": "/images/badges/attacking-bronze.png"
+      "iconUrl": "/images/badges/attacking-bronze.png",
+      "description": "Attacking Bronze"
     }
   },
   {
@@ -326,7 +558,8 @@
       "category": "Social",
       "levels": "S",
       "pageUrl": "/member/skills_matrix/social/attacking/",
-      "iconUrl": "/images/badges/attacking-silver.png"
+      "iconUrl": "/images/badges/attacking-silver.png",
+      "description": "Attacking Silver"
     }
   },
   {
@@ -337,7 +570,8 @@
       "category": "Social",
       "levels": "G",
       "pageUrl": "/member/skills_matrix/social/attacking/",
-      "iconUrl": "/images/badges/attacking-gold.png"
+      "iconUrl": "/images/badges/attacking-gold.png",
+      "description": "Attacking Gold"
     }
   },
   {
@@ -348,7 +582,8 @@
       "category": "Social",
       "levels": "B",
       "pageUrl": "/member/skills_matrix/social/defending/",
-      "iconUrl": "/images/badges/defending-bronze.png"
+      "iconUrl": "/images/badges/defending-bronze.png",
+      "description": "Defending Bronze"
     }
   },
   {
@@ -359,7 +594,8 @@
       "category": "Social",
       "levels": "S",
       "pageUrl": "/member/skills_matrix/social/defending/",
-      "iconUrl": "/images/badges/defending-silver.png"
+      "iconUrl": "/images/badges/defending-silver.png",
+      "description": "Defending Silver"
     }
   },
   {
@@ -370,7 +606,8 @@
       "category": "Social",
       "levels": "G",
       "pageUrl": "/member/skills_matrix/social/defending/",
-      "iconUrl": "/images/badges/defending-gold.png"
+      "iconUrl": "/images/badges/defending-gold.png",
+      "description": "Defending Gold"
     }
   },
   {
@@ -381,7 +618,8 @@
       "category": "Social",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/social/leadership/",
-      "iconUrl": "/images/badges/leadership-merit.png"
+      "iconUrl": "/images/badges/leadership-merit.png",
+      "description": "Be a leader!"
     }
   },
   {
@@ -392,7 +630,20 @@
       "category": "Social",
       "levels": "M",
       "pageUrl": "/member/skills_matrix/social/teamwork/",
-      "iconUrl": "/images/badges/teamwork-merit.png"
+      "iconUrl": "/images/badges/teamwork-merit.png",
+      "description": "Show great teamwork!"
+    }
+  },
+  {
+    "model": "member.badges",
+    "pk": 36,
+    "fields": {
+      "name": "Dribbling",
+      "category": "Physical",
+      "levels": "B",
+      "pageUrl": "/member/skills_matrix/physical/dribbling/",
+      "iconUrl": "/images/badges/heading-bronze.png",
+      "description": "Dribbling Bronze"
     }
   }
 ]

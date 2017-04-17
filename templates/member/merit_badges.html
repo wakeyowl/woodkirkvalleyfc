@@ -20,13 +20,22 @@
                     <br/>
                     <ul class="list-group">
                     <li class="list-group-item"><img src={% static badge.iconUrl %} height="150"%></li>
-                    <li class="list-group-item bg-warning"><strong>{{ badge.name }}</strong></li>
-                    <li class="list-group-item">{{ badge.category }}</li>
+                    <li class="list-group-item bg-warning"><h3>{{ badge.name }}: </h3><i>{{ badge.description }}</i>
+                    </li>
+                    <li class="list-group-item"><strong>{{ badge.category }} </strong> Category (4 Corner Model)</li>
                     <li class="list-group-item"><a href={{ badge.pageUrl }}>Link</a></li>
-                    <li class="list-group-item bg-warning"><strong>Assessment Criteria</strong></li>
+                    <ol class="list-group-item bg-warning"><strong>Assessment Criteria</strong></ol>
                     {% for assesment in meritassessments %}
                         {% if assesment.badgeId_id == badge.id %}
-                            <ul class="list-group-item">{{ assesment.description }}</ul>
+                            <ol>
+
+                                <li class="list-group-item">
+                                    <button type="button" class="btn btn-success btn-sm">
+                                        <span class="glyphicon glyphicon-ok-circle"></span>
+                                    </button>
+                                    {{ assesment.description }}</li>
+
+                            </ol>
                         {% endif %}
                     {% endfor %}
 
