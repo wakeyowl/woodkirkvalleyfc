@@ -95,3 +95,4 @@ ENV/
 .idea/
 /db.sqlite3
 /member/migrations/
+!/member/migrations/__init__.py
