@@ -87,8 +87,8 @@ def mybadges(request, username):
     except User.DoesNotExist:
         return redirect('index')
 
-    mybadges_list = BadgeUser.objects.filter(userId_id=userid)
-    badge_urls = Badges.objects.filter(badgeuser__userId__badgeuser__isnull=False)
+    # mybadges_list = BadgeUser.objects.filter(userId_id=userid)
+    badge_urls = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
 
 
     # query the badges table to get badges
