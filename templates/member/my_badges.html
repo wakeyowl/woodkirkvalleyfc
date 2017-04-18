@@ -19,8 +19,7 @@
                 {% for badge in mybadges %}
                     <br/>
                     <ul class="list-group">
-                    <li class="list-group-item">{% static badge.id %}</li>
-
+                    <li class="list-group-item"><img src={% static badge.iconUrl %} height="150"%></li>
 
                 {% endfor %}
 

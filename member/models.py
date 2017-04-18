@@ -107,3 +107,4 @@ class BadgeUser(models.Model):
 
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     badgeId = models.ForeignKey(Badges, on_delete=models.CASCADE)
+    dateAwarded = models.DateField()

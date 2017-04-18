@@ -88,8 +88,11 @@ def mybadges(request, username):
         return redirect('index')
 
     mybadges_list = BadgeUser.objects.filter(userId_id=userid)
+    badge_urls = Badges.objects.filter(badgeuser__userId__badgeuser__isnull=False)
+
+
     # query the badges table to get badges
-    context_dict = {'mybadges': mybadges_list}
+    context_dict = {'mybadges': badge_urls}
     response = render(request, 'member/my_badges.html', context=context_dict)
     return response
 
