@@ -99,10 +99,14 @@ def mybadges(request):
     # inner join the badges -> badgeusers to get urls
     # get the current user and filter the query
     current_user = request.user.pk
-    badge_urls = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
-    badge_urls = badge_urls.filter(badgeuser__userId__badgeuser=current_user)
+    q = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
+    q = q.filter(badgeuser__userId__badgeuser=current_user)
+    merit_badge_urls = q.filter(levels='M')
+    bronze_badge_urls = q.filter(levels='B')
+    silver_badge_urls = q.filter(levels='S')
+    gold_badge_urls = q.filter(levels='G')
     # query the badges table to get badges
-    context_dict = {'mybadges': badge_urls}
+    context_dict = {'bronzebadges': bronze_badge_urls, 'silverbadges': silver_badge_urls, 'goldbadges': gold_badge_urls, 'meritbadges': merit_badge_urls}
     response = render(request, 'member/my_badges.html', context=context_dict)
     return response
 

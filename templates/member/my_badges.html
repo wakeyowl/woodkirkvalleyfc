@@ -7,48 +7,77 @@
 
 {% block body_block %}
     <div class="jumbotron">
+
         <div class="page-header">
             <h2>My Badges</h2>
-        </div>
-
-        <div id="profile_data" class="page-header">
-
-            {% if mybadges %}
-                <ul class="list-group">
-                <h4>Merit Badges</h4>
-                <br/>
-                <br class="list-group">
+            </br>
+            <h4>Bronze Badges</h4>
+            {% if bronzebadges %}
+                <div class="list-group">
+                </br>
                 <li class="list-group-item">
-                {% for badge in mybadges %}
+                    {% for badge in bronzebadges %}
 
-                    <img src={% static badge.iconUrl %} height="150"%>
+                        <img src={% static badge.iconUrl %} height="150"%>
 
-                {% endfor %}
+                    {% endfor %}
                 </li>
             {% else %}
-                <h4><i>You don't have any badges yet, grab a ball and get practicing! </i></h4>
-                <button type="button" class="btn btn-success btn-sm">
-                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                </button>
+                <h5><i>You don't have any bronze badges yet, grab a ball and get practicing! </i></h5>
 
-                </br>
-                </br>
-                Check out some new skills here:
-                <ul>
-                    <li>
-                        <a class="nav-link" href="{% url 'skills_matrix' %}">Skills Matrix</a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="{% url 'merit_badges' %}">Merit Badges</a>
-                    </li>
-                </ul>
             {% endif %}
-            </ul>
 
+            <h4>Silver Badges</h4>
+            {% if silverbadges %}
+                <li class="list-group-item">
+                    {% for badge in silverbadges %}
 
-            </ul>
+                        <img src={% static badge.iconUrl %} height="150"%>
 
+                    {% endfor %}
+                </li>
+            {% else %}
+                <h5><i>You don't have any Silver badges yet, grab a ball and get practicing! </i></h5>
 
+            {% endif %}
+
+            <h4>Gold Badges</h4>
+            {% if goldbadges %}
+                <li class="list-group-item">
+                    {% for badge in goldbadges %}
+
+                        <img src={% static badge.iconUrl %} height="150"%>
+
+                    {% endfor %}
+                </li>
+            {% else %}
+                <h5><i>You don't have any Gold badges yet, grab a ball and get practicing! </i></h5>
+
+            {% endif %}
+
+            <h4>Skill Based Badges</h4>
+            {% if meritbadges %}
+                <li class="list-group-item">
+                    {% for badge in meritbadges %}
+
+                        <img src={% static badge.iconUrl %} height="150"%>
+
+                    {% endfor %}
+                </li>
+            {% else %}
+                <h5><i>You don't have any Merit badges yet, get practicing! </i></h5>
+
+            {% endif %}
+
+            </br>
+
+            Check out some new skills here:
+            </br>
+            </br>
+            <li><a href="{% url 'skills_matrix' %}">Skills Matrix</a></li>
+            <li><a href="{% url 'merit_badges' %}">Merit Badges</a></li>
+
+            </div>
         </div>
     </div>
 {% endblock %}
