@@ -3,7 +3,7 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
 
-{% block title %}{{ user.username }} Profile{% endblock %}
+{% block title %}{% endblock %}
 
 {% block body_block %}
     <div class="jumbotron">
@@ -16,13 +16,32 @@
             {% if mybadges %}
                 <ul class="list-group">
                 <h4>Merit Badges</h4>
+                <br/>
+                <br class="list-group">
+                <li class="list-group-item">
                 {% for badge in mybadges %}
-                    <br/>
-                    <ul class="list-group">
-                    <li class="list-group-item"><img src={% static badge.iconUrl %} height="150"%></li>
+
+                    <img src={% static badge.iconUrl %} height="150"%>
 
                 {% endfor %}
+                </li>
+            {% else %}
+                <h4><i>You don't have any badges yet, grab a ball and get practicing! </i></h4>
+                <button type="button" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                </button>
 
+                </br>
+                </br>
+                Check out some new skills here:
+                <ul>
+                    <li>
+                        <a class="nav-link" href="{% url 'skills_matrix' %}">Skills Matrix</a>
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{% url 'merit_badges' %}">Merit Badges</a>
+                    </li>
+                </ul>
             {% endif %}
             </ul>
 
