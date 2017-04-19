@@ -11,8 +11,11 @@
         <div class="page-header">
             <h2>My Badges</h2>
             </br>
-            <h4>Bronze Badges</h4>
+
+
             {% if bronzebadges %}
+
+                <h4>Bronze Badges </h4>
                 <div class="list-group">
                 </br>
                 <li class="list-group-item">
@@ -23,6 +26,7 @@
                     {% endfor %}
                 </li>
             {% else %}
+                <h4>Bronze Badges </h4>
                 <h5><i>You don't have any bronze badges yet, grab a ball and get practicing! </i></h5>
 
             {% endif %}

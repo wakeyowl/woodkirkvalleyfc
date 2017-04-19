@@ -90,6 +90,9 @@ class Badges(models.Model):
     iconUrl = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
 
+    class Meta:
+        verbose_name_plural = "Badges"
+
     def __str__(self):
         return self.name + " " + self.get_levels_display()
 
@@ -99,8 +102,12 @@ class BadgeAssesments(models.Model):
     badgeId = models.ForeignKey(Badges, on_delete=models.CASCADE)
     description = models.CharField(max_length=250)
 
+    class Meta:
+        verbose_name_plural = "Badge Assessments"
+
     def __str__(self):
         return self.description
+
 
 
 class BadgeAwards(models.Model):
@@ -111,3 +118,4 @@ class BadgeAwards(models.Model):
 
     class Meta:
         unique_together = ('badgeId', 'userId',)
+        verbose_name_plural = "Badge Awards"

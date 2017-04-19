@@ -86,15 +86,23 @@ def mybadges(request):
     # get the current user and filter the query
     current_user = request.user.pk
     q = Badges.objects.exclude(badgeawards__userId__badgeawards__isnull=True)
-    #q = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
-    #q = q.filter(badgeuser__userId__badgeawards=current_user)
     q = q.filter(badgeawards__userId__badgeawards=current_user)
+
+    badge_counts = {}
+    for badge_cat in q:
+        if not badge_counts.has_key(badge_cat.levels):
+            badge_counts[badge_cat.levels] = {
+                'item': badge_cat.levels,
+                'count': 1
+            }
+    badge_counts[badge_cat.levels]['count'] += 1
+
     merit_badge_urls = q.filter(levels='M')
     bronze_badge_urls = q.filter(levels='B')
     silver_badge_urls = q.filter(levels='S')
     gold_badge_urls = q.filter(levels='G')
     # query the badges table to get badges
-    context_dict = {'bronzebadges': bronze_badge_urls, 'silverbadges': silver_badge_urls, 'goldbadges': gold_badge_urls, 'meritbadges': merit_badge_urls}
+    context_dict = {'badgecounts': badge_counts, 'bronzebadges': bronze_badge_urls, 'silverbadges': silver_badge_urls, 'goldbadges': gold_badge_urls,  'meritbadges': merit_badge_urls}
     response = render(request, 'member/my_badges.html', context=context_dict)
     return response
 
