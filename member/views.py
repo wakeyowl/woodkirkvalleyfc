@@ -80,7 +80,6 @@ def merit_badges(request):
     response = render(request, 'member/merit_badges.html', context=context_dict)
     return response
 
-
 def mybadges(request):
     # inner join the badges -> badgeusers to get urls
     # get the current user and filter the query
@@ -96,6 +95,8 @@ def mybadges(request):
                 'count': 1
             }
     badge_counts[badge_cat.levels]['count'] += 1
+
+
 
     merit_badge_urls = q.filter(levels='M')
     bronze_badge_urls = q.filter(levels='B')

@@ -119,3 +119,6 @@ class BadgeAwards(models.Model):
     class Meta:
         unique_together = ('badgeId', 'userId',)
         verbose_name_plural = "Badge Awards"
+
+    def calculateVotes(self):
+        return BadgeAwards.objects.filter(choice=self).count()
