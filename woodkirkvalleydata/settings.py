@@ -28,7 +28,7 @@ SECRET_KEY = '6sj+pwb&x-*sqntyhjt18#90@dwa3tket$8m6hpgq6u-1%c1&5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wakeyowl.pythonanywhere.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['wakeyowl.pythonanywhere.com', '127.0.0.1', 'wvfcskills.pythonanywhere.com']
 
 # Application definition
 
