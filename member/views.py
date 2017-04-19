@@ -81,14 +81,17 @@ def merit_badges(request):
     return response
 
 def mybadges(request):
-    # inner join the badges -> badgeusers to get urls
+
     # get the current user and filter the query
     current_user = request.user.pk
+    # inner join the badges -> badgeawards
     q = Badges.objects.exclude(badgeawards__userId__badgeawards__isnull=True)
-    q = q.filter(badgeawards__userId__badgeawards=current_user)
+    # filter only the current users badges
+    q3 = q.filter(badgeawards__userId=current_user)
 
+    # Create a dict of category levels and counts used in custom_tags
     badge_counts = {}
-    for badge_cat in q:
+    for badge_cat in q3:
         if not badge_counts.has_key(badge_cat.levels):
             badge_counts[badge_cat.levels] = {
                 'item': badge_cat.levels,
@@ -96,11 +99,13 @@ def mybadges(request):
             }
         badge_counts[badge_cat.levels]['count'] += 1
 
-    merit_badge_urls = q.filter(levels='M')
-    bronze_badge_urls = q.filter(levels='B')
-    silver_badge_urls = q.filter(levels='S')
-    gold_badge_urls = q.filter(levels='G')
-    # query the badges table to get badges
+    # Get Lists of all urls for each section
+    merit_badge_urls = q3.filter(levels='M')
+    bronze_badge_urls = q3.filter(levels='B')
+    silver_badge_urls = q3.filter(levels='S')
+    gold_badge_urls = q3.filter(levels='G')
+
+    # chuck it all in some context dictionaries for the render object
     context_dict = {'badgecounts': badge_counts, 'bronzebadges': bronze_badge_urls, 'silverbadges': silver_badge_urls, 'goldbadges': gold_badge_urls,  'meritbadges': merit_badge_urls}
     response = render(request, 'member/my_badges.html', context=context_dict)
     return response
