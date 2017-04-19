@@ -42,6 +42,9 @@
             <li class="nav-item active">
             </li>
             {% if user.is_authenticated %}
+                <li style="border-radius: 50%" class="nav-item bg-warning text-black">
+                    <a class="nav-link" href="">{{ user.username }}</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' user.username %}">Profile</a>
                 </li>
