@@ -92,11 +92,9 @@ def mybadges(request):
         if not badge_counts.has_key(badge_cat.levels):
             badge_counts[badge_cat.levels] = {
                 'item': badge_cat.levels,
-                'count': 1
+                'count': 0
             }
-    badge_counts[badge_cat.levels]['count'] += 1
-
-
+        badge_counts[badge_cat.levels]['count'] += 1
 
     merit_badge_urls = q.filter(levels='M')
     bronze_badge_urls = q.filter(levels='B')
@@ -187,26 +185,6 @@ class UserMemberUpdate(UpdateView):
 
     def get_success_url(self, *args, **kwargs):
         return reverse("index.html")
-
-        # def __init__(self):
-        # try:
-        #     user = User.objects.get(username=username)
-        # except User.DoesNotExist:
-        #     return redirect('index')
-
-        # if request.method == 'POST':
-        #     form = UserMemberForm(request.POST)
-        #     form.user = User.objects.get(username=username)
-        #     if form.is_valid():
-        #         user_profile = form.save(commit=False)
-        #         user_profile.user = request.user
-        #         user_profile.save()
-        #
-        #         return index(request)
-        #     else:
-        #         print(form.errors)
-        #
-        # return render(request, 'member/usermember_update_form.html', {'form': form})
 
 
 @login_required

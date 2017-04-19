@@ -2,6 +2,7 @@
 
 {% load bootstrap3 %}
 {% load staticfiles %}
+{% load member_template_tags %}
 
 {% block title %}{% endblock %}
 
@@ -15,7 +16,7 @@
 
             {% if bronzebadges %}
 
-                <h4>Bronze Badges </h4>
+                <h4>Bronze Badges ({{ badgecounts| getBadgeCount:"B" }}) </h4>
                 <div class="list-group">
                 </br>
                 <li class="list-group-item">
@@ -31,8 +32,9 @@
 
             {% endif %}
 
-            <h4>Silver Badges</h4>
+
             {% if silverbadges %}
+                <h4>Silver Badges ({{ badgecounts| getBadgeCount:"S" }})</h4>
                 <li class="list-group-item">
                     {% for badge in silverbadges %}
 
@@ -45,8 +47,9 @@
 
             {% endif %}
 
-            <h4>Gold Badges</h4>
+
             {% if goldbadges %}
+                <h4>Gold Badges ({{ badgecounts| getBadgeCount:"G" }}) </h4>
                 <li class="list-group-item">
                     {% for badge in goldbadges %}
 
@@ -59,8 +62,9 @@
 
             {% endif %}
 
-            <h4>Skill Based Badges</h4>
+
             {% if meritbadges %}
+                <h4>Skill Based Badges ({{ badgecounts| getBadgeCount:"M" }})</h4>
                 <li class="list-group-item">
                     {% for badge in meritbadges %}
 
