@@ -91,6 +91,16 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # The following settings are not used with sqlite3:
+        'NAME': 'wvfcskillsl$woodkirkdata',
+        'USER': 'wakeyowl',
+        'PASSWORD': 'v0n-neumann',
+        'HOST': 'wvfcskills.mysql.pythonanywhere-services.com',
+        # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+        'PORT': '',
+    },
+    'production': {
+        'ENGINE': 'django.db.backends.mysql',
+        # The following settings are not used with sqlite3:
         'NAME': 'wakeyowl$woodkirkdata',
         'USER': 'wakeyowl',
         'PASSWORD': 'v0n-neumann',
@@ -98,7 +108,7 @@ DATABASES = {
         # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
         'PORT': '',
     },
-    'old': {
+    'local': {
         'ENGINE': 'django.db.backends.mysql',
         # The following settings are not used with sqlite3:
         'NAME': 'woodkirkdata',
