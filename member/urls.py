@@ -11,7 +11,6 @@ urlpatterns = [
     url(r'^mybadges/$', views.mybadges, name='mybadges'),
     url(r'^skills_matrix/$', views.skills_matrix, name='skills_matrix'),
     url(r'^skills_matrix/merit_badges/$', views.merit_badges, name='merit_badges'),
-    # url(r'^profile/(?P<username>[\w\-.@]+)/mybadges/$', views.mybadges, name='mybadges'),
     url(r'^skills_matrix/technical/$', views.technical, name='technical'),
     url(r'^skills_matrix/social/$', views.social, name='social'),
     url(r'^skills_matrix/social/attacking/$', views.attacking, name='attacking'),

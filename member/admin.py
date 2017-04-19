@@ -1,9 +1,9 @@
 from django.contrib import admin
-from member.models import BadgeUser, Badges
+from member.models import BadgeAwards, Badges
 
 
-class BadgeUserAdmin(admin.ModelAdmin):
-    list_display = ('dateAwarded', 'badgeId_id', 'userId_id')
+class BadgeAwardAdmin(admin.ModelAdmin):
+    list_display = ('userId_id', 'badgeId_id', 'dateAwarded')
 
 
 class BadgesAdmin(admin.ModelAdmin):
@@ -12,5 +12,5 @@ class BadgesAdmin(admin.ModelAdmin):
     class Meta:
         verbose_name_plural = "badges"
 
-admin.site.register(BadgeUser, BadgeUserAdmin)
+admin.site.register(BadgeAwards, BadgeAwardAdmin)
 admin.site.register(Badges, BadgesAdmin)

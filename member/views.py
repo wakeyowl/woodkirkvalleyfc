@@ -10,7 +10,7 @@ from registration.backends.simple.views import RegistrationView
 from django.views.generic.edit import UpdateView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm
-from member.models import UserMember, Player, Contact, Badges, BadgeAssesments, BadgeUser
+from member.models import UserMember, Player, Contact, Badges, BadgeAssesments
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -80,27 +80,15 @@ def merit_badges(request):
     response = render(request, 'member/merit_badges.html', context=context_dict)
     return response
 
-# def mybadges(request, username):
-#     try:
-#         userid = User.objects.get(username=username).pk
-#     except User.DoesNotExist:
-#         return redirect('index')
-#     # inner join the badges -> badgeusers to get urls
-#     current_user = request.user.pk
-#     badge_urls = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
-#
-#     # query the badges table to get badges
-#     context_dict = {'mybadges': badge_urls}
-#     response = render(request, 'member/my_badges.html', context=context_dict)
-#     return response
-
 
 def mybadges(request):
     # inner join the badges -> badgeusers to get urls
     # get the current user and filter the query
     current_user = request.user.pk
-    q = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
-    q = q.filter(badgeuser__userId__badgeuser=current_user)
+    q = Badges.objects.exclude(badgeawards__userId__badgeawards__isnull=True)
+    #q = Badges.objects.exclude(badgeuser__userId__badgeuser__isnull=True)
+    #q = q.filter(badgeuser__userId__badgeawards=current_user)
+    q = q.filter(badgeawards__userId__badgeawards=current_user)
     merit_badge_urls = q.filter(levels='M')
     bronze_badge_urls = q.filter(levels='B')
     silver_badge_urls = q.filter(levels='S')

@@ -91,7 +91,7 @@ class Badges(models.Model):
     description = models.CharField(max_length=200)
 
     def __str__(self):
-        return self.name + " " + self.levels
+        return self.name + " " + self.get_levels_display()
 
 
 class BadgeAssesments(models.Model):
@@ -103,8 +103,11 @@ class BadgeAssesments(models.Model):
         return self.description
 
 
-class BadgeUser(models.Model):
+class BadgeAwards(models.Model):
 
     userId = models.ForeignKey(User, on_delete=models.CASCADE)
     badgeId = models.ForeignKey(Badges, on_delete=models.CASCADE)
     dateAwarded = models.DateField()
+
+    class Meta:
+        unique_together = ('badgeId', 'userId',)
