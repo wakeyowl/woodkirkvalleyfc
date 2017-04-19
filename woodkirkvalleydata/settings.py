@@ -28,7 +28,7 @@ SECRET_KEY = '6sj+pwb&x-*sqntyhjt18#90@dwa3tket$8m6hpgq6u-1%c1&5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wakeyowl.pythonanywhere.com', '127.0.0.1', 'wvfcskills.pythonanywhere.com']
+ALLOWED_HOSTS = ['wakeyowl.pythonanywhere.com', 'wakeyowl.mysql.pythonanywhere-services.com', '127.0.0.1', 'wvfcskills.pythonanywhere.com']
 
 # Application definition
 
@@ -97,16 +97,16 @@ DATABASES = {
         'HOST': 'wakeyowl.mysql.pythonanywhere-services.com',
         # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
         'PORT': '',
-    },
-    'local': {
-        'ENGINE': 'django.db.backends.mysql',
-        # The following settings are not used with sqlite3:
-        'NAME': 'woodkirkdata',
-        'USER': 'root',
-        'PASSWORD': 'v0n-neumann',
-        'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
-        'PORT': '',
     }
+    # 'local': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     # The following settings are not used with sqlite3:
+    #     'NAME': 'woodkirkdata',
+    #     'USER': 'root',
+    #     'PASSWORD': 'v0n-neumann',
+    #     'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+    #     'PORT': '',
+    # }
 
 }
 
