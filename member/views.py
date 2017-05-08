@@ -72,14 +72,6 @@ def index(request):
     response = render(request, 'member/index.html', {})
     return response
 
-
-def merit_badges(request):
-    meritbadge_list = Badges.objects.filter(levels='M')
-    badgeassessment_list = BadgeAssesments.objects.all()
-    context_dict = {'merit': meritbadge_list, 'meritassessments': badgeassessment_list}
-    response = render(request, 'member/merit_badges.html', context=context_dict)
-    return response
-
 def mybadges(request):
 
     # get the current user and filter the query
@@ -108,56 +100,6 @@ def mybadges(request):
     # chuck it all in some context dictionaries for the render object
     context_dict = {'badgecounts': badge_counts, 'bronzebadges': bronze_badge_urls, 'silverbadges': silver_badge_urls, 'goldbadges': gold_badge_urls,  'meritbadges': merit_badge_urls}
     response = render(request, 'member/my_badges.html', context=context_dict)
-    return response
-
-
-def skills_matrix(request):
-    response = render(request, 'member/skills_matrix.html', {})
-    return response
-
-
-def attacking(request):
-    response = render(request, 'member/skills/attacking.html', {})
-    return response
-
-
-def kickups(request):
-    response = render(request, 'member/skills/kickups.html', {})
-    return response
-
-
-def defending(request):
-    response = render(request, 'member/skills/defending.html', {})
-    return response
-
-
-def teamwork(request):
-    response = render(request, 'member/skills/teamwork.html', {})
-    return response
-
-
-def leadership(request):
-    response = render(request, 'member/skills/leadership.html', {})
-    return response
-
-
-def technical(request):
-    response = render(request, 'member/technical.html', {})
-    return response
-
-
-def social(request):
-    response = render(request, 'member/social.html', {})
-    return response
-
-
-def physical(request):
-    response = render(request, 'member/physical.html', {})
-    return response
-
-
-def psychological(request):
-    response = render(request, 'member/psychological.html', {})
     return response
 
 

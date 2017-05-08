@@ -402,6 +402,12 @@ fieldset[disabled] .btn-danger.active {
 .navbar-fixed-bottom {
   border-radius: 0;
 }
+@media (max-width: 480px) {
+        .landing-page-header ul{
+           position: static;
+           width:100%;
+        }
+}
 @media (max-width: 767px) {
   .navbar .navbar-nav .open .dropdown-menu > .active > a,
   .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,

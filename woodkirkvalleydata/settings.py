@@ -88,25 +88,25 @@ WSGI_APPLICATION = 'woodkirkvalleydata.wsgi.application'
 
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     # The following settings are not used with sqlite3:
+    #     'NAME': 'wakeyowl$woodkirkdb',
+    #     'USER': 'wakeyowl',
+    #     'PASSWORD': 'v0n-neumann',
+    #     'HOST': 'wakeyowl.mysql.pythonanywhere-services.com',
+    #     # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+    #     'PORT': '',
+    # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # The following settings are not used with sqlite3:
-        'NAME': 'wakeyowl$woodkirkdb',
-        'USER': 'wakeyowl',
+        'NAME': 'registrations',
+        'USER': 'root',
         'PASSWORD': 'v0n-neumann',
-        'HOST': 'wakeyowl.mysql.pythonanywhere-services.com',
-        # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+        'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
         'PORT': '',
     }
-    # 'local': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     # The following settings are not used with sqlite3:
-    #     'NAME': 'woodkirkdata',
-    #     'USER': 'root',
-    #     'PASSWORD': 'v0n-neumann',
-    #     'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
-    #     'PORT': '',
-    # }
 
 }
 
