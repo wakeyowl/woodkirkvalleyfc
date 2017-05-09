@@ -23,7 +23,7 @@ class UserMember(models.Model):
     CONSENT_CHOICES = ((True, 'Yes'), (False, 'No'))
     consent = models.NullBooleanField(choices=CONSENT_CHOICES,
                                       max_length=3,
-                                      blank=True, null=True, default=True )
+                                      blank=True, null=True, default=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.full_name)
@@ -34,7 +34,6 @@ class UserMember(models.Model):
 
 
 class Player(models.Model):
-
     MALE = 'M'
     FEMALE = 'F'
     SEX_CHOICES = (
@@ -53,3 +52,21 @@ class Player(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class MembershipType(models.Model):
+    cost = models.DecimalField(max_digits=6, decimal_places=2)
+    season = models.ForeignKey('Seasons', on_delete=models.CASCADE, )
+    PLAYER = 'PLAYER'
+    CLUB = 'CLUB'
+    MEMBER_TYPES = (
+        (PLAYER, 'Player'),
+        (CLUB, 'Club'),
+    )
+    type = models.CharField(max_length=6, choices=MEMBER_TYPES)
+
+
+class Seasons(models.Model):
+    description = models.CharField(max_length=200)
+    start_date = models.DateField(blank=True)
+    end_date = models.DateField(blank=True)
