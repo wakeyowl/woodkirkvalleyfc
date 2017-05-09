@@ -24,10 +24,12 @@
                     {% for child in player %}
                         <br/>
                         <ul class="list-group">
-                            <li class="list-group-item">{{ child.name }}</li>
-                            <li class="list-group-item">{{ child.birthdate }}</li>
-                            <li class="list-group-item">{{ child.gender }}</li>
-                            <li class="list-group-item">{{ child.medical_details }}</li>
+                            <li class="list-group-item"><strong>Name: </strong> {{ child.name }}</li>
+                            <li class="list-group-item"><strong>Birthdate: </strong> {{ child.birthdate }}</li>
+                            <li class="list-group-item"><strong>Gender: </strong>{{ child.gender }}</li>
+                            <li class="list-group-item"> <strong>Medical Conditions: </strong> {{ child.medical_details }}</li>
+                             <li class="list-group-item"><strong>Manager: </strong>  {{ child.manager.full_name }} ({{ child.manager.team }})</li>
+
                         </ul>
 
                     {% endfor %}

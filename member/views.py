@@ -141,7 +141,8 @@ def profile(request):
     except User.DoesNotExist:
         return redirect('index')
 
-    player_list = Player.objects.filter(member_parent_id=user)
+    player_list = Player.objects.filter(member_parent_id=user).prefetch_related('manager__player_set')
+    player_list.order_by('manager__full_name')
     # address_list = UserMember.objects.filter(member_parent_id=user)
     context_dict = {'player': player_list}
 

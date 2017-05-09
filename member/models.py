@@ -3,6 +3,14 @@ from django.db import models
 from django.template.defaultfilters import slugify
 
 
+class TeamManagers(models.Model):
+    full_name = models.CharField(max_length=128, unique=True, null=True)
+    team = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.full_name
+
+
 class UserMember(models.Model):
     user = models.OneToOneField(User)
     full_name = models.CharField(max_length=128, unique=True, null=True)
@@ -35,7 +43,7 @@ class Player(models.Model):
     )
     name = models.CharField(max_length=128)
     gender = models.CharField(max_length=1, choices=SEX_CHOICES)
-
+    manager = models.ForeignKey(TeamManagers, on_delete=models.CASCADE)
     birthdate = models.DateField()
     member_parent = models.ForeignKey(User)
     medical_details = models.TextField()
@@ -107,7 +115,6 @@ class BadgeAssesments(models.Model):
 
     def __str__(self):
         return self.description
-
 
 
 class BadgeAwards(models.Model):
