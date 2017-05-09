@@ -30,7 +30,7 @@ class UserMember(models.Model):
         super(UserMember, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.user
+        return self.full_name
 
 
 class Player(models.Model):

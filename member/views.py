@@ -141,10 +141,11 @@ def profile(request):
     except User.DoesNotExist:
         return redirect('index')
 
+    current_user = UserMember.objects.filter(user_id=user)
     player_list = Player.objects.filter(member_parent_id=user).prefetch_related('manager__player_set')
     player_list.order_by('manager__full_name')
     # address_list = UserMember.objects.filter(member_parent_id=user)
-    context_dict = {'player': player_list}
+    context_dict = {'player': player_list, 'loggedin_user': current_user}
 
     # userprofile = User.objects.get(username=user)
     # form = UserMemberAddChildForm({})
