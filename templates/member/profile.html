@@ -46,7 +46,8 @@
                         <br/>
                         <ul class="list-group">
                             <li class="list-group-item"><h3><span
-                                    class="fa fa-user-circle text-primary" aria-hidden="true"></span> {{ child.name }}</h3>
+                                    class="fa fa-user-circle text-primary" aria-hidden="true"></span> {{ child.name }}
+                            </h3>
                             </li>
                             {% if child.gender == 'M' %}
                                 <li class="list-group-item"><span
@@ -68,6 +69,12 @@
                                 </strong> {{ child.medical_details }}</li>
                             <li class="list-group-item"><strong>Manager: </strong> {{ child.manager.full_name }}
                                 ({{ child.manager.team }})
+                            </li>
+
+                            <li class="list-group-item">
+                                {% if child.is_active == True %}
+                                    <span class="fa fa-thumbs-up text-primary" aria-hidden="true"> </span> (Active Player)
+                                {% endif %}
                             </li>
 
                         </ul>

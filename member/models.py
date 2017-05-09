@@ -46,6 +46,7 @@ class Player(models.Model):
     birthdate = models.DateField()
     member_parent = models.ForeignKey(User)
     medical_details = models.TextField()
+    is_active = models.BooleanField(default=True)
 
     class Meta:
         unique_together = ('birthdate', 'name',)
