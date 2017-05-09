@@ -10,7 +10,7 @@ from registration.backends.simple.views import RegistrationView
 from django.views.generic.edit import UpdateView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm
-from member.models import UserMember, Player, Contact, Badges, BadgeAssesments
+from member.models import UserMember, Player
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -178,8 +178,3 @@ def addplayer(request):
     context_dict = {'form': form, 'member_parent_id': user}
 
     return render(request, 'member/add_player.html', context_dict)
-
-
-class ListContactView(ListView):
-    model = Contact
-    template_name = 'contact_list.html'
