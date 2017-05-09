@@ -135,26 +135,26 @@ class UserMemberUpdate(UpdateView):
 
 
 @login_required
-def profile(request, username):
+def profile(request):
     try:
-        user = User.objects.get(username=username)
+        user = request.user.pk
     except User.DoesNotExist:
         return redirect('index')
 
-    player_list = Player.objects.filter(member_parent__username=user)
-    address_list = UserMember.objects.filter(member_parent__username=user)
-    context_dict = {'player': player_list, 'address': address_list}
+    player_list = Player.objects.filter(member_parent_id=user)
+    # address_list = UserMember.objects.filter(member_parent_id=user)
+    context_dict = {'player': player_list}
 
-    userprofile = User.objects.get(username=username)
-    form = UserMemberAddChildForm({})
+    # userprofile = User.objects.get(username=user)
+    # form = UserMemberAddChildForm({})
 
     return render(request, 'member/profile.html', context=context_dict)
 
 
 @login_required
-def add_player(request, username):
+def addplayer(request):
     try:
-        user = User.objects.get(username=username)
+        user = request.user.pk
     except User.DoesNotExist:
         return redirect('index')
 
@@ -165,10 +165,10 @@ def add_player(request, username):
         if form.is_valid():
             if user:
                 page = form.save(commit=False)
-                page.member_parent = user
+                page.member_parent_id = user
                 page.save()
 
-                return profile(request, username)
+                return profile(request)
 
         else:
             print(form.errors)

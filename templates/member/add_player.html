@@ -16,7 +16,7 @@
         </div>
     </div>
     <div class="form-group">
-        <form role="form" id="player_form" method="post" action="/member/profile/{{ user.username }}/add_player/">
+        <form role="form" id="player_form" method="post" action="/member/profile/addplayer/">
             {% csrf_token %}
             {% bootstrap_form form %}
             </br>

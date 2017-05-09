@@ -11,7 +11,7 @@ urlpatterns = [
     url(r'^mybadges/$', views.mybadges, name='mybadges'),
     url(r'^add_member/$', views.add_member, name='add_member'),
     url(r'^register_profile/$', views.register_profile, name='register_profile'),
-    url(r'^profile/(?P<username>[\w\-.@]+)/$', views.profile, name='profile'),
-    url(r'^profile/(?P<username>[\w\-.@]+)/add_player/$', views.add_player, name='add_player'),
-    url(r'^profile/(?P<username>[\w\-.@]+)/update_member/$', UserMemberUpdate.as_view(), name='usermember_update'),
+    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^profile/addplayer/$', views.addplayer, name='addplayer'),
+    # url(r'^profile/(?P<username>[\w\-.@]+)/update_member/$', UserMemberUpdate.as_view(), name='usermember_update'),
 ]
