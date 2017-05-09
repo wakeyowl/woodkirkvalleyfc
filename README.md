@@ -1,2 +1,3 @@
-# woodkirkvalleyfc
-Woodkirk Valley FC Website
+# Woodkirk Valley FC Database
+
+Holds all member data and digital club forms 
