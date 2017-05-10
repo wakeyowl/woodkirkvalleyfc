@@ -2,14 +2,16 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect, request
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from django.template.context_processors import csrf
 from django.views.generic import ListView
 from registration.backends.simple.views import RegistrationView
 from django.views.generic.edit import UpdateView
 
-from member.forms import UserMemberForm, UserMemberAddChildForm
+from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateView
 from member.models import UserMember, Player
 
 
@@ -72,36 +74,6 @@ def index(request):
     response = render(request, 'member/index.html', {})
     return response
 
-def mybadges(request):
-
-    # get the current user and filter the query
-    current_user = request.user.pk
-    # inner join the badges -> badgeawards
-    q = Badges.objects.exclude(badgeawards__userId__badgeawards__isnull=True)
-    # filter only the current users badges
-    q3 = q.filter(badgeawards__userId=current_user)
-
-    # Create a dict of category levels and counts used in custom_tags
-    badge_counts = {}
-    for badge_cat in q3:
-        if not badge_counts.has_key(badge_cat.levels):
-            badge_counts[badge_cat.levels] = {
-                'item': badge_cat.levels,
-                'count': 0
-            }
-        badge_counts[badge_cat.levels]['count'] += 1
-
-    # Get Lists of all urls for each section
-    merit_badge_urls = q3.filter(levels='M')
-    bronze_badge_urls = q3.filter(levels='B')
-    silver_badge_urls = q3.filter(levels='S')
-    gold_badge_urls = q3.filter(levels='G')
-
-    # chuck it all in some context dictionaries for the render object
-    context_dict = {'badgecounts': badge_counts, 'bronzebadges': bronze_badge_urls, 'silverbadges': silver_badge_urls, 'goldbadges': gold_badge_urls,  'meritbadges': merit_badge_urls}
-    response = render(request, 'member/my_badges.html', context=context_dict)
-    return response
-
 
 def add_member(request):
     form = UserMemberForm()
@@ -117,21 +89,6 @@ def add_member(request):
             print(form.errors)
 
     return render(request, 'member/add_member.html', {'form': form})
-
-
-class UserMemberUpdate(UpdateView):
-    model = UserMember
-    form_class = UserMemberForm
-    fields = ['address1', 'address2', 'city', 'postcode', 'mobile_phone']
-    template_name = 'member/usermember_update_form.html'
-
-    def get_object(self, *args, **kwargs):
-        user = get_object_or_404(User, pk=self.kwargs['pk'])
-
-        return user.userprofile
-
-    def get_success_url(self, *args, **kwargs):
-        return reverse("index.html")
 
 
 @login_required
@@ -178,3 +135,24 @@ def addplayer(request):
     context_dict = {'form': form, 'member_parent_id': user}
 
     return render(request, 'member/add_player.html', context_dict)
+
+
+@login_required
+def edit_usermember(request):
+    try:
+        id = request.user.pk
+    except  User.DoesNotExist:
+        return redirect('index')
+
+    instance = get_object_or_404(UserMember, user=id)
+    form = UserMemberUpdateView()
+
+    if request.method == 'POST':
+        form = UserMemberUpdateView(request.POST or None, instance=instance)
+        if form.is_valid():
+            form.save()
+
+            return profile(request)
+    else:
+        context_dict = {'form': form}
+    return render(request, 'member/usermember_update_form.html', context_dict)

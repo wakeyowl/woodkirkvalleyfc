@@ -1,6 +1,9 @@
 from django import forms
-from django.views.generic.edit import UpdateView
+from django.http import request
+from django.urls import reverse
 from django.utils.safestring import mark_safe
+from django.views.generic import UpdateView
+
 from member.models import UserMember, Player
 
 
@@ -31,3 +34,20 @@ class UserMemberAddChildForm(forms.ModelForm):
     class Meta:
         model = Player
         exclude = ('member_parent',)
+
+
+class UserMemberUpdateView(UpdateView):
+
+    fields = ['full_name', 'address1', 'address2', 'postcode', 'mobile_phone', ]
+    template_name_suffix = '_update_form'
+    form_class = 'member/usermember_update_form.html'
+    class Meta:
+        model = UserMemberForm
+
+    def get_object(self, *args, **kwargs):
+        user = request.user.pk
+
+        return user.usermember
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse("index.html")

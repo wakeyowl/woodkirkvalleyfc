@@ -53,9 +53,24 @@
                             <li class="list-group-item">
                                 <h2>
                                     <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="50px"/>
-                                     {{ child.name }}
+                                    {{ child.name }}
+
+                                    {% if child.is_active == True %}
+                                        <i> (Active)</i>
+                                        <button type="button" class="btn btn-default btn-lg">
+                                        <span class="fa fa-thumbs-up text-primary text-success"
+                                              aria-hidden="true"> </span>
+                                        </button>
+                                    {% else %}
+                                        <i> (Not Active)</i>
+                                        <button type="button" class="btn btn-default btn-lg">
+                                        <span class="fa fa-thumbs-down text-primary text-danger"
+                                              aria-hidden="true"> </span>
+                                        </button>
+                                    {% endif %}
                                 </h2>
                             </li>
+
                             <li class="list-group-item">
                                 <h5><span class="fa fa-futbol-o text-primary" aria-hidden="true"> </span> <strong>
                                     Manager: </strong>
@@ -65,31 +80,21 @@
                                 </h5>
                             </li>
                             {% if child.gender == 'M' %}
-                                <li class="list-group-item"><span
-                                        class="fa fa-male text-primary" aria-hidden="true"></span> Male
+                                <li class="list-group-item">
+                                <span
+                                        class="fa fa-medkit text-primary" aria-hidden="true"> </span>
+                                    </strong> {{ child.medical_details }} </br></br>
+                                    <span
+                                            class="fa fa-birthday-cake text-primary"
+                                            aria-hidden="true"></span> {{ child.birthdate }} </br></br>
+                                    <span
+                                            class="fa fa-male text-primary" aria-hidden="true"></span> Male
                                 </li>
                             {% else %}
                                 <li class="list-group-item"><span
                                         class="fa fa-female text-primary" aria-hidden="true"> </span> Female
                                 </li>
                             {% endif %}
-
-                            <li class="list-group-item"><span
-                                    class="fa fa-birthday-cake text-primary"
-                                    aria-hidden="true"></span> {{ child.birthdate }}</li>
-
-
-                            <li class="list-group-item"><span
-                                    class="fa fa-medkit text-primary" aria-hidden="true"> </span>
-                                </strong> {{ child.medical_details }}</li>
-
-
-                            <li class="list-group-item">
-                                {% if child.is_active == True %}
-                                    <span class="fa fa-thumbs-up text-primary" aria-hidden="true"> </span> (Active
-                                    Player)
-                                {% endif %}
-                            </li>
 
                         </ul>
 

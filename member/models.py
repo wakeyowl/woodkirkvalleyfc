@@ -87,9 +87,10 @@ class Seasons(models.Model):
 
 class Payments(models.Model):
     payment_amount = models.DecimalField(max_digits=6, decimal_places=2)
+    description = models.CharField(max_length=200)
     date_taken = models.DateField()
     player = models.ForeignKey('Player', on_delete=models.CASCADE,)
-    manager = models.ForeignKey('TeamManagers', on_delete=models.CASCADE, )
+    manager = models.ForeignKey('TeamManagers', on_delete=models.CASCADE,)
     PLAYER_MEMBERSHIP = 'Player Membership'
     CLUB_MEMBERSHIP = 'Club Membership'
     DONATION = 'Club Donation'
