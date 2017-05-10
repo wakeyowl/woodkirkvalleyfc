@@ -50,7 +50,7 @@ class Player(models.Model):
     gender = models.CharField(max_length=1, choices=SEX_CHOICES)
     manager = models.ForeignKey(TeamManagers, on_delete=models.CASCADE)
     birthdate = models.DateField()
-    member_parent = models.ForeignKey(User)
+    member_parent = models.ForeignKey(UserMember, on_delete=models.CASCADE)
     medical_details = models.TextField()
     is_active = models.BooleanField(default=True)
 
@@ -89,7 +89,7 @@ class Payments(models.Model):
     payment_amount = models.DecimalField(max_digits=6, decimal_places=2)
     date_taken = models.DateField()
     player = models.ForeignKey('Player', on_delete=models.CASCADE,)
-    # parent = models.ForeignKey('User', on_delete=models.CASCADE, )
+    manager = models.ForeignKey('TeamManagers', on_delete=models.CASCADE, )
     PLAYER_MEMBERSHIP = 'Player Membership'
     CLUB_MEMBERSHIP = 'Club Membership'
     DONATION = 'Club Donation'
