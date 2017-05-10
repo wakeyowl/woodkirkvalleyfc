@@ -22,11 +22,16 @@
                 </div>
                 <div class="col-md-6">
                     {% for currentuser in loggedin_user %}
-                        <h4>{{ currentuser.address1 }}</h4>
-                        <h4>{{ currentuser.address2 }}</h4>
-                        <h4>{{ currentuser.postcode }}</h4>
-                        <h4>{{ currentuser.mobile_phone }}</h4>
-                        <h4>{{ user.email }}</h4>
+                        <h4><span class="fa fa-address-card-o text-primary"
+                                  aria-hidden="true"></span> {{ currentuser.address1 }}</h4>
+                        <h4><span class="fa fa-circle-thin text-white"
+                                  aria-hidden="true"></span> {{ currentuser.address2 }}</h4>
+                        <h4><span class="fa fa-circle-thin text-white"
+                                  aria-hidden="true"></span> {{ currentuser.postcode }}</h4>
+                        <h4><span class="fa fa-phone text-primary"
+                                  aria-hidden="true"></span> {{ currentuser.mobile_phone }}</h4>
+                        <h4><span class="fa fa-envelope text-primary"
+                                  aria-hidden="true"></span> {{ user.email }}</h4>
                     {% endfor %}
                 </div>
             </div>
@@ -46,18 +51,18 @@
                         <br/>
                         <ul class="list-group">
                             <li class="list-group-item">
-                                <h2><span
-                                        class="fa fa-user-circle text-primary"
-                                        aria-hidden="true"></span> {{ child.name }}
+                                <h2>
+                                    <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="50px"/>
+                                     {{ child.name }}
                                 </h2>
                             </li>
                             <li class="list-group-item">
                                 <h5><span class="fa fa-futbol-o text-primary" aria-hidden="true"> </span> <strong>
-                                Manager: </strong>
+                                    Manager: </strong>
 
-                                {{ child.manager.full_name }}
-                                ({{ child.manager.team }})
-                                    </h5>
+                                    {{ child.manager.full_name }}
+                                    ({{ child.manager.team }})
+                                </h5>
                             </li>
                             {% if child.gender == 'M' %}
                                 <li class="list-group-item"><span

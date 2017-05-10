@@ -10,6 +10,9 @@ class TeamManagers(models.Model):
     def __str__(self):
         return self.full_name
 
+    class Meta:
+        verbose_name_plural = "Managers"
+
 
 class UserMember(models.Model):
     user = models.OneToOneField(User)
@@ -31,6 +34,9 @@ class UserMember(models.Model):
 
     def __str__(self):
         return self.full_name
+
+    class Meta:
+        verbose_name_plural = "User Members"
 
 
 class Player(models.Model):
@@ -66,8 +72,33 @@ class MembershipType(models.Model):
     )
     type = models.CharField(max_length=6, choices=MEMBER_TYPES)
 
+    class Meta:
+        verbose_name_plural = "Membership Types"
+
 
 class Seasons(models.Model):
     description = models.CharField(max_length=200)
     start_date = models.DateField(blank=True)
     end_date = models.DateField(blank=True)
+
+    class Meta:
+        verbose_name_plural = "Seasons"
+
+
+class Payments(models.Model):
+    payment_amount = models.DecimalField(max_digits=6, decimal_places=2)
+    date_taken = models.DateField()
+    player = models.ForeignKey('Player', on_delete=models.CASCADE,)
+    # parent = models.ForeignKey('User', on_delete=models.CASCADE, )
+    PLAYER_MEMBERSHIP = 'Player Membership'
+    CLUB_MEMBERSHIP = 'Club Membership'
+    DONATION = 'Club Donation'
+    PAYMENT_TYPES = (
+        (PLAYER_MEMBERSHIP, 'Player Membership'),
+        (CLUB_MEMBERSHIP, 'Club Membership'),
+        (DONATION, 'Club Donation'),
+    )
+    paymentType = models.CharField(max_length=20, choices=PAYMENT_TYPES)
+
+    class Meta:
+        verbose_name_plural = "Payments"
