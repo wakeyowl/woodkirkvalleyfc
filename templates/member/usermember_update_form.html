@@ -11,9 +11,9 @@
     <h1>Update your details</h1>
     <div>
         <div class="form-group">
-            <form role="form" action="." method="post">
+            <form role="form" action="/member/profile/" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                 {% bootstrap_form form %}
                 <button class="btn btn-primary" input type="submit" name="submit">Update</button>
             </form>
         </div>

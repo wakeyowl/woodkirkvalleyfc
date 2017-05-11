@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 
 class TeamManagers(models.Model):
@@ -31,6 +32,9 @@ class UserMember(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.full_name)
         super(UserMember, self).save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('author-detail', kwargs={'pk': self.pk})
 
     def __str__(self):
         return self.full_name

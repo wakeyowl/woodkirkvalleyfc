@@ -9,15 +9,26 @@ from django.contrib.auth.decorators import login_required
 from django.template.context_processors import csrf
 from django.views.generic import ListView
 from registration.backends.simple.views import RegistrationView
-from django.views.generic.edit import UpdateView
+from django.views.generic.edit import UpdateView, FormView
 
-from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateView
+from member.forms import UserMemberForm, UserMemberAddChildForm
 from member.models import UserMember, Player
 
 
 class WoodkirkRegistrationView(RegistrationView):
     def get_success_url(self, user):
         return reverse('register_profile')
+
+
+class UserMemberUpdate(UpdateView):
+    model = UserMember
+    fields = ['full_name', 'address1','address2','postcode','mobile_phone']
+    template_name = 'member/usermember_update_form.html'
+    # user = request.user.pk
+
+
+    def get_success_url(self, user):
+        return reverse('profile')
 
 
 def get_server_side_cookie(request, cookie, default_val=None):
@@ -137,22 +148,20 @@ def addplayer(request):
     return render(request, 'member/add_player.html', context_dict)
 
 
-@login_required
-def edit_usermember(request):
-    try:
-        id = request.user.pk
-    except  User.DoesNotExist:
-        return redirect('index')
-
-    instance = get_object_or_404(UserMember, user=id)
-    form = UserMemberUpdateView()
-
+def update_member(request):
+    form = UserMemberForm()
+    user = request.user.pk
     if request.method == 'POST':
-        form = UserMemberUpdateView(request.POST or None, instance=instance)
-        if form.is_valid():
-            form.save()
+        form = UserMemberForm(request.POST)
 
-            return profile(request)
+        if form.is_valid():
+            form.save(commit=True)
+
+            return index(request)
+        else:
+            print(form.errors)
     else:
-        context_dict = {'form': form}
-    return render(request, 'member/usermember_update_form.html', context_dict)
+        return render(request, 'member/usermember_update_form.html', {'form': form})
+    return render(request, 'member/usermember_update_form.html', {'form': form})
+
+
