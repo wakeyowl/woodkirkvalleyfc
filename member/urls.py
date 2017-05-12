@@ -2,7 +2,6 @@ from django.conf.urls import url
 
 import member
 from member import views
-from member.views import UserMemberUpdate
 
 urlpatterns = [
     # url(r'^$', member.views.ListContactView.as_view(),
@@ -13,7 +12,7 @@ urlpatterns = [
     url(r'^register_profile/$', views.register_profile, name='register_profile'),
     url(r'^profile/$', views.profile, name='profile'),
     url(r'^profile/addplayer/$', views.addplayer, name='addplayer'),
-    url(r'^profile/update/$', views.update_member, name='user_member_update'),
+    url(r'^profile/update/$', views.update_user, name='update_user'),
 
     # url(r'^profile/(?P<username>[\w\-.@]+)/update_member/$', UserMemberUpdate.as_view(), name='usermember_update'),
 ]

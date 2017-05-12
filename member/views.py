@@ -11,7 +11,7 @@ from django.views.generic import ListView
 from registration.backends.simple.views import RegistrationView
 from django.views.generic.edit import UpdateView, FormView
 
-from member.forms import UserMemberForm, UserMemberAddChildForm
+from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm
 from member.models import UserMember, Player
 
 
@@ -20,15 +20,30 @@ class WoodkirkRegistrationView(RegistrationView):
         return reverse('register_profile')
 
 
-class UserMemberUpdate(UpdateView):
-    model = UserMember
-    fields = ['full_name', 'address1','address2','postcode','mobile_phone']
-    template_name = 'member/usermember_update_form.html'
-    # user = request.user.pk
+# class UserMemberUpdate(UpdateView):
+#     model = UserMember
+#     fields = ['full_name', 'address1','address2','postcode','mobile_phone']
+#     template_name = 'member/usermember_update_form.html'
+#     # user = request.user.pk
+#
+#
+#     def get_success_url(self, user):
+#         return reverse('profile')
 
 
-    def get_success_url(self, user):
-        return reverse('profile')
+def update_user(request):
+    userupdated = get_object_or_404(UserMember, user=request.user.pk)
+    if request.method == "POST":
+        form = UserMemberUpdateForm(request.POST, instance=userupdated)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user_id = request.user
+            post.save()
+            return redirect('profile', )
+    else:
+        form = UserMemberUpdateForm()
+
+    return render(request, 'member/usermember_update_form.html', {'form': form})
 
 
 def get_server_side_cookie(request, cookie, default_val=None):
@@ -149,7 +164,7 @@ def addplayer(request):
 
 
 def update_member(request):
-    form = UserMemberForm()
+    form = UserMemberUpdate()
     user = request.user.pk
     if request.method == 'POST':
         form = UserMemberForm(request.POST)

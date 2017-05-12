@@ -34,3 +34,10 @@ class UserMemberAddChildForm(forms.ModelForm):
     class Meta:
         model = Player
         exclude = ('member_parent',)
+
+
+class UserMemberUpdateForm(forms.ModelForm):
+
+    class Meta:
+        model = UserMember
+        fields = ('address1', 'address2', 'city', 'postcode', 'mobile_phone', )
