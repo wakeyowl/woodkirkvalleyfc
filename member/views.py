@@ -41,7 +41,7 @@ def update_user(request):
             post.save()
             return redirect('profile', )
     else:
-        form = UserMemberUpdateForm()
+        form = UserMemberUpdateForm(instance=userupdated)
 
     return render(request, 'member/usermember_update_form.html', {'form': form})
 
