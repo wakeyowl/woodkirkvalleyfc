@@ -8,38 +8,43 @@
 {% block body_block %}
     <div class="jumbotron">
         <div class="page-header">
-            {% for user in loggedin_user %}
-                <h2>{{ user.full_name }}'s Profile</h2>
-            {% endfor %}
+            <div class="col-md-6">
+                {% for user in loggedin_user %}
+                    <h2>{{ user.full_name }}'s Profile</h2>
+                {% endfor %}
+
+            </div>
+
+            <a class="btn btn-primary" href="/member/profile/update/">Edit Contact
+                Details</a>
+
+            <a class="btn btn-primary" href="{{ url }}/member/profile/addplayer/">Register a Player</a>
         </div>
 
+        <!-- Parent Contact Details -->
         <div class="container-fluid">
+
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-primary" href="/member/profile/{{ user.username }}/update_member/">Edit
-                        Details</a>
-                    <a class="btn btn-primary" href="{{ url }}/member/profile/addplayer/">Register a Player</a>
-                </div>
-                <div class="col-md-6">
                     {% for currentuser in loggedin_user %}
-                        <h4><span class="fa fa-address-card-o text-primary"
-                                  aria-hidden="true"></span> {{ currentuser.address1 }}</h4>
-                        <h4><span class="fa fa-circle-thin text-white"
-                                  aria-hidden="true"></span> {{ currentuser.address2 }}</h4>
-                        <h4><span class="fa fa-circle-thin text-white"
-                                  aria-hidden="true"></span> {{ currentuser.postcode }}</h4>
-                        <h4><span class="fa fa-phone text-primary"
-                                  aria-hidden="true"></span> {{ currentuser.mobile_phone }}</h4>
-                        <h4><span class="fa fa-envelope text-primary"
-                                  aria-hidden="true"></span> {{ user.email }}</h4>
+                        <h5><span class="fa fa-address-card-o text-primary"
+                                  aria-hidden="true"></span> {{ currentuser.address1 }}</h5>
+                        <h5><span class="fa fa-circle-thin text-white"
+                                  aria-hidden="true"></span> {{ currentuser.address2 }}</h5>
+                        <h5><span class="fa fa-circle-thin text-white"
+                                  aria-hidden="true"></span> {{ currentuser.postcode }}</h5>
+                        <h5><span class="fa fa-phone text-primary"
+                                  aria-hidden="true"></span> {{ currentuser.mobile_phone }}</h5>
+                        <h5><span class="fa fa-envelope text-primary"
+                                  aria-hidden="true"></span> {{ user.email }}</h5>
                     {% endfor %}
+
                 </div>
             </div>
         </div>
 
 
-        <!-- Add in a loop of registered players by parent -->
-
+        <!-- Loop of registered players assigned to each member -->
 
         <div id="profile_data" class="page-header">
 
@@ -103,14 +108,6 @@
             {% else %}
                 <strong>There are no Players currently registered to you. </strong>
             {% endif %}
-
-            {% if user.id == usermember.user_id %}
-                <ul>
-                    {% for usermember in object_list %}
-                        <li class="contact">{{ usermember }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-
+        </div>
         </div>
 {% endblock %}
