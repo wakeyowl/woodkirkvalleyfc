@@ -98,6 +98,7 @@ DATABASES = {
         # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
         'PORT': '',
         'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
             'sql_mode': 'traditional',
         }
     }
