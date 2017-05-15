@@ -91,7 +91,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # The following settings are not used with sqlite3:
-        'NAME': 'wvfc$registrations',
+        'NAME': 'wvfc$reg',
         'USER': 'wvfc',
         'PASSWORD': 'v0n-neumann',
         'HOST': 'wvfc.mysql.pythonanywhere-services.com',
@@ -101,7 +101,7 @@ DATABASES = {
             'sql_mode': 'traditional',
         }
     }
-    # ,
+    ,
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     # The following settings are not used with sqlite3:
