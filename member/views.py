@@ -139,7 +139,7 @@ def profile(request):
 @login_required
 def addplayer(request):
     try:
-        user = request.user.pk
+            user = request.user.pk
     except User.DoesNotExist:
         return redirect('index')
 
@@ -151,7 +151,7 @@ def addplayer(request):
             if user:
                 page = form.save(commit=False)
                 page.member_parent_id = user
-                page.save()
+                form.save()
 
                 return profile(request)
 
@@ -164,7 +164,7 @@ def addplayer(request):
 
 
 def update_member(request):
-    form = UserMemberUpdate()
+    form = UserMemberUpdateForm()
     user = request.user.pk
     if request.method == 'POST':
         form = UserMemberForm(request.POST)
