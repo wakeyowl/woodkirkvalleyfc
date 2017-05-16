@@ -30,7 +30,7 @@ class UserMemberForm(forms.ModelForm):
 
 
 class UserMemberAddChildForm(forms.ModelForm):
-    birthdate = forms.DateField(input_formats=['%d/%m/%Y'])
+    birthdate = forms.DateField(input_formats=['%d/%m/%Y'], help_text='format=DD/MM/YYYY')
     class Meta:
         model = Player
         exclude = ('member_parent',)
