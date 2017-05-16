@@ -7,7 +7,6 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
 
-
 from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm
 from member.models import UserMember, Player
 
@@ -17,7 +16,6 @@ class WoodkirkRegistrationView(RegistrationView):
         return reverse('register_profile')
 
 
-@login_required
 def update_user(request):
     userupdated = get_object_or_404(UserMember, user=request.user.pk)
     if request.method == "POST":
@@ -88,7 +86,6 @@ def index(request):
     return response
 
 
-@login_required
 def add_member(request):
     form = UserMemberForm()
 
@@ -123,7 +120,7 @@ def profile(request):
 @login_required
 def addplayer(request):
     try:
-            user = request.user.pk
+        user = request.user.pk
     except User.DoesNotExist:
         return redirect('index')
 
@@ -134,8 +131,8 @@ def addplayer(request):
         if form.is_valid():
             if user:
                 page = form.save(commit=False)
-                page.member_parent_id = user
-                form.save()
+                page.mem = user
+                page.save()
 
                 return profile(request)
 
@@ -147,8 +144,6 @@ def addplayer(request):
     return render(request, 'member/add_player.html', context_dict)
 
 
-# Simple Update Member View
-@login_required
 def update_member(request):
     form = UserMemberUpdateForm()
     user = request.user.pk
@@ -158,11 +153,9 @@ def update_member(request):
         if form.is_valid():
             form.save(commit=True)
 
-            return profile(request)
+            return index(request)
         else:
             print(form.errors)
     else:
         return render(request, 'member/usermember_update_form.html', {'form': form})
     return render(request, 'member/usermember_update_form.html', {'form': form})
-
-
