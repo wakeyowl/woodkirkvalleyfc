@@ -2,14 +2,11 @@ from datetime import datetime
 
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, request
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
-from django.template.context_processors import csrf
-from django.views.generic import ListView
 from registration.backends.simple.views import RegistrationView
-from django.views.generic.edit import UpdateView, FormView
+
 
 from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm
 from member.models import UserMember, Player
@@ -20,17 +17,7 @@ class WoodkirkRegistrationView(RegistrationView):
         return reverse('register_profile')
 
 
-# class UserMemberUpdate(UpdateView):
-#     model = UserMember
-#     fields = ['full_name', 'address1','address2','postcode','mobile_phone']
-#     template_name = 'member/usermember_update_form.html'
-#     # user = request.user.pk
-#
-#
-#     def get_success_url(self, user):
-#         return reverse('profile')
-
-
+@login_required
 def update_user(request):
     userupdated = get_object_or_404(UserMember, user=request.user.pk)
     if request.method == "POST":
@@ -87,7 +74,7 @@ def register_profile(request):
             user_profile.user = request.user
             user_profile.save()
 
-            return redirect('index')
+            return redirect('profile')
         else:
             print(form.errors)
 
@@ -101,6 +88,7 @@ def index(request):
     return response
 
 
+@login_required
 def add_member(request):
     form = UserMemberForm()
 
@@ -127,11 +115,7 @@ def profile(request):
     current_user = UserMember.objects.filter(user_id=user)
     player_list = Player.objects.filter(member_parent_id=user).prefetch_related('manager__player_set')
     player_list.order_by('manager__full_name')
-    # address_list = UserMember.objects.filter(member_parent_id=user)
     context_dict = {'player': player_list, 'loggedin_user': current_user}
-
-    # userprofile = User.objects.get(username=user)
-    # form = UserMemberAddChildForm({})
 
     return render(request, 'member/profile.html', context=context_dict)
 
@@ -163,6 +147,8 @@ def addplayer(request):
     return render(request, 'member/add_player.html', context_dict)
 
 
+# Simple Update Member View
+@login_required
 def update_member(request):
     form = UserMemberUpdateForm()
     user = request.user.pk
@@ -172,7 +158,7 @@ def update_member(request):
         if form.is_valid():
             form.save(commit=True)
 
-            return index(request)
+            return profile(request)
         else:
             print(form.errors)
     else:
