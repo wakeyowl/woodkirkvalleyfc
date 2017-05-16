@@ -131,7 +131,7 @@ def addplayer(request):
         if form.is_valid():
             if user:
                 page = form.save(commit=False)
-                page.mem = user
+                page.member_parent_id = user
                 page.save()
 
                 return profile(request)
