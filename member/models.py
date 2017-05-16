@@ -93,8 +93,8 @@ class Payments(models.Model):
     payment_amount = models.DecimalField(max_digits=6, decimal_places=2)
     description = models.CharField(max_length=200)
     date_taken = models.DateField()
-    player = models.ForeignKey('Player', on_delete=models.CASCADE,)
-    manager = models.ForeignKey('TeamManagers', on_delete=models.CASCADE,)
+    player = models.ForeignKey('Player', on_delete=models.CASCADE, )
+    manager = models.ForeignKey('TeamManagers', on_delete=models.CASCADE, )
     PLAYER_MEMBERSHIP = 'Player Membership'
     CLUB_MEMBERSHIP = 'Club Membership'
     DONATION = 'Club Donation'
@@ -107,3 +107,43 @@ class Payments(models.Model):
 
     class Meta:
         verbose_name_plural = "Payments"
+
+
+class Accidents(models.Model):
+    # Section 1
+    ACC_TYPES = (
+        ('ACCIDENT', 'Accident'),
+        ('DANGEROUS OCCURANCE', 'Dangerous Occurance'),
+        ('WORK RELATED', 'Work Related'),
+        ('NEAR MISS', 'Near Miss'),
+    )
+    accidenttype = models.CharField(max_length=200, choices=ACC_TYPES)
+    person_injured = models.CharField(max_length=200)
+    TITLES = (
+        ('PROF', 'Professor'),
+        ('DR', 'Doctor'),
+        ('MR', 'Mr'),
+        ('MRS', 'Mrs'),
+        ('MS', 'Ms'),
+    )
+    title = models.CharField(max_length=200, choices=TITLES)
+    address = models.CharField(max_length=200, null=True)
+    postcode = models.CharField(max_length=12, null=True)
+    mobile_phone = models.CharField(max_length=12, null=True, blank=True)
+    # Section 2
+    accident_date = models.DateTimeField()
+    accident_location = models.CharField(max_length=200, null=True)
+    accident_reason = models.CharField(max_length=200, null=True, help_text='How did it happen?')
+    accident_injury = models.CharField(max_length=200, null=True, help_text='Give details of the injury?')
+    # Section 3
+    FIRST_AID_OUTCOME = (
+        ('ACCEPTED', 'Accepted'),
+        ('REFUSED', 'Refused'),
+        ('HOSPITAL', 'Hospital'),
+    )
+    first_aid_outcome = models.CharField(max_length=200, choices=FIRST_AID_OUTCOME)
+    first_aid_given = models.CharField(max_length=200, help_text='What first aid was given?')
+    first_aid_person = models.CharField(max_length=100, help_text='Who gave the first aid?')
+    first_aid_hospitalised = models.BooleanField()
+    hospital_more_than_24 = models.BooleanField()
+    hospital_name = models.CharField(max_length=200)

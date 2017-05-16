@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
 
-from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm
+from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm, AccidentForm
 from member.models import UserMember, Player
 
 
@@ -60,6 +60,20 @@ def visitor_cookie_handler(request):
         request.session['last_visit'] = last_visit_cookie
     # update/set the visits cookie
     request.session['visits'] = visits
+
+
+def register_accident(request):
+    form = AccidentForm()
+    if request.method == 'POST':
+        form = AccidentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+        else:
+            print(form.errors)
+    context_dict = {'form': form}
+
+    return render(request, 'member/accident_form.html', context_dict)
 
 
 @login_required

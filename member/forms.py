@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.views.generic import UpdateView
 
-from member.models import UserMember, Player
+from member.models import UserMember, Player, Accidents
 
 
 class UserMemberForm(forms.ModelForm):
@@ -31,13 +31,21 @@ class UserMemberForm(forms.ModelForm):
 
 class UserMemberAddChildForm(forms.ModelForm):
     birthdate = forms.DateField(input_formats=['%d/%m/%Y'], help_text='format=DD/MM/YYYY')
+
     class Meta:
         model = Player
         exclude = ('member_parent',)
 
 
 class UserMemberUpdateForm(forms.ModelForm):
-
     class Meta:
         model = UserMember
-        fields = ('address1', 'address2', 'city', 'postcode', 'mobile_phone', )
+        fields = ('address1', 'address2', 'city', 'postcode', 'mobile_phone',)
+
+
+class AccidentForm(forms.ModelForm):
+    class Meta:
+        model = Accidents
+        fields = ('accidenttype', 'person_injured', 'title', 'address', 'postcode', 'mobile_phone',
+                  'accident_date', 'accident_injury', 'accident_location', 'accident_reason',
+                  'first_aid_outcome', 'first_aid_given', 'first_aid_hospitalised', 'first_aid_person', 'hospital_more_than_24', 'hospital_name')

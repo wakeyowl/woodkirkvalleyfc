@@ -1,0 +1,22 @@
+{% extends 'member/base_bootstrap.html' %}
+{% load staticfiles %}
+{% load bootstrap3 %}
+{% block title_block %}
+    Add a Page
+{% endblock %}
+
+{% block body_block %}
+
+<h1>Log an Accident Incident</h1>
+<div>
+    <form role="form" id="category_form" method="post" action="{% url 'register_accident' %}">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        </br>
+
+        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+
+    </form>
+</div>
+
+{% endblock %}
