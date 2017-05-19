@@ -96,3 +96,4 @@ ENV/
 /db.sqlite3
 /member/migrations/
 !/member/migrations/__init__.py
+/2.7/
