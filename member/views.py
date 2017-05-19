@@ -148,7 +148,6 @@ def addplayer(request):
                 page.member_parent_id = request.user
                 page.save()
 
-
                 return profile(request)
 
         else:
