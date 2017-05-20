@@ -52,9 +52,9 @@ class Player(models.Model):
     )
     name = models.CharField(max_length=128)
     gender = models.CharField(max_length=1, choices=SEX_CHOICES)
-    manager = models.ForeignKey(TeamManagers, on_delete=models.CASCADE)
+    manager = models.ForeignKey(TeamManagers, on_delete=models.CASCADE, blank=False)
     birthdate = models.DateField()
-    member_parent = models.ForeignKey(UserMember, on_delete=models.CASCADE)
+    member_parent = models.ForeignKey(UserMember, on_delete=models.CASCADE, blank=False)
     medical_details = models.TextField()
     is_active = models.BooleanField(default=True)
 
