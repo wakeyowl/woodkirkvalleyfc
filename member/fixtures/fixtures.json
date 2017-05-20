@@ -1,60 +1,362 @@
 [
   {
-    "model": "member.teammanagers",
-    "pk": 1,
+    "model": "member.player",
+    "pk": 7,
     "fields": {
-      "full_name": "Andy Smith",
-      "team": "U9 Boys"
+      "name": "Alfie barraclough",
+      "gender": "M",
+      "manager": 1,
+      "birthdate": "2009-05-12",
+      "member_parent": 6,
+      "medical_details": "Nil",
+      "is_active": true
     }
   },
   {
-    "model": "member.teammanagers",
-    "pk": 2,
+    "model": "member.player",
+    "pk": 8,
     "fields": {
-      "full_name": "Ryan Healey",
-      "team": "U11 Boys"
+      "name": "Grace stott",
+      "gender": "F",
+      "manager": 1,
+      "birthdate": "2009-03-31",
+      "member_parent": 7,
+      "medical_details": "None",
+      "is_active": true
     }
   },
   {
-    "model": "member.teammanagers",
-    "pk": 3,
+    "model": "member.player",
+    "pk": 9,
     "fields": {
-      "full_name": "Jason Tabor",
-      "team": "U13 Girls"
+      "name": "Zac Jones",
+      "gender": "M",
+      "manager": 1,
+      "birthdate": "2009-05-01",
+      "member_parent": 8,
+      "medical_details": "N/A",
+      "is_active": true
     }
   },
   {
-    "model": "member.teammanagers",
-    "pk": 4,
+    "model": "member.player",
+    "pk": 10,
     "fields": {
-      "full_name": "Iain Macdonald",
-      "team": "U9 Boys"
+      "name": "Addison Craft",
+      "gender": "M",
+      "manager": 1,
+      "birthdate": "2009-06-25",
+      "member_parent": 9,
+      "medical_details": "None",
+      "is_active": true
     }
   },
   {
-    "model": "member.teammanagers",
-    "pk": 5,
+    "model": "member.player",
+    "pk": 11,
     "fields": {
-      "full_name": "Iain Macdonald",
-      "team": "U9 Boys"
+      "name": "Oscar Booth",
+      "gender": "M",
+      "manager": 1,
+      "birthdate": "2009-07-08",
+      "member_parent": 10,
+      "medical_details": "None",
+      "is_active": true
+    }
+  },
+  {
+    "model": "member.player",
+    "pk": 12,
+    "fields": {
+      "name": "Thomas Lomax",
+      "gender": "M",
+      "manager": 1,
+      "birthdate": "2009-04-14",
+      "member_parent": 11,
+      "medical_details": "None",
+      "is_active": true
     }
   },
   {
     "model": "auth.user",
-    "pk": 2,
+    "pk": 3,
     "fields": {
-      "password": "pbkdf2_sha256$30000$kRfaJiSivlCu$E752CFM/imBXE1p0e2U4UGvYm7JVMYVYpjGMJ+YuuLs=",
-      "last_login": "2017-05-15T21:27:15.068Z",
-      "is_superuser": true,
-      "username": "super",
+      "password": "pbkdf2_sha256$30000$RkdfO9K4xdYk$DHyP02lGYaeY/JzjCSaXmw7eP0410kau7j2Xcl+F8Hc=",
+      "last_login": "2017-05-15T21:39:55.911Z",
+      "is_superuser": false,
+      "username": "947joy",
       "first_name": "",
       "last_name": "",
-      "email": "",
-      "is_staff": true,
+      "email": "joylumb@aol.com",
+      "is_staff": false,
       "is_active": true,
-      "date_joined": "2017-05-15T20:14:45.679Z",
+      "date_joined": "2017-05-15T21:39:55.521Z",
       "groups": [],
       "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$s54rbD7VxM0S$5/1eo5+in4wlb3pA3YTjyxhn6bq0wtth3BfqI21G3CI=",
+      "last_login": "2017-05-16T04:45:32.216Z",
+      "is_superuser": false,
+      "username": "pcook",
+      "first_name": "",
+      "last_name": "",
+      "email": "P.Cook@mmu.ac.uk",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-16T04:45:31.917Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 7,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$TXVhjRr5YWUS$i/Tc+dJk0OhHAPV1cGCfkNUepIJvHMLEMCjXKsq14mM=",
+      "last_login": "2017-05-16T07:16:38.449Z",
+      "is_superuser": false,
+      "username": "Melbarraclough1@gmail.com",
+      "first_name": "",
+      "last_name": "",
+      "email": "Melbarraclough1@gmail.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-16T07:16:37.866Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 8,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$Z3Zs3nhSTbqw$yhJVdApcK/QQO7vIAkf3nG8qcFm2k9FLhvGOTG6snd8=",
+      "last_login": "2017-05-16T09:35:36.245Z",
+      "is_superuser": false,
+      "username": "Ruthnben",
+      "first_name": "",
+      "last_name": "",
+      "email": "ruthnben@sky.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-16T09:35:35.871Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 9,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$xTIgybMp9X3o$PQy4biOdAcLjnZdj2bgg2OgSHW3ssRJKtOHUmyDkEns=",
+      "last_login": "2017-05-16T20:19:26.196Z",
+      "is_superuser": false,
+      "username": "gemmaljones",
+      "first_name": "",
+      "last_name": "",
+      "email": "gemma_jones2@sky.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-16T20:19:25.843Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 10,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$19XZeuR4DUC7$7mLvQH4A8UluitdFAPfqJ7vF/UiWhqsvQYwm6bxzkiY=",
+      "last_login": "2017-05-17T12:26:36.521Z",
+      "is_superuser": false,
+      "username": "h.pool@aol.co.uk",
+      "first_name": "",
+      "last_name": "",
+      "email": "h.pool@aol.co.uk",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-17T12:26:36.049Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 11,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$77q39sQTnwRm$MQWQ2kG6wECRAR9tkkhhttlGPIHamuciXFZxEXo1IaE=",
+      "last_login": "2017-05-17T20:44:48.554Z",
+      "is_superuser": false,
+      "username": "Jskitt",
+      "first_name": "",
+      "last_name": "",
+      "email": "jskitt@sky.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-17T12:31:53.178Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 12,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$FmR1F6cpqr9H$06p3iILNYAdGUXx9OiWKFGOrwaE5w9PKrMvwyI3dj7g=",
+      "last_login": "2017-05-17T21:22:09.025Z",
+      "is_superuser": false,
+      "username": "Andrew_Lomax",
+      "first_name": "",
+      "last_name": "",
+      "email": "andrew.lomax@hotmail.co.uk",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-17T21:22:08.585Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 13,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$tmJztDx7lgtg$CrOItg+7R2H2y+9VjZX9yY5xbP9zw8oGAxxC7Pn704w=",
+      "last_login": "2017-05-19T20:18:29.239Z",
+      "is_superuser": false,
+      "username": "imacdonald",
+      "first_name": "",
+      "last_name": "",
+      "email": "iain.macdonald@williamhill.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2017-05-19T20:18:28.932Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 3,
+    "fields": {
+      "user": 3,
+      "full_name": "Joy  Lumb",
+      "address1": "2 Heatherdale Drive",
+      "address2": "Tingley",
+      "city": "Wakefield",
+      "postcode": "WF3 1NG",
+      "mobile_phone": "07737050475",
+      "slug": "joy-lumb",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 4,
+    "fields": {
+      "user": 5,
+      "full_name": "Phil Cook",
+      "address1": "23 Smith Street",
+      "address2": "Smith Street",
+      "city": "Leeds",
+      "postcode": "WF3 1UU",
+      "mobile_phone": "07567879657",
+      "slug": "phil-cook",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 6,
+    "fields": {
+      "user": 7,
+      "full_name": "Melanie barraclough",
+      "address1": "21 broadcroft way",
+      "address2": "Tingley",
+      "city": "wakefield",
+      "postcode": "WF3 1TT",
+      "mobile_phone": "07867007200",
+      "slug": "melanie-barraclough",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 7,
+    "fields": {
+      "user": 8,
+      "full_name": "Ruth stott",
+      "address1": "19 Intake Lane",
+      "address2": "Birstall",
+      "city": "Batley",
+      "postcode": "Wf170bs",
+      "mobile_phone": "07455190676",
+      "slug": "ruth-stott",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 8,
+    "fields": {
+      "user": 9,
+      "full_name": "Gemma Jones",
+      "address1": "323 soothill lane",
+      "address2": "Batley",
+      "city": "Wakefield",
+      "postcode": "Wf17 6es",
+      "mobile_phone": "07847446665",
+      "slug": "gemma-jones",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 9,
+    "fields": {
+      "user": 10,
+      "full_name": "Helen Pool",
+      "address1": "26 Landseer Avenue",
+      "address2": "Tingley",
+      "city": "Wakefield",
+      "postcode": "WF3 1UE",
+      "mobile_phone": "07833 670646",
+      "slug": "helen-pool",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 10,
+    "fields": {
+      "user": 11,
+      "full_name": "Julie Skitt",
+      "address1": "14 Blackgates Drive",
+      "address2": "Tingley",
+      "city": "Wakefield",
+      "postcode": "WF3 1TE",
+      "mobile_phone": "07944990212",
+      "slug": "julie-skitt",
+      "consent": true
+    }
+  },
+  {
+    "model": "member.usermember",
+    "pk": 11,
+    "fields": {
+      "user": 12,
+      "full_name": "Andrew Lomax",
+      "address1": "14 Upper Green drive",
+      "address2": "TINGLEY",
+      "city": "Wakefield",
+      "postcode": "Wf3 1td",
+      "mobile_phone": "07775542850",
+      "slug": "andrew-lomax",
+      "consent": true
     }
   }
 ]
