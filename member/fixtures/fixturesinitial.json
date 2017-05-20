@@ -1,0 +1,200 @@
+[
+  {
+    "model": "member.teammanagers",
+    "pk": 1,
+    "fields": {
+      "full_name": "Iain Macdonald",
+      "team": "U09 Boys",
+      "mobile_phone": "07515060848",
+      "email": "iain.macdonald@williamhill.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 2,
+    "fields": {
+      "full_name": "Andy Smith - SS",
+      "team": "Soccer School",
+      "mobile_phone": "07968337109",
+      "email": "andy.wvfc@gmail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 3,
+    "fields": {
+      "full_name": "John Finch",
+      "team": "U08 Boys",
+      "mobile_phone": "07956461508",
+      "email": "k.klf@btinternet.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 4,
+    "fields": {
+      "full_name": "Matt Bessington",
+      "team": "U10 Boys",
+      "mobile_phone": "07799757277",
+      "email": "tjb2005@sky.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 5,
+    "fields": {
+      "full_name": "Ryan Healey",
+      "team": "U11 Boys",
+      "mobile_phone": "07540835331",
+      "email": "ryanhealey1984@googlemail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 6,
+    "fields": {
+      "full_name": "Aaron Jackson",
+      "team": "U12 Boys",
+      "mobile_phone": "07817699895",
+      "email": "aaron@garforthleague.co.uk"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 7,
+    "fields": {
+      "full_name": "Craig Leaver",
+      "team": "U12 Boys",
+      "mobile_phone": "07545951192",
+      "email": "craigleaver75@gmail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 8,
+    "fields": {
+      "full_name": "Andy Foster",
+      "team": "U13 Boys",
+      "mobile_phone": "07919158192",
+      "email": "foster.aj5@sky.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 10,
+    "fields": {
+      "full_name": "Andy Smith",
+      "team": "U14 Boys",
+      "mobile_phone": "07968337109",
+      "email": "andy.wvfc@gmail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 11,
+    "fields": {
+      "full_name": "Steve Rose",
+      "team": "U16 Boys",
+      "mobile_phone": "07956213502",
+      "email": "steven.rose.wvfc@outlook.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 12,
+    "fields": {
+      "full_name": "Craig Cuthbert ",
+      "team": "U11 Girls",
+      "mobile_phone": "07843095394",
+      "email": "cbcuthbert@hotmail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 13,
+    "fields": {
+      "full_name": "Darren Gearey",
+      "team": "U12 Girls",
+      "mobile_phone": "07816272558",
+      "email": "isabellalucy@icloud.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 14,
+    "fields": {
+      "full_name": "Jason Tabor",
+      "team": "U14 Girls",
+      "mobile_phone": "07940210866",
+      "email": "jason.tabor@sky.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 15,
+    "fields": {
+      "full_name": "Craig Currie",
+      "team": "U14 Girls",
+      "mobile_phone": "07808947124",
+      "email": "craigcurrie5@gmail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 16,
+    "fields": {
+      "full_name": "Dave Swithenbank",
+      "team": "Open Age",
+      "mobile_phone": "07867532841",
+      "email": "dave.swithenbank@btconnect.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 17,
+    "fields": {
+      "full_name": "Kevin Mawson",
+      "team": "Open Age Res",
+      "mobile_phone": "07889597766",
+      "email": "kevin.mawson@googlemail.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 18,
+    "fields": {
+      "full_name": "Gareth Huxall",
+      "team": "Open Age Sun",
+      "mobile_phone": "07507650540",
+      "email": "gareth.huxall@redcentricplc.com"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 19,
+    "fields": {
+      "full_name": "Phil Ellerby",
+      "team": "U07 Boys",
+      "mobile_phone": "",
+      "email": "philellerby@me.com"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$30000$7dEMnvCxDULf$D+v9dchRcPCdjLdd4x/yVh7Gp1yO7z7qC/fuUrEEBAM=",
+      "last_login": "2017-05-20T13:38:52.710Z",
+      "is_superuser": true,
+      "username": "super",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2017-05-20T07:13:07.531Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

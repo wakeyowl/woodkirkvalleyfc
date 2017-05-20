@@ -3,7 +3,7 @@
     "model": "member.teammanagers",
     "pk": 1,
     "fields": {
-      "full_name": "Iain Macdonald",
+      "full_name": "Andy Smith",
       "team": "U9 Boys"
     }
   },
@@ -21,6 +21,22 @@
     "fields": {
       "full_name": "Jason Tabor",
       "team": "U13 Girls"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 4,
+    "fields": {
+      "full_name": "Iain Macdonald",
+      "team": "U9 Boys"
+    }
+  },
+  {
+    "model": "member.teammanagers",
+    "pk": 5,
+    "fields": {
+      "full_name": "Iain Macdonald",
+      "team": "U9 Boys"
     }
   },
   {
