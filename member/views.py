@@ -145,7 +145,8 @@ def addplayer(request):
         if form.is_valid():
             if user:
                 page = form.save(commit=False)
-                page.member_parent_id = request.user.pk
+                current_user = UserMember.objects.filter(user_id=user)
+                page.member_parent_id = current_user[0].user_id
                 page.save()
 
                 return profile(request)
