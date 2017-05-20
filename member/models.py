@@ -16,7 +16,10 @@ class TeamManagers(models.Model):
     )
 
     def __str__(self):
-        return self.full_name
+        return ' '.join([
+            self.full_name,
+            self.team,
+        ])
 
     class Meta:
         verbose_name_plural = "Managers"
