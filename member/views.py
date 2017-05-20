@@ -124,7 +124,8 @@ def profile(request):
         return redirect('index')
 
     current_user = UserMember.objects.filter(user_id=user)
-    player_list = Player.objects.filter(member_parent_id=user).prefetch_related('manager__player_set')
+    player_list = Player.objects.filter(member_parent_id=current_user[0].user_id).prefetch_related(
+        'manager__player_set')
     player_list.order_by('manager__full_name')
     context_dict = {'player': player_list, 'loggedin_user': current_user}
 
