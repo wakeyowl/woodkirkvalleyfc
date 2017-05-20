@@ -38,7 +38,6 @@ pass
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
     list_display = ('name', 'gender', 'birthdate', 'medical_details', 'member_parent_id', 'is_active', 'manager_id')
-    list_filter = ('manager_id', 'is_active',)
 
     actions = [make_player_active]
 pass
