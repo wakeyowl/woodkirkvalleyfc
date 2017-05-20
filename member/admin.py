@@ -12,7 +12,7 @@ make_player_active.short_description = "Make Selected Players Active"
 
 @admin.register(UserMember)
 class UserMemberAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'user',)
+    list_display = ('full_name', 'user', 'address1', 'address2', 'postcode',)
 
 
 pass
@@ -20,7 +20,7 @@ pass
 
 @admin.register(TeamManagers)
 class TeamManagerAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'team')
+    list_display = ('full_name', 'team', 'email', 'mobile_phone', )
 
 
 pass
