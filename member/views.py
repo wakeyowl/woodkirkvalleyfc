@@ -122,14 +122,17 @@ def profile(request):
         user = request.user.pk
     except User.DoesNotExist:
         return redirect('index')
+    try:
+        current_user = UserMember.objects.filter(user_id=user)
+        player_list = Player.objects.filter(member_parent_id=current_user[0].id).prefetch_related(
+            'manager__player_set')
+        player_list.order_by('manager__full_name')
+        context_dict = {'player': player_list, 'loggedin_user': current_user}
+        return render(request, 'member/profile.html', context=context_dict)
+    except IndexError:
+        return render(request, 'member/profile.html',)
 
-    current_user = UserMember.objects.filter(user_id=user)
-    player_list = Player.objects.filter(member_parent_id=current_user[0].id).prefetch_related(
-        'manager__player_set')
-    player_list.order_by('manager__full_name')
-    context_dict = {'player': player_list, 'loggedin_user': current_user}
 
-    return render(request, 'member/profile.html', context=context_dict)
 
 
 @login_required

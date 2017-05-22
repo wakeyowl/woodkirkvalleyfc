@@ -2,21 +2,45 @@
 {% load staticfiles %}
 {% load bootstrap3 %}
 {% block title_block %}
-    Add a Page
+    Accident Report Form
 {% endblock %}
 
 {% block body_block %}
 
-<h1>Log an Accident Incident</h1>
-<div>
-    <form role="form" id="category_form" method="post" action="{% url 'register_accident' %}">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        </br>
+    <h1>Accident Report Form</h1>
+    <div class="jumbotron">
 
-        <button class="btn btn-primary" type="submit" name="submit">Submit</button>
+        <form role="form" id="accident_form" method="post" action=".">
+            {% csrf_token %}
+            <h3>Injured Person Details</h3>
+            {#                {% bootstrap_form form %}#}
+            {#                            Section 1#}
+            {% bootstrap_form_errors form type='non_fields' %}
+            {% bootstrap_field form.person_injured size='sm' %}
+            {% bootstrap_field form.accident_type size='sm' %}
+            {% bootstrap_field form.accident_date size='sm' %}
+            {% bootstrap_field form.person_injured_address size='sm' %}
+            {% bootstrap_field form.person_injured_postcode size='sm' %}
+            {% bootstrap_field form.person_injured_mobile_phone size='sm' %}
+            <hr>
+        <h3>Injured Details</h3>
+            {#                            Section 2#}
+            {% bootstrap_field form.accident_location size='sm' %}
+            {% bootstrap_field form.accident_reason size='sm' %}
+            {% bootstrap_field form.injury_sustained size='sm' %}
+            <hr>
+        <h3>First Aid Details</h3>
+            {#                            Section 3#}
+            {% bootstrap_field form.first_aid_outcome size='sm' %}
+            {% bootstrap_field form.first_aid_given size='sm' %}
+            {% bootstrap_field form.first_aid_person size='sm' %}
+            {% bootstrap_field form.first_aid_hospitalised size='sm' %}
+            {% bootstrap_field form.hospital_more_than_24 size='sm' %}
+            {% bootstrap_field form.hospital_name size='sm' %}
+            {% buttons submit='OK' reset='Cancel' layout='horizontal' %}{% endbuttons %}
 
-    </form>
-</div>
+        </form>
+
+    </div>
 
 {% endblock %}

@@ -1,10 +1,12 @@
 from django import forms
+from django.forms import SelectDateWidget
 from django.http import request
 from django.urls import reverse
 from django.utils.safestring import mark_safe
 from django.views.generic import UpdateView
+from django.contrib.admin.widgets import AdminDateWidget
 
-from member.models import UserMember, Player, Accidents
+from member.models import UserMember, Player, Accident
 
 
 class UserMemberForm(forms.ModelForm):
@@ -44,8 +46,12 @@ class UserMemberUpdateForm(forms.ModelForm):
 
 
 class AccidentForm(forms.ModelForm):
+    accident_date = forms.DateField(widget=SelectDateWidget(empty_label="Nothing"),)
+
     class Meta:
-        model = Accidents
-        fields = ('accidenttype', 'person_injured', 'title', 'address', 'postcode', 'mobile_phone',
-                  'accident_date', 'accident_injury', 'accident_location', 'accident_reason',
-                  'first_aid_outcome', 'first_aid_given', 'first_aid_hospitalised', 'first_aid_person', 'hospital_more_than_24', 'hospital_name')
+        model = Accident
+        fields = ('accident_type', 'person_injured', 'person_injured_address', 'person_injured_postcode',
+                  'person_injured_mobile_phone',
+                  'accident_date', 'injury_sustained', 'accident_location', 'accident_reason',
+                  'first_aid_outcome', 'first_aid_person', 'first_aid_given', 'first_aid_hospitalised',
+                  'hospital_more_than_24', 'hospital_name')

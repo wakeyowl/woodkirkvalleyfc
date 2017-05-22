@@ -56,9 +56,15 @@
 
                 <li role="separator" class="divider"></li>
 
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'profile' %}">
                         <span class="fa fa-user" aria-hidden="true"></span> My Profile
+                    </a>
+                </li>
+
+                <li class="products nav-item">
+                    <a class="nav-link" href="{% url 'register_accident' %}">
+                        <span class="fa fa-ambulance" aria-hidden="true"></span> Accident Form
                     </a>
                 </li>
 
@@ -74,6 +80,12 @@
         {% else %}
 
             <ul class="nav navbar-nav navbar-right">
+                <li class="products nav-item">
+                    <a class="nav-link" href="{% url 'register_accident' %}">
+                        <span class="fa fa-ambulance" aria-hidden="true"></span> Accident Form
+                    </a>
+                </li>
+
                 <li class="products nav-item">
                     <a class="nav-link" href="{% url 'registration_register' %}">
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Register Here

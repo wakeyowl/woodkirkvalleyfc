@@ -119,7 +119,7 @@ class Payments(models.Model):
         verbose_name_plural = "Payments"
 
 
-class Accidents(models.Model):
+class Accident(models.Model):
     # Section 1
     ACC_TYPES = (
         ('ACCIDENT', 'Accident'),
@@ -127,24 +127,17 @@ class Accidents(models.Model):
         ('WORK RELATED', 'Work Related'),
         ('NEAR MISS', 'Near Miss'),
     )
-    accidenttype = models.CharField(max_length=200, choices=ACC_TYPES)
+    accident_type = models.CharField(max_length=200, choices=ACC_TYPES)
     person_injured = models.CharField(max_length=200)
-    TITLES = (
-        ('PROF', 'Professor'),
-        ('DR', 'Doctor'),
-        ('MR', 'Mr'),
-        ('MRS', 'Mrs'),
-        ('MS', 'Ms'),
-    )
-    title = models.CharField(max_length=200, choices=TITLES)
-    address = models.CharField(max_length=200, null=True)
-    postcode = models.CharField(max_length=12, null=True)
-    mobile_phone = models.CharField(max_length=12, null=True, blank=True)
-    # Section 2
+    person_injured_address = models.CharField(max_length=200, null=True)
+    person_injured_postcode = models.CharField(max_length=12, null=True)
+    person_injured_mobile_phone = models.CharField(max_length=12, null=True, blank=True)
+
     accident_date = models.DateTimeField()
-    accident_location = models.CharField(max_length=200, null=True)
+    # Section 2
+    accident_location = models.CharField(max_length=200, null=True, help_text='Where did it happen?')
     accident_reason = models.CharField(max_length=200, null=True, help_text='How did it happen?')
-    accident_injury = models.CharField(max_length=200, null=True, help_text='Give details of the injury?')
+    injury_sustained = models.CharField(max_length=200, null=True, help_text='Give details of the injury?')
     # Section 3
     FIRST_AID_OUTCOME = (
         ('ACCEPTED', 'Accepted'),
@@ -154,6 +147,6 @@ class Accidents(models.Model):
     first_aid_outcome = models.CharField(max_length=200, choices=FIRST_AID_OUTCOME)
     first_aid_given = models.CharField(max_length=200, help_text='What first aid was given?')
     first_aid_person = models.CharField(max_length=100, help_text='Who gave the first aid?')
-    first_aid_hospitalised = models.BooleanField()
-    hospital_more_than_24 = models.BooleanField()
-    hospital_name = models.CharField(max_length=200)
+    first_aid_hospitalised = models.BooleanField(help_text='Did the injured person need to attend hospital?')
+    hospital_more_than_24 = models.BooleanField(help_text='Was the injured person in hospital for more than 24 hours?')
+    hospital_name = models.CharField(max_length=200, help_text='Which hospital did they visit?')
