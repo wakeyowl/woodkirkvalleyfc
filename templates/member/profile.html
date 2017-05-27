@@ -57,9 +57,15 @@
                         <ul class="list-group">
                             <li class="list-group-item">
                                 <h2>
-                                    <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="50px"/>
-                                    {{ child.name }}
 
+                                    {% if child.picture %}
+                                        <img src="/member/media/{{ child.picture }}" width="75" height="75"
+                                             alt="{{ child.name }}"/>
+                                    {% else %}
+                                        <a href="add_member.html">Upload Photo</a>
+                                    {% endif %}
+
+                                    {{ child.name }}
                                     {% if child.is_active == True %}
                                         <i> (Active)</i>
                                         <button type="button" class="btn btn-default btn-lg">
@@ -116,5 +122,5 @@
                 <strong>There are no Players currently registered to you. </strong>
             {% endif %}
         </div>
-        </div>
+    </div>
 {% endblock %}

@@ -1,7 +1,8 @@
 from django.conf.urls import url
 
-import member
 from member import views
+from woodkirkvalleydata import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # url(r'^$', member.views.ListContactView.as_view(),
@@ -14,6 +15,4 @@ urlpatterns = [
     url(r'^accidentform/$', views.register_accident, name='register_accident'),
     url(r'^profile/addplayer/$', views.addplayer, name='addplayer'),
     url(r'^profile/update/$', views.update_user, name='update_user'),
-
-    # url(r'^profile/(?P<username>[\w\-.@]+)/update_member/$', UserMemberUpdate.as_view(), name='usermember_update'),
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -66,6 +66,7 @@ class Player(models.Model):
     birthdate = models.DateField()
     member_parent = models.ForeignKey(UserMember, on_delete=models.CASCADE, blank=False)
     medical_details = models.TextField()
+    picture = models.ImageField(upload_to='profile_images', blank=True)
     is_active = models.BooleanField(default=True)
 
     class Meta:
