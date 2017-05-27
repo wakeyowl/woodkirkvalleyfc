@@ -28,3 +28,6 @@ and (-webkit-min-device-pixel-ratio: 2) {
     float:right;
 }
 
+.img-circle {
+    border-radius: 50%;
+}
