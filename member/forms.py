@@ -28,7 +28,8 @@ class UserMemberForm(forms.ModelForm):
 
     class Meta:
         model = UserMember
-        fields = ('full_name', 'address1', 'address2', 'city', 'postcode', 'mobile_phone', 'consent')
+        fields = (
+        'full_name', 'address1', 'address2', 'city', 'postcode', 'mobile_phone', 'consent', 'accepted_code_of_conduct',)
 
 
 class UserMemberAddChildForm(forms.ModelForm):
@@ -42,11 +43,11 @@ class UserMemberAddChildForm(forms.ModelForm):
 class UserMemberUpdateForm(forms.ModelForm):
     class Meta:
         model = UserMember
-        fields = ('address1', 'address2', 'city', 'postcode', 'mobile_phone',)
+        fields = ('address1', 'address2', 'city', 'postcode', 'mobile_phone', 'accepted_code_of_conduct',)
 
 
 class AccidentForm(forms.ModelForm):
-    accident_date = forms.DateField(widget=SelectDateWidget(empty_label="Nothing"),)
+    accident_date = forms.DateField(widget=SelectDateWidget(empty_label="Nothing"), )
 
     class Meta:
         model = Accident

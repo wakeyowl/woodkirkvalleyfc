@@ -38,6 +38,9 @@ class UserMember(models.Model):
     consent = models.NullBooleanField(choices=CONSENT_CHOICES,
                                       max_length=3,
                                       blank=True, null=True, default=True)
+    accepted_code_of_conduct = models.NullBooleanField(choices=CONSENT_CHOICES,
+                                      max_length=3,
+                                      blank=True, null=True, default=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.full_name)
@@ -68,6 +71,10 @@ class Player(models.Model):
     medical_details = models.TextField()
     picture = models.ImageField(upload_to='profile_images', blank=True)
     is_active = models.BooleanField(default=True)
+    CONSENT_CHOICES = ((True, 'Yes'), (False, 'No'))
+    accepted_code_of_conduct = models.NullBooleanField(choices=CONSENT_CHOICES,
+                                                       max_length=3,
+                                                       blank=True, null=True, default=True)
 
     class Meta:
         unique_together = ('birthdate', 'name',)
