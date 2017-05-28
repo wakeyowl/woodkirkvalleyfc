@@ -10,18 +10,44 @@
         <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="75px"/>
         <h4 class="display-4">Woodkirk Valley Football Club</h4>
         <div>
+            {% if user.is_authenticated %}
+                Welcome to the Woodkirk Valley <strong> Parent and Player </strong> Site
+                <br/>
+                <br/>
+                Use the Profile Menu to update your details.
+                <br/>
+                <br/>
+                As a FA Charter standard club its important we all are aware of our responsibilities. Please ensure you
+                and your children have all read our code of conducts (see above menus).
+                <br/>
+                <br/>
+                When you have read the documents please update the player and parent checkboxes in your profile to confirm.
+                <br/>
+                <br/>
+                Thank You
+                <br/>
+                <strong>Jason Tabor </strong> (Chairman)
+                <br/>
+                <strong>Phil Cook </strong> (Football Development Officer)
+                <br/>
+                <strong>Craige Richardson </strong>(Child Welfare Officer)
+            {% else %}
+                Welcome to the Woodkirk Valley <strong> Parent and Player </strong> Registration site
+                <br/>
+                <br/>
+                As a parent we would like you to register as a member and then Register your children individually in
+                the
+                <strong>Member Profile</strong> menu.
+                <br/>
+                <br/>
+                <p><a class="btn btn-secondary" href="{% url 'registration_register' %}" role="button">Register
+                    &raquo;</a>
+                </p>
+                <br/>
+                When you are registered just login to your account.
+            {% endif %}
 
-            Welcome to the Woodkirk Valley <strong> Parent and Player </strong> Registration site
-            <br/>
-            <br/>
-            As a parent we would like you to register as a member and then Register your children individually in the
-            <strong>Member Profile</strong> menu.
-            <br/>
-            <br/>
-            <p><a class="btn btn-secondary" href="{% url 'registration_register' %}" role="button">Register &raquo;</a>
-            </p>
-            <br/>
-            When you are registered just login to your account.
+
         </div>
 
     </div>
