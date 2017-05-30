@@ -46,6 +46,14 @@ class UserMemberUpdateForm(forms.ModelForm):
         fields = ('address1', 'address2', 'city', 'postcode', 'mobile_phone', 'accepted_code_of_conduct',)
 
 
+class UserMemberUpdatePlayerForm(forms.ModelForm):
+    picture = forms.ImageField(required=False)
+
+    class Meta:
+        model = Player
+        fields = ('name', 'gender', 'birthdate', 'accepted_code_of_conduct', 'manager', 'picture', )
+
+
 class AccidentForm(forms.ModelForm):
     accident_date = forms.DateField(widget=SelectDateWidget(empty_label="Nothing"), )
 
@@ -56,3 +64,4 @@ class AccidentForm(forms.ModelForm):
                   'accident_date', 'injury_sustained', 'accident_location', 'accident_reason',
                   'first_aid_outcome', 'first_aid_person', 'first_aid_given', 'first_aid_hospitalised',
                   'hospital_more_than_24', 'hospital_name')
+

@@ -7,7 +7,8 @@ from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from registration.backends.simple.views import RegistrationView
 
-from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm, AccidentForm
+from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm, AccidentForm, \
+    UserMemberUpdatePlayerForm
 from member.models import UserMember, Player
 
 
@@ -130,9 +131,7 @@ def profile(request):
         context_dict = {'player': player_list, 'loggedin_user': current_user}
         return render(request, 'member/profile.html', context=context_dict)
     except IndexError:
-        return render(request, 'member/profile.html',)
-
-
+        return render(request, 'member/profile.html', )
 
 
 @login_required
@@ -163,18 +162,40 @@ def addplayer(request):
     return render(request, 'member/add_player.html', context_dict)
 
 
-def update_member(request):
-    form = UserMemberUpdateForm()
+# def update_member(request):
+#     form = UserMemberUpdateForm()
+#     user = request.user.pk
+#     if request.method == 'POST':
+#         form = UserMemberForm(request.POST)
+#
+#         if form.is_valid():
+#             form.save(commit=True)
+#
+#             return index(request)
+#         else:
+#             print(form.errors)
+#     else:
+#         return render(request, 'member/usermember_update_form.html', {'form': form})
+#     return render(request, 'member/usermember_update_form.html', {'form': form})
+
+
+def update_player(request):
+    # userprofile = UserProfile.objects.get_or_create(user=user)[0]
+    # form = UserProfileForm({'website': userprofile.website, 'picture': userprofile.picture})
+
+
+    playerupdated = Player.objects.get_or_create(id=1)[0]
+    form = UserMemberUpdatePlayerForm(instance=playerupdated,)
     user = request.user.pk
     if request.method == 'POST':
-        form = UserMemberForm(request.POST)
+        form = UserMemberUpdatePlayerForm(request.POST, request.FILES, instance=playerupdated)
 
         if form.is_valid():
             form.save(commit=True)
-
-            return index(request)
+            return profile(request)
         else:
             print(form.errors)
     else:
+
         return render(request, 'member/usermember_update_form.html', {'form': form})
     return render(request, 'member/usermember_update_form.html', {'form': form})
