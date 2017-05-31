@@ -1,6 +1,8 @@
+import os
 from datetime import datetime
 
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
@@ -162,40 +164,30 @@ def addplayer(request):
     return render(request, 'member/add_player.html', context_dict)
 
 
-# def update_member(request):
-#     form = UserMemberUpdateForm()
-#     user = request.user.pk
-#     if request.method == 'POST':
-#         form = UserMemberForm(request.POST)
-#
-#         if form.is_valid():
-#             form.save(commit=True)
-#
-#             return index(request)
-#         else:
-#             print(form.errors)
-#     else:
-#         return render(request, 'member/usermember_update_form.html', {'form': form})
-#     return render(request, 'member/usermember_update_form.html', {'form': form})
-
-
-def update_player(request):
-    # userprofile = UserProfile.objects.get_or_create(user=user)[0]
-    # form = UserProfileForm({'website': userprofile.website, 'picture': userprofile.picture})
-
-
-    playerupdated = Player.objects.get_or_create(id=1)[0]
-    form = UserMemberUpdatePlayerForm(instance=playerupdated,)
+def update_player(request, player):
+    player_updated = Player.objects.get_or_create(id=player)[0]
+    form = UserMemberUpdatePlayerForm(instance=player_updated, )
     user = request.user.pk
     if request.method == 'POST':
-        form = UserMemberUpdatePlayerForm(request.POST, request.FILES, instance=playerupdated)
+        form = UserMemberUpdatePlayerForm(request.POST, request.FILES, instance=player_updated)
 
         if form.is_valid():
-            form.save(commit=True)
-            return profile(request)
+            # Check existing picture for clear
+            try:
+                if form.data['picture'] != '':
+                    page = form.save(commit=False)
+                    page.save()
+                else:
+                    form.save()
+                    return profile(request)
+            except:
+                page = form.save(commit=False)
+                page.save()
+
+                return profile(request)
         else:
             print(form.errors)
     else:
 
-        return render(request, 'member/usermember_update_form.html', {'form': form})
-    return render(request, 'member/usermember_update_form.html', {'form': form})
+        return render(request, 'member/userplayer_update_form.html', {'form': form})
+    return render(request, 'member/userplayer_update_form.html', {'form': form})

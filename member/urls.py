@@ -15,5 +15,5 @@ urlpatterns = [
                   url(r'^accidentform/$', views.register_accident, name='register_accident'),
                   url(r'^profile/addplayer/$', views.addplayer, name='addplayer'),
                   url(r'^profile/update/$', views.update_user, name='update_user'),
-                  url(r'^profile/updateplayer/$', views.update_player, name='update_player'),
+                  url(r'^profile/updateplayer/(?P<player>[\w\-]+)/$', views.update_player, name='update_player'),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
