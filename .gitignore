@@ -97,3 +97,4 @@ ENV/
 /member/migrations/
 !/member/migrations/__init__.py
 /2.7/
+/member/media/profile_images/
