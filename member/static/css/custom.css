@@ -29,5 +29,5 @@ and (-webkit-min-device-pixel-ratio: 2) {
 }
 
 .img-circle {
-    border-radius: 50%;
+    border-radius: 25%;
 }

@@ -167,6 +167,7 @@ def update_player(request, player):
     player_updated = Player.objects.get_or_create(id=player)[0]
     form = UserMemberUpdatePlayerForm(instance=player_updated, )
     user = request.user.pk
+
     if request.method == 'POST':
         form = UserMemberUpdatePlayerForm(request.POST, request.FILES, instance=player_updated)
 
@@ -189,7 +190,6 @@ def update_player(request, player):
                 orig_picture_name = orig_picture_name.replace(" ", "_")
                 picture_to_change.save("member/media/profile_images/" + team + "_" + orig_picture_name + ".jpg",
                                        quality=90)
-                form.fields['picture'] = picture_to_change
                 page = form.save(commit=False)
                 page.save()
 

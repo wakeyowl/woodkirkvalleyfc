@@ -69,7 +69,7 @@ class Player(models.Model):
     birthdate = models.DateField()
     member_parent = models.ForeignKey(UserMember, on_delete=models.CASCADE, blank=False)
     medical_details = models.TextField()
-    picture = models.ImageField(upload_to='profile_images', blank=True)
+    picture = models.ImageField(upload_to='profile_images/', blank=True)
     is_active = models.BooleanField(default=True)
     CONSENT_CHOICES = ((True, 'Yes'), (False, 'No'))
     accepted_code_of_conduct = models.NullBooleanField(choices=CONSENT_CHOICES,
