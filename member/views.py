@@ -184,8 +184,11 @@ def update_player(request, player):
                 print(picture_to_change.size)
                 picture_to_change = picture_to_change.resize((125, 125), Image.ANTIALIAS)
                 orig_picture_name = form.instance.name
+                team = form.instance.manager.team
+                team = team.replace(" ", "_")
                 orig_picture_name = orig_picture_name.replace(" ", "_")
-                picture_to_change.save("member/media/profile_images/"+orig_picture_name+".jpg", quality=90)
+                picture_to_change.save("member/media/profile_images/" + team + "_" + orig_picture_name + ".jpg",
+                                       quality=90)
                 form.fields['picture'] = picture_to_change
                 page = form.save(commit=False)
                 page.save()
