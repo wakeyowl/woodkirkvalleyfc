@@ -1,8 +1,7 @@
-import os
 from datetime import datetime
 
+from PIL import Image
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
@@ -181,6 +180,13 @@ def update_player(request, player):
                     form.save()
                     return profile(request)
             except:
+                picture_to_change = Image.open(form.instance.picture)
+                print(picture_to_change.size)
+                picture_to_change = picture_to_change.resize((125, 125), Image.ANTIALIAS)
+                orig_picture_name = form.instance.name
+                orig_picture_name = orig_picture_name.replace(" ", "_")
+                picture_to_change.save("member/media/profile_images/"+orig_picture_name+".jpg", quality=90)
+                form.fields['picture'] = picture_to_change
                 page = form.save(commit=False)
                 page.save()
 
