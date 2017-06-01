@@ -1,7 +1,11 @@
+from io import BytesIO
+from django.core.files.base import ContentFile
+from PIL import Image
 from django.contrib.auth.models import User
 from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from resizeimage import resizeimage
 
 
 class TeamManagers(models.Model):
@@ -39,8 +43,8 @@ class UserMember(models.Model):
                                       max_length=3,
                                       blank=True, null=True, default=True)
     accepted_code_of_conduct = models.NullBooleanField(choices=CONSENT_CHOICES,
-                                      max_length=3,
-                                      blank=True, null=True, default=True)
+                                                       max_length=3,
+                                                       blank=True, null=True, default=True)
 
     def save(self, *args, **kwargs):
         self.slug = slugify(self.full_name)
@@ -81,6 +85,36 @@ class Player(models.Model):
 
     def __str__(self):
         return self.name
+
+    def save(self, *args, **kwargs):
+        try:
+            pil_image_obj = Image.open(self.picture)
+            new_image = resizeimage.resize_width(pil_image_obj, 100)
+
+            new_image_io = BytesIO()
+            new_image.save(new_image_io, format='JPEG')
+
+            # Get MetaData for the Save
+            orig_picture_name = self.name
+            orig_picture_name = orig_picture_name.replace(" ", "_")
+            team = self.manager.team
+            team = team.replace(" ", "_")
+
+            temp_name = '' + team + '_' + orig_picture_name + '.jpg'
+            self.picture.delete(save=False)
+
+            self.picture.save(
+                temp_name,
+                content=ContentFile(new_image_io.getvalue()),
+                save=False
+            )
+        except:
+            temp_name = None
+
+        if temp_name is None:
+            super(Player, self).clean(*args, **kwargs)
+        else:
+            super(Player, self).save(*args, **kwargs)
 
 
 class MembershipType(models.Model):

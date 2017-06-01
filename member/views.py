@@ -2,6 +2,7 @@ from datetime import datetime
 
 from PIL import Image
 from django.contrib.auth.models import User
+from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.urlresolvers import reverse
 from django.shortcuts import render, get_object_or_404
 from django.shortcuts import redirect
@@ -174,23 +175,30 @@ def update_player(request, player):
         if form.is_valid():
             # Check existing picture for clear
             try:
-                if form.data['picture'] != '':
+                if form.data['picture'] == '':
                     page = form.save(commit=False)
+                    page.picture = form.data['picture']
                     page.save()
+                    return profile(request)
                 else:
                     form.save()
-                    return profile(request)
             except:
-                picture_to_change = Image.open(form.instance.picture)
-                print(picture_to_change.size)
-                picture_to_change = picture_to_change.resize((125, 125), Image.ANTIALIAS)
-                orig_picture_name = form.instance.name
-                team = form.instance.manager.team
-                team = team.replace(" ", "_")
-                orig_picture_name = orig_picture_name.replace(" ", "_")
-                picture_to_change.save("member/media/profile_images/" + team + "_" + orig_picture_name + ".jpg",
-                                       quality=90)
+                # PIL Setup - Open and Resize
+                # picture_to_change = Image.open(form.instance.picture)
+                # picture_to_change = picture_to_change.resize((125, 125), Image.ANTIALIAS)
+                #
+                # # Get MetaData for the Save
+                # orig_picture_name = form.instance.name
+                # team = form.instance.manager.team
+                # team = team.replace(" ", "_")
+                # orig_picture_name = orig_picture_name.replace(" ", "_")
+                #
+                # # Save the new Image to disk
+                # picture_to_change.save("member/media/profile_images/" + team + "_" + orig_picture_name + ".jpg",
+                #                        quality=90)
                 page = form.save(commit=False)
+
+                # Call to override save function in Player Model
                 page.save()
 
                 return profile(request)
