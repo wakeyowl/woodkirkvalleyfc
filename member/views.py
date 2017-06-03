@@ -11,7 +11,7 @@ from registration.backends.simple.views import RegistrationView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm, AccidentForm, \
     UserMemberUpdatePlayerForm
-from member.models import UserMember, Player
+from member.models import UserMember, Player, TeamManagers
 
 
 class WoodkirkRegistrationView(RegistrationView):
@@ -137,6 +137,25 @@ def profile(request):
 
 
 @login_required
+def manager_profile(request):
+    try:
+        user = request.user.pk
+    except User.DoesNotExist:
+        return redirect('index')
+    try:
+        username = request.user.usermember.full_name
+        managerlist = TeamManagers.objects.filter(full_name__istartswith=username)
+        current_user = UserMember.objects.filter(user_id=user)
+        player_list = Player.objects.filter(manager_id=managerlist).prefetch_related(
+            'manager__player_set')
+        player_list.order_by('name')
+        context_dict = {'player': player_list, 'loggedin_user': current_user}
+        return render(request, 'member/manager_profile.html', context=context_dict)
+    except IndexError:
+        return render(request, 'member/manager_profile.html', )
+
+
+@login_required
 def addplayer(request):
     try:
         user = request.user.pk
@@ -171,9 +190,6 @@ def update_player(request, player):
 
     if request.method == 'POST':
         form = UserMemberUpdatePlayerForm(request.POST, request.FILES, instance=player_updated)
-
-        if request.POST.get('delete'):
-            form.delete()
 
         if form.is_valid():
             # Check existing picture for clear

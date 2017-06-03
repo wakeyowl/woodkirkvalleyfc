@@ -3,83 +3,54 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
 
-{% block title %}{{ user.username }} Parent Profile View{% endblock %}
+{% block title %}{{ user.username }} Managers Profile View{% endblock %}
 
 {% block body_block %}
     <div class="jumbotron">
         <div class="row">
             <div class="col">
                 {% for user in loggedin_user %}
-                    <h2>{{ user.full_name }}'s - Parent Profile View</h2>
+                    <h2>{{ user.full_name }}'s - Managers Profile View</h2>
                 {% endfor %}
 
-
-                <div class="col">
-                    <button type="button" class="btn btn-default btn-right">
-                                        <span class="fa fa-pencil-square-o text-success"
-                                              aria-hidden="true"></span>
-                        <a href="/member/profile/update/">Edit Member</a>
-                    </button>
-                    <button type="button" class="btn btn-default btn-right">
-                                        <span class="fa fa-pencil-square-o text-success"
-                                              aria-hidden="true"></span>
-                        <a href="{{ url }}/member/profile/addplayer/">Register a Player</a>
-                    </button>
-                </div>
             </div>
 
         </div>
 
-        <ul class="list-group" style="list-style-type: none;">
-            {% for currentuser in loggedin_user %}
-
-                <li><h5><span class="fa fa-address-card-o text-primary"
-                              aria-hidden="true"></span> {{ currentuser.address1 }}</h5></li>
-                <li>
-                    <h5><span class="fa fa-circle-thin text-white"
-                              aria-hidden="true"></span> {{ currentuser.address2 }}</h5>
-                </li>
-                <li>
-                    <h5><span class="fa fa-circle-thin text-white"
-                              aria-hidden="true"></span> {{ currentuser.postcode }}</h5>
-                </li>
-                <li>
-                    <h5><span class="fa fa-phone text-primary"
-                              aria-hidden="true"></span> {{ currentuser.mobile_phone }}</h5>
-                </li>
-                <li>
-                    <h5><span class="fa fa-envelope text-primary"
-                              aria-hidden="true"></span> {{ user.email }}</h5>
-                </li>
-                <li>
-                {% if currentuser.accepted_code_of_conduct == True %}
-                    <h4 class="text-success"><span class="fa fa-check-square-o"
-                                                   aria-hidden="true"></span> <i>Parents Code of Conduct - Terms
-                        accepted</i></h4>
-                {% else %}
-                    <h4 class="text-danger"><span class="fa fa-times-circle-o"
-                                                  aria-hidden="true"></span> <i>You still need to read and
-                        accept the Parents Club Code of Conduct</i></h4>
-                {% endif %}
-
-            {% endfor %}
-            </li>
-        </ul>
-
         <!-- Loop of registered players assigned to each member -->
 
         {% if player %}
+            <h4>Players Medical Conditions</h4>
+            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#medical">Show Medical
+            </button>
+            <div id="medical" class="collapse">
+                <table>
+                    <tr>
+                        <th>Player</th>
+                        <th>Condition</th>
+                    </tr>
+
+                    {% for child in player %}
+
+                        <tr>
+                            <td>{{ child.name }}</td>
+                            <td>{{ child.medical_details }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
             <h4>Current Registered Players</h4>
             <div class="row">
             {% for child in player %}
                 <div class="col" style="border-style: inset; padding: 10px">
                     <div class="row">
                         <div class="col text-center">
-                            <button type="button" class="btn btn-default btn-sm btn-right">
-                                        <span class="fa fa-pencil-square-o text-success"
-                                              aria-hidden="true"></span>
-                                <a href="/member/profile/updateplayer/{{ child.id }}">Edit</a>
-                            </button>
+                            {#                            <button type="button" class="btn btn-default btn-sm btn-right">#}
+                            {#                                        <span class="fa fa-pencil-square-o text-success"#}
+                            {#                                              aria-hidden="true"></span>#}
+                            {#       Edit responsibility with parents only????                         #}
+                            {#                                <a href="/member/profile/updateplayer/{{ child.id }}">Edit</a>#}
+                            {#                            </button>#}
                         </div>
                     </div>
 
@@ -91,11 +62,12 @@
                              alt="{{ child.name }}"/>
                     {% else %}
                         <div class="row">
-                            <button type="button" class="center-block btn btn-lg btn-right">
-                                        <span class="fa fa-upload text-success"
-                                              aria-hidden="true"></span>
-                                <a href="/member/profile/updateplayer/{{ child.id }}">Upload Player Photo</a>
-                            </button>
+                            {#                            <button type="button" class="center-block btn btn-lg btn-right">#}
+                            {#                                        <span class="fa fa-upload text-success"#}
+                            {#                                              aria-hidden="true"></span>#}
+                            {#                                edit responsibility with parents only ???? #}
+                            {#                                <a href="/member/profile/updateplayer/{{ child.id }}">Upload Player Photo</a>#}
+                            {#                            </button>#}
                         </div>
 
 
@@ -129,7 +101,7 @@
                     <br/>
                     {% if child.accepted_code_of_conduct == True %}
                         <h4 class="text-center text-success"><span class="fa fa-check-square-o"
-                                                       aria-hidden="true"></span> <i>Players Code of
+                                                                   aria-hidden="true"></span> <i>Players Code of
                             Conduct
                             - Accepted</i></h4>
                     {% else %}
