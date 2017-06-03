@@ -172,6 +172,9 @@ def update_player(request, player):
     if request.method == 'POST':
         form = UserMemberUpdatePlayerForm(request.POST, request.FILES, instance=player_updated)
 
+        if request.POST.get('delete'):
+            form.delete()
+
         if form.is_valid():
             # Check existing picture for clear
             try:

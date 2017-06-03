@@ -89,7 +89,7 @@ class Player(models.Model):
     def save(self, *args, **kwargs):
         try:
             pil_image_obj = Image.open(self.picture)
-            new_image = resizeimage.resize_width(pil_image_obj, 100)
+            new_image = resizeimage.resize_width(pil_image_obj, 150)
 
             new_image_io = BytesIO()
             new_image.save(new_image_io, format='JPEG')
@@ -109,12 +109,16 @@ class Player(models.Model):
                 save=False
             )
         except:
-            temp_name = None
+            #temp_name = None
+            # Handle Null Setting of Image (Clear Route)
+            super(Player, self).save()
+        # if temp_name is None:
+        #     super(Player, self).save()
+        #     #super(Player, self).clean(*args, **kwargs)
+        # else:
 
-        if temp_name is None:
-            super(Player, self).clean(*args, **kwargs)
-        else:
-            super(Player, self).save(*args, **kwargs)
+        # If Not save the in memory image to disk ans set it to db
+        super(Player, self).save(*args, **kwargs)
 
 
 class MembershipType(models.Model):
