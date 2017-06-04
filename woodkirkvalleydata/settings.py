@@ -102,7 +102,7 @@ DATABASES = {
             'sql_mode': 'traditional',
         }
     }
-    # ,
+    # # ,
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     # The following settings are not used with sqlite3:
@@ -151,7 +151,6 @@ USE_L10N = True
 USE_TZ = True
 
 DATE_INPUT_FORMATS = ('%dd-%mm-%YYYY')
-DATE_FORMAT = 'j N, Y'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
