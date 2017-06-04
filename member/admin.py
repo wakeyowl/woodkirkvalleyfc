@@ -20,7 +20,7 @@ pass
 
 @admin.register(TeamManagers)
 class TeamManagerAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'team', 'email', 'mobile_phone', )
+    list_display = ('full_name', 'team', 'email', 'mobile_phone',)
 
 
 pass
@@ -37,7 +37,10 @@ pass
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
-    list_display = ('name', 'gender', 'birthdate', 'medical_details', 'member_parent_id', 'is_active', 'manager_id')
+    list_display = ('name', 'gender', 'birthdate', 'medical_details', 'member_parent_id', 'is_active', 'manager_id',
+                    'picture',)
     list_filter = ('manager_id',)
     actions = [make_player_active]
+
+
 pass
