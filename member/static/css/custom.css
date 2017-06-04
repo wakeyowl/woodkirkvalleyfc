@@ -30,4 +30,5 @@ and (-webkit-min-device-pixel-ratio: 2) {
 
 .img-circle {
     border-radius: 25%;
+    box-shadow: 5px 5px 5px #888888;
 }
