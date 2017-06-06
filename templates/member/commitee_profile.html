@@ -1,0 +1,165 @@
+{% extends 'member/base_bootstrap.html' %}
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{% block title %}
+    {{ user.username }} Managers Profile View
+{% endblock %}
+
+{% block body_block %}
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">
+                {% for user in loggedin_user %}
+                    <h2>{{ user.full_name }}'s - Managers Profile View</h2>
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+        <!-- Loop of registered players assigned to each member -->
+
+        {% if player %}
+            <h4>Players Medical Conditions</h4>
+            <button type="button" class="btn btn-warning" data-toggle="collapse" data-target="#medical">Show Medical
+            </button>
+            <div id="medical" class="collapse">
+                <table>
+                    <tr>
+                        <th>Player</th>
+                        <th>Condition</th>
+                    </tr>
+
+                    {% for child in player %}
+
+                        <tr>
+                            <td>{{ child.name }}</td>
+                            <td>{{ child.medical_details }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <h4>Current Registered Players</h4>
+            <div class="row">
+            {% for child in player %}
+                <div class="col container-fluid" style="border-style: groove; padding: 5px;  display : inline-block;
+    min-width: 350px;">
+                    <div class="row">
+                        {#                        <div class="col text-center">#}
+                        {#                            <button type="button" class="btn btn-default btn-sm btn-right">#}
+                        {#                                        <span class="fa fa-pencil-square-o text-success"#}
+                        {#                                              aria-hidden="true"></span>#}
+                        {#       Edit responsibility with parents only????                         #}
+                        {#                                <a href="/member/profile/updateplayer/{{ child.id }}">Edit</a>#}
+                        {#                            </button>#}
+                        {#                        </div>#}
+                    </div>
+
+
+                    {% if child.picture %}
+                        <img class="img-circle center-block" src="/member/media/{{ child.picture }}"
+                             width="125"
+                             height="125"
+                             alt="{{ child.name }}"/>
+
+                    {% else %}
+                        <div class="row">
+                            {#                            <button type="button" class="center-block btn btn-lg btn-right">#}
+                            {#                                        <span class="fa fa-upload text-success"#}
+                            {#                                              aria-hidden="true"></span>#}
+                            {#                                edit responsibility with parents only ???? #}
+                            {#                                <a href="/member/profile/updateplayer/{{ child.id }}">Upload Player Photo</a>#}
+                            {#                            </button>#}
+                        </div>
+
+
+                    {% endif %}
+
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2>{{ child.name }}</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button type="button" class="btn btn-default btn-sm">
+                                        <span class="fa fa-thumbs-up text-primary text-success"
+                                              aria-hidden="true"></span> Active Player
+                            </button>
+                        </div>
+                    </div>
+
+
+                    {% if child.is_active == True %}
+
+                    {% else %}
+                        <i> (Not Active)</i>
+                        <button type="button" class="btn btn-default btn-lg">
+                                        <span class="fa fa-thumbs-down text-primary text-danger"
+                                              aria-hidden="true"> </span>
+                        </button>
+                    {% endif %}
+
+                    <br/>
+                    {% if child.accepted_code_of_conduct == True %}
+                        <h4 class="text-center text-success"><span class="fa fa-check-square-o"
+                                                                   aria-hidden="true"></span> <i>Players Code of
+                            Conduct
+                            - Accepted</i></h4>
+                    {% else %}
+                        <h4 class="text-danger"><span class="fa fa-times-circle-o"
+                                                      aria-hidden="true"></span> <i>You still need to read and accept
+                            the Players Club Code of Conduct</i></h4>
+                    {% endif %}
+
+
+                    <li class="list-group-item">
+                        <h5><span class="fa fa-futbol-o text-primary" aria-hidden="true"> </span>
+                            <strong>
+                                Manager: </strong>
+
+                            {{ child.manager.full_name }}
+                            ({{ child.manager.team }})
+                        </h5>
+                    </li>
+                    {% if child.gender == 'M' %}
+                        <li class="list-group-item">
+                                <span
+                                        class="fa fa-medkit text-primary" aria-hidden="true"> </span>
+                            </strong> {{ child.medical_details }} </br></br>
+                            <span
+                                    class="fa fa-birthday-cake text-primary"
+                                    aria-hidden="true"></span> {{ child.birthdate }} </br></br>
+                            <span
+                                    class="fa fa-male text-primary" aria-hidden="true"></span> Male
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">
+                                <span
+                                        class="fa fa-medkit text-primary" aria-hidden="true"> </span>
+                            </strong> {{ child.medical_details }} </br></br>
+                            <span
+                                    class="fa fa-birthday-cake text-primary"
+                                    aria-hidden="true"></span> {{ child.birthdate }} </br></br>
+                            <span
+                                    class="fa fa-female text-primary" aria-hidden="true"></span> Female
+                        </li>
+                    {% endif %}
+                    <li class="list-group-item">
+                        <i>
+                            <td>{{ child.member_parent.address1 }},</td>
+                            <td>{{ child.member_parent.postcode }}</td>
+                        </i>
+                    </li>
+                </div>
+
+            {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no Players currently registered to you. </strong>
+        {% endif %}
+        </div>
+    </div>
+{% endblock %}

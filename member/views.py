@@ -156,6 +156,22 @@ def manager_profile(request):
 
 
 @login_required
+def commitee_profile(request):
+    try:
+        user = request.user.pk
+    except User.DoesNotExist:
+        return redirect('index')
+    try:
+
+        player_list = Player.objects.filter().prefetch_related(
+            'manager__player_set', 'member_parent__user')
+        player_list = player_list.order_by('manager__full_name')
+        context_dict = {'player': player_list, }
+        return render(request, 'member/commitee_profile.html', context=context_dict)
+    except IndexError:
+        return render(request, 'member/commitee_profile.html', )
+
+@login_required
 def addplayer(request):
     try:
         user = request.user.pk
