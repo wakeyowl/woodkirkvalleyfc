@@ -99,7 +99,13 @@ def register_profile(request):
 
 
 def index(request):
-    response = render(request, 'member/index.html', {})
+    try:
+        user = request.user.pk
+    except User.DoesNotExist:
+        return redirect('index')
+    current_user = UserMember.objects.filter(user_id=user)
+    context_dict = {'loggedin_user': current_user}
+    response = render(request, 'member/index.html', context_dict)
     return response
 
 

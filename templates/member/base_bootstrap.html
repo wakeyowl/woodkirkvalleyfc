@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load member_template_tags %}
 {% load staticfiles %}
 {% load static %}
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -69,22 +71,36 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="http://www.woodkirkvalleyfc.org/wp-content/uploads/COM13-Parents-Code-of-Conduct.pdf">
+                    <a class="nav-link"
+                       href="http://www.woodkirkvalleyfc.org/wp-content/uploads/COM13-Parents-Code-of-Conduct.pdf">
                         <span class="fa fa-file-text" aria-hidden="true"></span> Parents Code Of Conduct
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="http://www.woodkirkvalleyfc.org/wp-content/uploads/COM13-Players-Code-of-conduct.pdf">
+                    <a class="nav-link"
+                       href="http://www.woodkirkvalleyfc.org/wp-content/uploads/COM13-Players-Code-of-conduct.pdf">
                         <span class="fa fa-file-text" aria-hidden="true"></span> Players Code Of Conduct
                     </a>
                 </li>
 
-            <li class="nav-item">
-                    <a class="nav-link" href="{% url 'manager_profile' %}">
-                        <span class="fa fa-user" aria-hidden="true"></span> Manager Profile
-                    </a>
-                </li>
+
+                {% if request.user|has_group:"ClubManagers" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'manager_profile' %}">
+                            <span class="fa fa-user" aria-hidden="true"></span> Manager Profile
+                        </a>
+                    </li>
+                {% endif %}
+
+                {% if request.user|has_group:"Committee" %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'committee_profile' %}">
+                            <span class="fa fa-user" aria-hidden="true"></span> Committee Profile
+                        </a>
+                    </li>
+                {% endif %}
+
 
             </ul>
             <ul class="nav navbar navbar-nav navbar-right">
