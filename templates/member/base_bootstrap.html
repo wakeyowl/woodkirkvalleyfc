@@ -88,7 +88,7 @@
                 {% if request.user|has_group:"ClubManagers" %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'manager_profile' %}">
-                            <span class="fa fa-user" aria-hidden="true"></span> Manager Profile
+                            <span class="fa fa-id-badge" aria-hidden="true"></span> Manager Profile
                         </a>
                     </li>
                 {% endif %}
@@ -96,7 +96,7 @@
                 {% if request.user|has_group:"Committee" %}
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'committee_profile' %}">
-                            <span class="fa fa-user" aria-hidden="true"></span> Committee Profile
+                            <span class="fa fa-address-book-o" aria-hidden="true"></span> Committee Profile
                         </a>
                     </li>
                 {% endif %}
