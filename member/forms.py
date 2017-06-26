@@ -36,11 +36,9 @@ class UserMemberForm(forms.ModelForm):
 
 class UserMemberAddChildForm(forms.ModelForm):
     birthdate = forms.DateField(input_formats=['%d/%m/%Y'], help_text='format=DD/MM/YYYY')
-    picture = forms.ImageField(required=False, help_text=mark_safe(
-        "Please ensure the picture is square (1:1) and orientation is correct on the profile page after updating."))
     class Meta:
         model = Player
-        exclude = ('member_parent',)
+        exclude = ('member_parent', 'picture')
 
 
 class UserMemberUpdateForm(forms.ModelForm):
