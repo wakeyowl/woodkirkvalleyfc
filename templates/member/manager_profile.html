@@ -47,14 +47,13 @@
                 <div class="col container-fluid" style="border-style: groove; padding: 5px;  display : inline-block;
     min-width: 350px;">
                     <div class="row">
-                        {#                        <div class="col text-center">#}
-                        {#                            <button type="button" class="btn btn-default btn-sm btn-right">#}
-                        {#                                        <span class="fa fa-pencil-square-o text-success"#}
-                        {#                                              aria-hidden="true"></span>#}
-                        {#       Edit responsibility with parents only????                         #}
-                        {#                                <a href="/member/profile/updateplayer/{{ child.id }}">Edit</a>#}
-                        {#                            </button>#}
-                        {#                        </div>#}
+                        <div class="col text-center">
+                            <button type="button" class="btn btn-default btn-sm btn-right">
+                                                                <span class="fa fa-pencil-square-o text-success"
+                                                                      aria-hidden="true"></span>
+                                <a href="/member/profile/updateplayer/{{ child.id }}">Edit</a>
+                            </button>
+                        </div>
                     </div>
 
 
@@ -65,12 +64,11 @@
                              alt="{{ child.name }}"/>
                     {% else %}
                         <div class="row">
-                            {#                            <button type="button" class="center-block btn btn-lg btn-right">#}
-                            {#                                        <span class="fa fa-upload text-success"#}
-                            {#                                              aria-hidden="true"></span>#}
-                            {#                                edit responsibility with parents only ???? #}
-                            {#                                <a href="/member/profile/updateplayer/{{ child.id }}">Upload Player Photo</a>#}
-                            {#                            </button>#}
+                            <button type="button" class="center-block btn btn-lg btn-right">
+                                                                    <span class="fa fa-upload text-success"
+                                                                          aria-hidden="true"></span>
+                                <a href="/member/profile/updateplayer/{{ child.id }}">Upload Player Photo</a>
+                            </button>
                         </div>
 
 
