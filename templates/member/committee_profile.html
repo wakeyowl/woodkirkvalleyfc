@@ -41,15 +41,20 @@
                     {% endfor %}
                 </table>
             </div>
-            <h4>Current Registered Players</h4>
-            <div class="row">
+            <h4>Total Registered Players ({{ player | length }})</h4>
+
             {% for child in player %}
-                <div class="col container-fluid" style="border-style: groove; padding: 5px;  display : inline-block;
+                {% ifchanged %}
+
+                    <div class="col container-fluid" style="border-style: groove; padding: 5px;  display : inline-block;
     min-width: 350px;">
+                    <h2 style="color: darkorange">{{ child.manager }} </h2>
+                {% endifchanged %}
+                <div class="col container-fluid" style="border-style: groove; padding: 5px;  display : inline-block;
+                min-width: 350px;">
                     <div class="row">
 
                     </div>
-
 
                     {% if child.picture %}
                         <img class="img-circle center-block" src="/member/media/{{ child.picture }}"
@@ -146,7 +151,8 @@
             {% endfor %}
             </ul>
         {% else %}
-            <strong class="bg-danger">You don't have access to player details, you need to authorised as a commitee member! </strong>
+            <strong class="bg-danger">You don't have access to player details, you need to authorised as a commitee
+                member! </strong>
         {% endif %}
         </div>
     </div>
