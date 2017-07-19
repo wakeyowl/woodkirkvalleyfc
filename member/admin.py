@@ -7,7 +7,11 @@ def make_player_active(modeladmin, request, queryset):
     queryset.update(is_active=True)
 
 
-make_player_active.short_description = "Make Selected Players Active"
+def make_player_inactive(modeladmin, request, queryset):
+    queryset.update(is_active=False)
+
+make_player_active.short_description = "Make Selected Players Active - WGS"
+make_player_inactive.short_description = "Make Selected Players Inactive - WGS"
 
 
 @admin.register(UserMember)
@@ -40,7 +44,7 @@ class PlayerAdmin(admin.ModelAdmin):
     list_display = ('name', 'gender', 'birthdate', 'medical_details', 'member_parent_id', 'is_active', 'manager_id',
                     'picture',)
     list_filter = ('manager_id',)
-    actions = [make_player_active]
+    actions = [make_player_active, make_player_inactive]
 
 
 pass
