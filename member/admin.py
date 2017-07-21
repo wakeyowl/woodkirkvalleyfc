@@ -43,7 +43,7 @@ pass
 class PlayerAdmin(admin.ModelAdmin):
     list_display = ('name', 'gender', 'birthdate', 'medical_details', 'member_parent_id', 'is_active', 'manager_id',
                     'picture',)
-    list_filter = ('manager_id',)
+    list_filter = ('manager_id', 'is_active')
     actions = [make_player_active, make_player_inactive]
 
 
