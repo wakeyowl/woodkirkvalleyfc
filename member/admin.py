@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from member.models import TeamManagers, UserMember, Payments, Player
+from member.models import TeamManagers, UserMember, Payments, Player, User
+
+admin.site.unregister(User)
 
 
 def make_player_active(modeladmin, request, queryset):
@@ -26,6 +28,14 @@ pass
 class TeamManagerAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'team', 'email', 'mobile_phone',)
 
+
+pass
+
+
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
+    list_display = ('username', 'first_name', 'last_name', 'email', 'date_joined')
+    list_filter = ('date_joined',)
 
 pass
 
