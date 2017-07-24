@@ -139,7 +139,8 @@ def profile(request):
         context_dict = {'player': player_list, 'loggedin_user': current_user}
         return render(request, 'member/profile.html', context=context_dict)
     except IndexError:
-        return render(request, 'member/profile.html', )
+        # Handle users not completing the form properly
+        return register_profile(request)
 
 
 @login_required
