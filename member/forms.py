@@ -1,11 +1,6 @@
 from django import forms
-from django.core.exceptions import ValidationError
 from django.forms import SelectDateWidget
-from django.http import request
-from django.urls import reverse
 from django.utils.safestring import mark_safe
-from django.views.generic import UpdateView
-from django.contrib.admin.widgets import AdminDateWidget
 
 from member.models import UserMember, Player, Accident
 
@@ -69,3 +64,7 @@ class AccidentForm(forms.ModelForm):
                   'accident_date', 'injury_sustained', 'accident_location', 'accident_reason',
                   'first_aid_outcome', 'first_aid_person', 'first_aid_given', 'first_aid_hospitalised',
                   'hospital_more_than_24', 'hospital_name')
+
+
+class PasswordResetRequestForm(forms.Form):
+    email_or_username = forms.CharField(label=("Email Or Username"), max_length=254)

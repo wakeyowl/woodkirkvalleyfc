@@ -19,8 +19,15 @@ from django.contrib import admin
 from member import views
 from django.conf import settings
 
+from member.views import ResetPasswordRequestView, PasswordResetConfirmView
+
 urlpatterns = [
+
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^account/reset_password_confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$', PasswordResetConfirmView.as_view(),name='reset_password_confirm'),
+    # PS: url above is going to used for next section of implementation.
     url(r'^admin/', admin.site.urls),
+    url(r'^account/reset_password', ResetPasswordRequestView.as_view(), name="reset_password"),
     url(r'^$', views.index, name='index'),
     url(r'^member/', include('member.urls')),
     url(r'^accounts/register/$', views.WoodkirkRegistrationView.as_view(), name='registration_register'),
