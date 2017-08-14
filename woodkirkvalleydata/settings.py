@@ -28,7 +28,7 @@ SECRET_KEY = '6sj+pwb&x-*sqntyhjt18#90@dwa3tket$8m6hpgq6u-1%c1&5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['wvfc.pythonanywhere.com', '127.0.0.1', 'wvfcskills.pythonanywhere.com']
+ALLOWED_HOSTS = ['wvfc.pythonanywhere.com', '127.0.0.1', 'wvfcskills.pythonanywhere.com', 'wakeyowl.pythonanywhere.com']
 
 # Application definition
 
@@ -88,34 +88,34 @@ WSGI_APPLICATION = 'woodkirkvalleydata.wsgi.application'
 
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     # The following settings are not used with sqlite3:
-    #     'NAME': 'wvfc$reg',
-    #     'USER': 'wvfc',
-    #     'PASSWORD': 'v0n-neumann',
-    #     'HOST': 'wvfc.mysql.pythonanywhere-services.com',
-    #     # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
-    #     'PORT': '',
-    #     'OPTIONS': {
-    #         "init_command": "SET foreign_key_checks = 0;",
-    #         'sql_mode': 'traditional',
-    #     }
-    # }
-    # # ,
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         # The following settings are not used with sqlite3:
-        'NAME': 'registrations',
-        'USER': 'root',
+        'NAME': 'wakeyowl$woodkirkdata',
+        'USER': 'wakeyowl',
         'PASSWORD': 'v0n-neumann',
-        'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+        'HOST': 'wakeyowl.mysql.pythonanywhere-services.com',
+        # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
         'PORT': '',
         'OPTIONS': {
             "init_command": "SET foreign_key_checks = 0;",
             'sql_mode': 'traditional',
         }
     }
+    # # ,
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     # The following settings are not used with sqlite3:
+    #     'NAME': 'registrations',
+    #     'USER': 'root',
+    #     'PASSWORD': 'v0n-neumann',
+    #     'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+    #     'PORT': '',
+    #     'OPTIONS': {
+    #         "init_command": "SET foreign_key_checks = 0;",
+    #         'sql_mode': 'traditional',
+    #     }
+    # }
 
 }
 
@@ -167,7 +167,7 @@ DATE_INPUT_FORMATS = ('%dd-%mm-%YYYY')
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
-STATIC_ROOT = "/home/wvfc/woodkirkvalleydata/static"
+STATIC_ROOT = "/home/wakeyowl/woodkirkvalleydata/static"
 STATIC_URL = '/static/'
 
 REGISTRATION_OPEN = True
