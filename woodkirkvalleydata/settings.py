@@ -88,34 +88,34 @@ WSGI_APPLICATION = 'woodkirkvalleydata.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        # The following settings are not used with sqlite3:
-        'NAME': 'wvfc$reg',
-        'USER': 'wvfc',
-        'PASSWORD': 'v0n-neumann',
-        'HOST': 'wvfc.mysql.pythonanywhere-services.com',
-        # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
-        'PORT': '',
-        'OPTIONS': {
-            "init_command": "SET foreign_key_checks = 0;",
-            'sql_mode': 'traditional',
-        }
-    }
-    # # ,
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     # The following settings are not used with sqlite3:
-    #     'NAME': 'registrations',
-    #     'USER': 'root',
+    #     'NAME': 'wvfc$reg',
+    #     'USER': 'wvfc',
     #     'PASSWORD': 'v0n-neumann',
-    #     'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+    #     'HOST': 'wvfc.mysql.pythonanywhere-services.com',
+    #     # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
     #     'PORT': '',
     #     'OPTIONS': {
     #         "init_command": "SET foreign_key_checks = 0;",
     #         'sql_mode': 'traditional',
     #     }
     # }
+    # # ,
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        # The following settings are not used with sqlite3:
+        'NAME': 'registrations',
+        'USER': 'root',
+        'PASSWORD': 'v0n-neumann',
+        'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+        'PORT': '',
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+            'sql_mode': 'traditional',
+        }
+    }
 
 }
 
