@@ -196,5 +196,21 @@
       "groups": [],
       "user_permissions": []
     }
+  },
+  {
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+      "name": "ClubManagers",
+      "permissions": []
+    }
+  },
+  {
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+      "name": "Committee",
+      "permissions": []
+    }
   }
 ]
