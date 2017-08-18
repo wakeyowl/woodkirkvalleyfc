@@ -6,7 +6,6 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
-from django.core.checks import messages
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.core.mail import send_mail
@@ -19,11 +18,13 @@ from django.contrib.auth.decorators import login_required
 from django.template import loader
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.views.generic import FormView
+from django.views.generic import *
+from django.contrib import messages
 from registration.backends.simple.views import RegistrationView
 
 from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm, AccidentForm, \
     UserMemberUpdatePlayerForm, PasswordResetRequestForm
+
 from member.models import UserMember, Player, TeamManagers
 from woodkirkvalleydata.settings import DEFAULT_FROM_EMAIL
 
@@ -86,7 +87,9 @@ class ResetPasswordRequestView(FormView):
 
                     result = self.form_valid(form)
                     messages.success(
-                        request, 'An email has been sent to {0}. Please check its inbox to continue reseting password.'.format(data))
+                        request,
+                        'An email has been sent to {0}. Please check its inbox to continue reseting password.'.format(
+                            data))
                     return result
                 result = self.form_invalid(form)
                 messages.error(
@@ -102,7 +105,10 @@ class ResetPasswordRequestView(FormView):
                         self.reset_password(user, request)
                     result = self.form_valid(form)
                     messages.success(
-                        request, "Email has been sent to {0}'s email address. Please check its inbox to continue reseting password.".format(data))
+                        request,
+                        "Email has been sent to {0}'s email address. Please check its inbox to continue reseting "
+                        "password.".format(
+                            data))
                     return result
                 result = self.form_invalid(form)
                 messages.error(
