@@ -87,9 +87,10 @@ class ResetPasswordRequestView(FormView):
 
                     result = self.form_valid(form)
                     messages.success(
-                        request,
-                        'An email has been sent to {0}. Please check its inbox to continue reseting password.'.format(
-                            data))
+                        request, 'Check your Inbox')
+                    # messages.success(request,
+                    #     'An email has been sent to {0}. Please check its inbox to continue reseting password.'.format(
+                    #         data))
                     return result
                 result = self.form_invalid(form)
                 messages.error(
