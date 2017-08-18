@@ -6,8 +6,10 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from resizeimage import resizeimage
+from django.utils.encoding import python_2_unicode_compatible
 
 
+@python_2_unicode_compatible
 class TeamManagers(models.Model):
     full_name = models.CharField(max_length=128, unique=True, null=True)
     team = models.CharField(max_length=100)
@@ -29,6 +31,7 @@ class TeamManagers(models.Model):
         verbose_name_plural = "Managers"
 
 
+@python_2_unicode_compatible
 class UserMember(models.Model):
     user = models.OneToOneField(User)
     full_name = models.CharField(max_length=128, unique=True, null=True)
@@ -60,6 +63,7 @@ class UserMember(models.Model):
         verbose_name_plural = "User Members"
 
 
+@python_2_unicode_compatible
 class Player(models.Model):
     MALE = 'M'
     FEMALE = 'F'
