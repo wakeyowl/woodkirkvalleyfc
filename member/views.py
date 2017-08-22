@@ -121,9 +121,13 @@ class ResetPasswordRequestView(FormView):
 
 
 class PasswordResetConfirmView(FormView):
-    template_name = "account/test_template.html"
+    template_name = "registration/password_reset_confirm.html"
     success_url = '/admin/'
     form_class = SetPasswordForm
+
+
+    def get_form(self, form_class):
+        return form_class(user=self.request.user)
 
     def post(self, request, uidb64=None, token=None, *arg, **kwargs):
         """
@@ -141,18 +145,16 @@ class PasswordResetConfirmView(FormView):
 
         if user is not None and default_token_generator.check_token(user, token):
             if form.is_valid():
-                new_password = form.cleaned_data['new_password2']
+                new_password= form.cleaned_data['new_password2']
                 user.set_password(new_password)
                 user.save()
                 messages.success(request, 'Password has been reset.')
                 return self.form_valid(form)
             else:
-                messages.error(
-                    request, 'Password reset has not been unsuccessful.')
+                messages.error(request, 'Password reset has not been unsuccessful.')
                 return self.form_invalid(form)
         else:
-            messages.error(
-                request, 'The reset password link is no longer valid.')
+            messages.error(request,'The reset password link is no longer valid.')
             return self.form_invalid(form)
 
 

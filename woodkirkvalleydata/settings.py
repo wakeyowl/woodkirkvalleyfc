@@ -88,46 +88,55 @@ WSGI_APPLICATION = 'woodkirkvalleydata.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        # The following settings are not used with sqlite3:
-        'NAME': 'wakeyowl$woodkirkdata',
-        'USER': 'wakeyowl',
-        'PASSWORD': 'v0n-neumann',
-        'HOST': 'wakeyowl.mysql.pythonanywhere-services.com',
-        # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
-        'PORT': '',
-        'OPTIONS': {
-            "init_command": "SET foreign_key_checks = 0;",
-            'sql_mode': 'traditional',
-        }
-    }
-    # # ,
     # 'default': {
     #     'ENGINE': 'django.db.backends.mysql',
     #     # The following settings are not used with sqlite3:
-    #     'NAME': 'registrations',
-    #     'USER': 'root',
+    #     'NAME': 'wakeyowl$woodkirkdata',
+    #     'USER': 'wakeyowl',
     #     'PASSWORD': 'v0n-neumann',
-    #     'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+    #     'HOST': 'wakeyowl.mysql.pythonanywhere-services.com',
+    #     # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
     #     'PORT': '',
     #     'OPTIONS': {
     #         "init_command": "SET foreign_key_checks = 0;",
     #         'sql_mode': 'traditional',
     #     }
     # }
+    # ,
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        # The following settings are not used with sqlite3:
+        'NAME': 'registrations',
+        'USER': 'root',
+        'PASSWORD': 'v0n-neumann',
+        'HOST': '',  # Empty for localhost through domain sockets or   '127.0.0.1' for localhost through TCP.
+        'PORT': '',
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+            'sql_mode': 'traditional',
+        }
+    }
 
 }
 
 # setup of gmail
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'test@gmail.com'
-SERVER_EMAIL = 'test@gmail.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'wakeyowl@gmail.com'
-EMAIL_HOST_PASSWORD = '*******'
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = 'test@gmail.com'
+# SERVER_EMAIL = 'test@gmail.com'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER = 'wakeyowl@gmail.com'
+# EMAIL_HOST_PASSWORD = '*******'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Need to run terminal 'python -m smtpd -n -c DebuggingServer localhost:1025' to simulate smtp
+if DEBUG:
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 1025
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
+    DEFAULT_FROM_EMAIL = 'testing@example.com'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
