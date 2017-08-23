@@ -121,13 +121,9 @@ class ResetPasswordRequestView(FormView):
 
 
 class PasswordResetConfirmView(FormView):
-    template_name = "registration/password_reset_confirm.html"
+    template_name = "account/test_template.html"
     success_url = '/admin/'
     form_class = SetPasswordForm
-
-
-    def get_form(self, form_class):
-        return form_class(user=self.request.user)
 
     def post(self, request, uidb64=None, token=None, *arg, **kwargs):
         """
@@ -156,7 +152,6 @@ class PasswordResetConfirmView(FormView):
         else:
             messages.error(request,'The reset password link is no longer valid.')
             return self.form_invalid(form)
-
 
 class WoodkirkRegistrationView(RegistrationView):
     def get_success_url(self, user):
