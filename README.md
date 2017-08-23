@@ -4,7 +4,12 @@ Holds all member data and digital club forms
 
 # Useful Commands
 ```
-# Migrations
+
+# My SQL DB Setup
+mysql> CREATE DATABASE registrations;
+
+
+# Migrations / Initial Setup
 python manage.py makemigrations member
 python manage.py migrate member
 
