@@ -50,13 +50,13 @@ class UserMemberUpdateForm(forms.ModelForm):
 class UserMemberUpdatePlayerForm(forms.ModelForm):
     picture = forms.ImageField(required=False, help_text=mark_safe(
         "Please ensure the picture is square (1:1) and orientation is correct on the profile page after updating."))
-    is_active = forms.NullBooleanField(help_text=mark_safe("I want to enroll for the current season."))
+    # is_active = forms.NullBooleanField(help_text=mark_safe("I want to enroll for the current season."))
     accepted_code_of_conduct = forms.NullBooleanField(
         help_text=mark_safe("I have read and accept the Player Club Code of Conduct"))
 
     class Meta:
         model = Player
-        fields = ('name', 'gender', 'birthdate', 'accepted_code_of_conduct', 'manager', 'picture', 'is_active',)
+        fields = ('name', 'gender', 'birthdate', 'accepted_code_of_conduct', 'manager', 'picture', )
 
 
 class AccidentForm(forms.ModelForm):
