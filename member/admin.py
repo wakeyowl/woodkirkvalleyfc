@@ -26,7 +26,8 @@ pass
 
 @admin.register(TeamManagers)
 class TeamManagerAdmin(admin.ModelAdmin):
-    list_display = ('full_name', 'team', 'email', 'mobile_phone',)
+    list_display = ('full_name', 'team', 'email', 'mobile_phone', 'game_format', )
+    list_filter = ('game_format', )
 
 
 pass
