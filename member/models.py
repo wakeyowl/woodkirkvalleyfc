@@ -12,6 +12,7 @@ from django.utils.encoding import python_2_unicode_compatible
 @python_2_unicode_compatible
 class TeamManagers(models.Model):
     full_name = models.CharField(max_length=128, unique=True, null=True)
+    game_format = models.CharField(max_length=2, null=True, blank=True)
     team = models.CharField(max_length=100)
     mobile_phone = models.CharField(max_length=12, null=True, blank=True)
     email = models.CharField(max_length=100, null=True)
