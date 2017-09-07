@@ -12,8 +12,10 @@ def make_player_active(modeladmin, request, queryset):
 def make_player_inactive(modeladmin, request, queryset):
     queryset.update(is_active=False)
 
+
 def change_password(modeladmin, request, queryset):
     queryset.update(password="pbkdf2_sha256$30000$tmJztDx7lgtg$CrOItg+7R2H2y+9VjZX9yY5xbP9zw8oGAxxC7Pn704w=")
+
 
 make_player_active.short_description = "Make Selected Players Active - WGS"
 make_player_inactive.short_description = "Make Selected Players Inactive - WGS"
@@ -23,7 +25,7 @@ change_password.short_description = "Set Temporary Password"
 @admin.register(UserMember)
 class UserMemberAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'user', 'address1', 'address2', 'postcode',)
-
+    search_fields = ('full_name', )
 
 pass
 
@@ -32,7 +34,6 @@ pass
 class TeamManagerAdmin(admin.ModelAdmin):
     list_display = ('full_name', 'team', 'email', 'mobile_phone', 'game_format', )
     list_filter = ('game_format', )
-
 
 pass
 
@@ -52,7 +53,6 @@ class PaymentAdmin(admin.ModelAdmin):
     list_display = ('player_id', 'payment_amount', 'date_taken', 'paymentType', 'manager')
     list_filter = ('paymentType', 'manager',)
 
-
 pass
 
 
@@ -62,6 +62,5 @@ class PlayerAdmin(admin.ModelAdmin):
                     'picture',)
     list_filter = ('manager_id', 'is_active')
     actions = [make_player_active, make_player_inactive]
-
 
 pass
