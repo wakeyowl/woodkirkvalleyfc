@@ -30,6 +30,7 @@ class TeamManagers(models.Model):
 
     class Meta:
         verbose_name_plural = "Managers"
+        ordering = ('full_name', )
 
 
 @python_2_unicode_compatible
@@ -62,7 +63,7 @@ class UserMember(models.Model):
 
     class Meta:
         verbose_name_plural = "User Members"
-
+        ordering = ('full_name',)
 
 @python_2_unicode_compatible
 class Player(models.Model):
@@ -87,6 +88,7 @@ class Player(models.Model):
 
     class Meta:
         unique_together = ('birthdate', 'name',)
+        ordering = ('name', )
 
     def __str__(self):
         return self.name
