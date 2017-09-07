@@ -8,6 +8,7 @@ urlpatterns = [
                   # url(r'^$', member.views.ListContactView.as_view(),
                   # name='contacts-list', ),
                   url(r'^$', views.index, name='index'),
+                  url(r'^password/$', views.change_password, name='change_password'),
                   # url(r'^mybadges/$', views.mybadges, name='mybadges'),
                   url(r'^add_member/$', views.add_member, name='add_member'),
                   url(r'^register_profile/$', views.register_profile, name='register_profile'),
