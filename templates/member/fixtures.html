@@ -12,7 +12,7 @@
         <h4 class="display-4">Garforth League - Home Fixtures</h4>
         <h6>The fixtures are pulled from FA full time website and should be just used as a guide only</h6>
         <div>
-
+        {% csrf_token %}
         {{ htmlfixtures|safe|escape }}
 
         </div>
