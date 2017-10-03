@@ -8,15 +8,24 @@
 {% block body_block %}
 
     <div class="jumbotron">
-        {#        <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="75px"/>#}
 
-
-        <h4 class="display-4"><span class="fa fa-calendar" aria-hidden="true"></span> Garforth League - Woodkirk Valley Home Fixtures
-        </h4>
-        <h6>The fixtures are pulled from FA full time website and should be just used as a guide only</h6>
+        <h2 class="display-4"><span class="fa fa-calendar" aria-hidden="true"></span> Home Fixtures <span class="fa fa-futbol-o" aria-hidden="true"></span>
+        </h2>
+        <h6><i>The fixtures are pulled from <strong>FA Full Time</strong> website and should be just used as a guide only, managers may move ko times and fixtures.</i></h6>
         <div>
             {% csrf_token %}
-            {{ htmlfixtures|safe|escape }}
+            {{ homefixtures|safe|escape }}
+
+        </div>
+
+    <br/>
+
+    <h2 class="display-4"><span class="fa fa-calendar" aria-hidden="true"></span> Away Fixtures <span class="fa fa-futbol-o" aria-hidden="true"></span>
+        </h2>
+        <h6><i>The fixtures are pulled from <strong>FA Full Time</strong> website and should be just used as a guide only, managers may move ko times and fixtures.</i></h6>
+        <div>
+            {% csrf_token %}
+            {{ awayfixtures|safe|escape }}
 
         </div>
 

@@ -237,18 +237,22 @@ def addplayer(request):
 
 
 def get_fixtures(request):
+    index = 0
     table_json = {}
     fixturesurls = {
         "url_garforth_boys": "http://full-time.thefa.com/ListPublicFixture.do?selectedFixtureGroupKey"
                              "=&selectedRelatedFixtureOption=2&selectedClub=655071567&selectedTeam"
-                             "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days&selectednavpage1"
-                             "=1&navPageNumber1=1&previousSelectedFixtureGroupKey=&previousSelectedClub=655071567"
-                             "&seasonID=585273164&selectedSeason=585273164 "
+                             "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days"
+                             "&selectednavpage1=1&navPageNumber1=1&previousSelectedFixtureGroupKey"
+                             "=&previousSelectedClub=655071567&seasonID=585273164&selectedSeason=585273164",
+        "url_wriding_girls": "http://full-time.thefa.com/ListPublicFixture.do?selectedFixtureGroupKey"
+                             "=&selectedRelatedFixtureOption=2&selectedClub=563927265&selectedTeam"
+                             "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days"
+                             "&selectednavpage1=1&navPageNumber1=1&previousSelectedFixtureGroupKey"
+                             "=&previousSelectedClub=563927265&seasonID=737608985&selectedSeason=737608985 "
     }
 
     def parseurl(url):
-        index = 0
-        global index
         page = urllib2.urlopen(url)
         soup = BeautifulSoup(page.read(), 'lxml')
         table = soup.find('table')
@@ -258,40 +262,73 @@ def get_fixtures(request):
             if len(row.select('td')) > 0:
                 cols = row.select('td')
                 # Strip new lines and apostrophes
-                table_json[index] = {"fixtureType": str(cols[0].text.strip('\n')),
+                # Add to table json using length
+                table_json[table_json.__len__()+1] = {"fixtureType": str(cols[0].text.strip('\n')),
                                      "date": str(cols[1].text.strip('\n')),
                                      "homeTeam": str(cols[2].text.strip('\n')).replace('\'', ''),
                                      "awayTeam": str(cols[3].text.strip('\n')).replace('\'', ''),
                                      "location": str(cols[4].text.strip('\n')).replace('\'', ''),
                                      "leagueDivision": str(cols[5].text.strip('\n'))}
-                index = index + 1
 
     for key, url in fixturesurls.items():
         parseurl(url)
 
+    # Create dictionaries for Home and Away Games
     home_games = {}
-    count = 0
+    count_home = 0
     for row in table_json:
-        if table_json[row]['location'].startswith('Woodkirk Valley'):
-            print
-            table_json[row]
-            home_games[count] = table_json[row]
-            count += 1
-    parsestring = str(home_games)
-    parsestring = re.sub(r'[0-9]?[0-9]: {', "{", parsestring)
-    parsestring = re.sub(r'(\d+)\'s', r'\1s', parsestring)
-    parsestring = re.sub(r'\'', "\"", parsestring)
-    parsestring = re.sub(r'^{', "{\"fixtures\": [ ", parsestring)
-    parsestring = re.sub(r'}}$', "}]}", parsestring)
-    outputtable = json2html.convert(json=parsestring)
-    # Strip out the additional guff from json convertor
-    outputtable = re.sub(r'<table border=\"1\"><th><tr>fixtures</th><td>', "", outputtable)
-    # Bootstrap format the file
-    outputtable = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"table table-striped sorttable\">", outputtable)
-    outputtable = re.sub(r'</table></td></tr></table>', "</table>", outputtable)
-    # strip the outer table
-    outputtable = re.sub(r'<table border="1" class="table table-striped sorttable"><tr><th>fixtures</th><td>', "", outputtable)
-    context_dict = {'htmlfixtures': outputtable, 'jsonfixtures': parsestring}
+        if table_json[row]['homeTeam'].startswith('Woodkirk'):
+            home_games[count_home] = table_json[row]
+            count_home += 1
+    away_games = {}
+    count_away = 0
+    for row in table_json:
+        if not table_json[row]['homeTeam'].startswith('Woodkirk'):
+            away_games[count_away] = table_json[row]
+            count_away += 1
+
+    # function for parsing items from the fa full time website - takes in a list
+    def fa_fulltimeparser(parse_dictionary):
+        parsestring = str(parse_dictionary)
+        parsestring = re.sub(r'[0-9]?[0-9]: {', "{", parsestring)
+        parsestring = re.sub(r'(\d+)\'s', r'\1s', parsestring)
+        parsestring = re.sub(r'\'', "\"", parsestring)
+        parsestring = re.sub(r'^{', "{\"fixtures\": [ ", parsestring)
+        parsestring = re.sub(r'}}$', "}]}", parsestring)
+        out_table = json2html.convert(json=parsestring)
+        # Strip out the additional guff from json convertor
+        out_table = re.sub(r'<table border=\"1\"><th><tr>fixtures</th><td>', "", out_table)
+        # Bootstrap format the file
+        out_table = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"table table-striped sorttable\">",
+                           out_table)
+        out_table = re.sub(r'</table></td></tr></table>', "</table>", out_table)
+        # strip the outer table
+        out_table = re.sub(r'<table border="1" class="table table-striped sorttable"><tr><th>fixtures</th><td>', "",
+                           out_table)
+        return out_table
+
+    home_games = fa_fulltimeparser(home_games)
+    away_games = fa_fulltimeparser(away_games)
+
+    # parsestring = str(home_games)
+    # parsestring2 = str(away_games)
+    # parsestring = re.sub(r'[0-9]?[0-9]: {', "{", parsestring)
+    # parsestring = re.sub(r'(\d+)\'s', r'\1s', parsestring)
+    # parsestring = re.sub(r'\'', "\"", parsestring)
+    # parsestring = re.sub(r'^{', "{\"fixtures\": [ ", parsestring)
+    # parsestring = re.sub(r'}}$', "}]}", parsestring)
+    # outputtable = json2html.convert(json=parsestring)
+    #
+    # # Strip out the additional guff from json convertor
+    # outputtable = re.sub(r'<table border=\"1\"><th><tr>fixtures</th><td>', "", outputtable)
+    # # Bootstrap format the file
+    # outputtable = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"table table-striped sorttable\">",
+    #                      outputtable)
+    # outputtable = re.sub(r'</table></td></tr></table>', "</table>", outputtable)
+    # # strip the outer table
+    # outputtable = re.sub(r'<table border="1" class="table table-striped sorttable"><tr><th>fixtures</th><td>', "",
+    #                      outputtable)
+    context_dict = {'homefixtures': home_games, 'awayfixtures': away_games}
     return render(request, 'member/fixtures.html', context_dict)
 
 
