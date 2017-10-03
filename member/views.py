@@ -284,15 +284,15 @@ def get_fixtures(request):
     parsestring = re.sub(r'^{', "{\"fixtures\": [ ", parsestring)
     parsestring = re.sub(r'}}$', "}]}", parsestring)
     outputtable = json2html.convert(json=parsestring)
-    outputtable = re.sub(r'<table border=\"1\"><tr><th>fixtures</th><td>', "", outputtable)
-    outputtable = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"sortable\">", outputtable)
+    # Strip out the additional guff from json convertor
+    outputtable = re.sub(r'<table border=\"1\"><th><tr>fixtures</th><td>', "", outputtable)
+    # Bootstrap format the file
+    outputtable = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"table table-striped sorttable\">", outputtable)
     outputtable = re.sub(r'</table></td></tr></table>', "</table>", outputtable)
+    # strip the outer table
+    outputtable = re.sub(r'<table border="1" class="table table-striped sorttable"><tr><th>fixtures</th><td>', "", outputtable)
     context_dict = {'htmlfixtures': outputtable, 'jsonfixtures': parsestring}
     return render(request, 'member/fixtures.html', context_dict)
-
-
-
-
 
 
 def update_player(request, player):
