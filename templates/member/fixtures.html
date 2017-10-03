@@ -8,12 +8,15 @@
 {% block body_block %}
 
     <div class="jumbotron">
-        <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="75px"/>
-        <h4 class="display-4">Garforth League - Home Fixtures</h4>
+        {#        <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="75px"/>#}
+
+
+        <h4 class="display-4"><span class="fa fa-calendar" aria-hidden="true"></span> Garforth League - Woodkirk Valley Home Fixtures
+        </h4>
         <h6>The fixtures are pulled from FA full time website and should be just used as a guide only</h6>
         <div>
-        {% csrf_token %}
-        {{ htmlfixtures|safe|escape }}
+            {% csrf_token %}
+            {{ htmlfixtures|safe|escape }}
 
         </div>
 
