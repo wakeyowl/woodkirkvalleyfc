@@ -106,9 +106,15 @@
                     </li>
                 {% endif %}
 
-            <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'change_password' %}">
                         <span class="fa fa-key" aria-hidden="true"></span> Reset Password
+                    </a>
+                </li>
+
+                <li class="products nav-item">
+                    <a class="nav-link" href="{% url 'get_fixtures' %}">
+                        <span class="fa fa-calendar" aria-hidden="true"></span> Fixtures
                     </a>
                 </li>
 
@@ -124,6 +130,11 @@
         {% else %}
 
             <ul class="nav navbar-nav navbar-right">
+                <li class="products nav-item">
+                    <a class="nav-link" href="{% url 'get_fixtures' %}">
+                        <span class="fa fa-calendar" aria-hidden="true"></span> Fixtures
+                    </a>
+                </li>
                 <li class="products nav-item">
                     <a class="nav-link" href="{% url 'register_accident' %}">
                         <span class="fa fa-ambulance" aria-hidden="true"></span> Accident Form
