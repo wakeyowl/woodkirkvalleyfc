@@ -1,0 +1,25 @@
+{% extends 'member/base_bootstrap.html' %}
+{% load staticfiles %}
+{% load member_template_tags %}
+{% block title_block %}
+    Index
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        <img src="{% static "images/woodkirk-trans.png" %}" alt="WVFC" width="75px"/>
+        <h4 class="display-4">Garforth League - Home Fixtures</h4>
+        <h6>The fixtures are pulled from FA full time website and should be just used as a guide only</h6>
+        <div>
+
+        {{ htmlfixtures|safe|escape }}
+
+        </div>
+
+    </div>
+
+    <div class="row marketing">
+        <div class="col-lg-6">
+
+{% endblock %}

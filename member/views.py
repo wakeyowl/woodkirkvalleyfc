@@ -14,6 +14,14 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.shortcuts import render, redirect
 
+from bs4 import BeautifulSoup
+import urllib2
+import lxml
+import re
+from datetime import datetime
+from timestring import Date
+from json2html import *
+
 from member.forms import UserMemberForm, UserMemberAddChildForm, UserMemberUpdateForm, AccidentForm, \
     UserMemberUpdatePlayerForm
 from member.models import UserMember, Player, TeamManagers
@@ -228,6 +236,65 @@ def addplayer(request):
     return render(request, 'member/add_player.html', context_dict)
 
 
+def get_fixtures(request):
+    table_json = {}
+    fixturesurls = {
+        "url_garforth_boys": "http://full-time.thefa.com/ListPublicFixture.do?selectedFixtureGroupKey"
+                             "=&selectedRelatedFixtureOption=2&selectedClub=655071567&selectedTeam"
+                             "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days&selectednavpage1"
+                             "=1&navPageNumber1=1&previousSelectedFixtureGroupKey=&previousSelectedClub=655071567"
+                             "&seasonID=585273164&selectedSeason=585273164 "
+    }
+
+    def parseurl(url):
+        index = 0
+        global index
+        page = urllib2.urlopen(url)
+        soup = BeautifulSoup(page.read(), 'lxml')
+        table = soup.find('table')
+        table_body = table.find('tbody')
+        rows = table_body.find_all('tr')
+        for row in rows:
+            if len(row.select('td')) > 0:
+                cols = row.select('td')
+                # Strip new lines and apostrophes
+                table_json[index] = {"fixtureType": str(cols[0].text.strip('\n')),
+                                     "date": str(cols[1].text.strip('\n')),
+                                     "homeTeam": str(cols[2].text.strip('\n')).replace('\'', ''),
+                                     "awayTeam": str(cols[3].text.strip('\n')).replace('\'', ''),
+                                     "location": str(cols[4].text.strip('\n')).replace('\'', ''),
+                                     "leagueDivision": str(cols[5].text.strip('\n'))}
+                index = index + 1
+
+    for key, url in fixturesurls.items():
+        parseurl(url)
+
+    home_games = {}
+    count = 0
+    for row in table_json:
+        if table_json[row]['location'].startswith('Woodkirk Valley'):
+            print
+            table_json[row]
+            home_games[count] = table_json[row]
+            count += 1
+    parsestring = str(home_games)
+    parsestring = re.sub(r'[0-9]?[0-9]: {', "{", parsestring)
+    parsestring = re.sub(r'(\d+)\'s', r'\1s', parsestring)
+    parsestring = re.sub(r'\'', "\"", parsestring)
+    parsestring = re.sub(r'^{', "{\"fixtures\": [ ", parsestring)
+    parsestring = re.sub(r'}}$', "}]}", parsestring)
+    outputtable = json2html.convert(json=parsestring)
+    outputtable = re.sub(r'<table border=\"1\"><tr><th>fixtures</th><td>', "", outputtable)
+    outputtable = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"sortable\">", outputtable)
+    outputtable = re.sub(r'</table></td></tr></table>', "</table>", outputtable)
+    context_dict = {'htmlfixtures': outputtable, 'jsonfixtures': parsestring}
+    return render(request, 'member/fixtures.html', context_dict)
+
+
+
+
+
+
 def update_player(request, player):
     player_updated = Player.objects.get_or_create(id=player)[0]
     form = UserMemberUpdatePlayerForm(instance=player_updated, )
@@ -247,19 +314,6 @@ def update_player(request, player):
                 else:
                     form.save()
             except:
-                # PIL Setup - Open and Resize
-                # picture_to_change = Image.open(form.instance.picture)
-                # picture_to_change = picture_to_change.resize((125, 125), Image.ANTIALIAS)
-                #
-                # # Get MetaData for the Save
-                # orig_picture_name = form.instance.name
-                # team = form.instance.manager.team
-                # team = team.replace(" ", "_")
-                # orig_picture_name = orig_picture_name.replace(" ", "_")
-                #
-                # # Save the new Image to disk
-                # picture_to_change.save("member/media/profile_images/" + team + "_" + orig_picture_name + ".jpg",
-                #                        quality=90)
                 page = form.save(commit=False)
 
                 # Call to override save function in Player Model

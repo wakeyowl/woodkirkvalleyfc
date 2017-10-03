@@ -9,6 +9,7 @@ urlpatterns = [
                   # name='contacts-list', ),
                   url(r'^$', views.index, name='index'),
                   url(r'^password/$', views.change_password, name='change_password'),
+                  url(r'^fixtures/$', views.get_fixtures, name='get_fixtures'),
                   # url(r'^mybadges/$', views.mybadges, name='mybadges'),
                   url(r'^add_member/$', views.add_member, name='add_member'),
                   url(r'^register_profile/$', views.register_profile, name='register_profile'),
