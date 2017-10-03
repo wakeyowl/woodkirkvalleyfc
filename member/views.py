@@ -299,12 +299,13 @@ def get_fixtures(request):
         # Strip out the additional guff from json convertor
         out_table = re.sub(r'<table border=\"1\"><th><tr>fixtures</th><td>', "", out_table)
         # Bootstrap format the file
-        out_table = re.sub(r'<table border=\"1\">', "<table border=\"1\" class=\"table table-striped sorttable\">",
+        out_table = re.sub(r'<table border=\"1\">', "<table border=\"1\" id=\"fixtures\" data-toggle=\"table\" class=\"table table-striped\">",
                            out_table)
         out_table = re.sub(r'</table></td></tr></table>', "</table>", out_table)
         # strip the outer table
-        out_table = re.sub(r'<table border="1" class="table table-striped sorttable"><tr><th>fixtures</th><td>', "",
+        out_table = re.sub(r'<table border="1" id=\"fixtures\" data-toggle=\"table\" class="table table-striped"><tr><th>fixtures</th><td>', "",
                            out_table)
+        out_table = re.sub(r'<th>fixtureType</th><th>homeTeam</th><th>leagueDivision</th><th>awayTeam</th><th>location</th><th>date</th>', "<th onclick=\"sortTable(0)\">fixtureType</th><th onclick=\"sortTable(1)\">homeTeam</th><th onclick=\"sortTable(2)\">leagueDivision</th><th onclick=\"sortTable(3)\">awayTeam</th><th onclick=\"sortTable(4)\">location</th><th onclick=\"sortTable(5)\">date</th>", out_table)
         return out_table
 
     home_games = fa_fulltimeparser(home_games)
