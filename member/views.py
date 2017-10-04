@@ -249,7 +249,17 @@ def get_fixtures(request):
                              "=&selectedRelatedFixtureOption=2&selectedClub=563927265&selectedTeam"
                              "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days"
                              "&selectednavpage1=1&navPageNumber1=1&previousSelectedFixtureGroupKey"
-                             "=&previousSelectedClub=563927265&seasonID=737608985&selectedSeason=737608985 "
+                             "=&previousSelectedClub=563927265&seasonID=737608985&selectedSeason=737608985 ",
+        "url_hudd_boys":    "http://full-time.thefa.com/ListPublicFixture.do?selectedFixtureGroupKey"
+                            "=&selectedRelatedFixtureOption=2&selectedClub=3832346&selectedTeam"
+                            "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days"
+                            "&previousSelectedFixtureGroupKey=&previousSelectedClub=3832346&seasonID=971374290"
+                            "&selectedSeason=971374290",
+        "url_saturday_men": "http://full-time.thefa.com/ListPublicFixture.do?selectedFixtureGroupKey"
+                            "=&selectedRelatedFixtureOption=2&selectedClub=69544268&selectedTeam"
+                            "=&selectedFixtureDateStatus=&selectedFixtureStatus=&selectedDateCode=7days"
+                            "&previousSelectedFixtureGroupKey=&previousSelectedClub=69544268&seasonID=955206190"
+                            "&selectedSeason=955206190"
     }
 
     def parseurl(url):
