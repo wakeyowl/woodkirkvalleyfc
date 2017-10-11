@@ -1,8 +1,41 @@
 from django.contrib import admin
+from django.http import HttpResponse
 
 from member.models import TeamManagers, UserMember, Payments, Player, User
 
 admin.site.unregister(User)
+
+
+# Export CSV fucntion added to Django
+def export_csv(modeladmin, request, queryset):
+    import csv
+    from django.utils.encoding import smart_str
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=export.csv'
+    writer = csv.writer(response, csv.excel)
+    response.write(u'\ufeff'.encode('utf8')) # BOM (optional...Excel needs it to open UTF-8 file properly)
+    writer.writerow([
+        smart_str(u"ID"),
+        smart_str(u"Payment Amount"),
+        smart_str(u"Description"),
+        smart_str(u"Date Taken"),
+        smart_str(u"Player"),
+        smart_str(u"Manager"),
+        smart_str(u"Payment Type"),
+
+    ])
+    for obj in queryset:
+        writer.writerow([
+            smart_str(obj.pk),
+            smart_str(obj.payment_amount),
+            smart_str(obj.description),
+            smart_str(obj.date_taken),
+            smart_str(obj.player),
+            smart_str(obj.manager),
+            smart_str(obj.paymentType),
+        ])
+    return response
+export_csv.short_description = u"Export CSV"
 
 
 def make_player_active(modeladmin, request, queryset):
@@ -52,6 +85,7 @@ pass
 class PaymentAdmin(admin.ModelAdmin):
     list_display = ('player_id', 'payment_amount', 'date_taken', 'paymentType', 'manager')
     list_filter = ('paymentType', 'manager',)
+    actions = [export_csv]
 
 pass
 
