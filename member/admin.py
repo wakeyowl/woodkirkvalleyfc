@@ -38,6 +38,40 @@ def export_csv(modeladmin, request, queryset):
 export_csv.short_description = u"Export CSV"
 
 
+# Export CSV fucntion added to Django
+def export_csv_players(modeladmin, request, queryset):
+    import csv
+    from django.utils.encoding import smart_str
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=export.csv'
+    writer = csv.writer(response, csv.excel)
+    response.write(u'\ufeff'.encode('utf8')) # BOM (optional...Excel needs it to open UTF-8 file properly)
+    writer.writerow([
+        smart_str(u"ID"),
+        smart_str(u"Name"),
+        smart_str(u"Gender"),
+        smart_str(u"Manager"),
+        smart_str(u"Medical Details"),
+        smart_str(u"Birthdate"),
+        smart_str(u"Accepted_Conduct"),
+
+
+    ])
+    for obj in queryset:
+        writer.writerow([
+            smart_str(obj.pk),
+            smart_str(obj.name),
+            smart_str(obj.gender),
+            smart_str(obj.manager),
+            smart_str(obj.medical_details),
+            smart_str(obj.birthdate),
+            smart_str(obj.accepted_code_of_conduct),
+
+        ])
+    return response
+export_csv.short_description = u"Export CSV Players"
+
+
 def make_player_active(modeladmin, request, queryset):
     queryset.update(is_active=True)
 
@@ -96,6 +130,6 @@ class PlayerAdmin(admin.ModelAdmin):
                     'picture',)
     list_filter = ('manager_id', 'is_active')
     search_fields = ('name', )
-    actions = [make_player_active, make_player_inactive]
+    actions = [make_player_active, make_player_inactive, export_csv_players]
 
 pass
