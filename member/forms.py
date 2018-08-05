@@ -13,7 +13,10 @@ from member.models import UserMember, Player, Accident
 class UserMemberForm(forms.ModelForm):
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
     consent = forms.NullBooleanField(help_text=mark_safe("By consenting you are agreeing to the following: "
-                                                         "<ul> "
+                                                         "<ul>"
+                                                         "<li>I agree to the clubs privacy policy (inc GDPR) "
+                                                         "and have read the policy on the link above"
+                                                         " </li>"
                                                          "<li>I agree to my child receiving medication as "
                                                          "instructed on their record </li>"
                                                          "<li>I agree to emergency treatment by a qualified first "
